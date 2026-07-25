@@ -3,6 +3,7 @@ import { tutorials, fieldManual } from "@/data/tutorialLevels";
 import { levels } from "@/data/levels";
 import { messages } from "@/data/messages";
 import OpeningScreen from "@/components/game/OpeningScreen";
+import IntroScreen from "@/components/game/IntroScreen";
 import LevelMenu from "@/components/game/LevelMenu";
 import FilingHeader from "@/components/game/FilingHeader";
 import CaseBrief from "@/components/game/CaseBrief";
@@ -164,7 +165,8 @@ export default function Home() {
     });
   };
 
-  if (screen === "opening") return <OpeningScreen onEnter={() => setScreen("menu")} />;
+  if (screen === "opening") return <OpeningScreen onEnter={() => setScreen("intro")} />;
+  if (screen === "intro") return <IntroScreen onContinue={() => setScreen("menu")} />;
   if (screen === "inbox") return <Inbox progress={progress} onBack={() => setScreen("menu")} onRead={markRead} onReply={sendReply} />;
   if (screen === "menu")
     return (
