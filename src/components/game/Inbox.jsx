@@ -114,7 +114,7 @@ export default function Inbox({ progress, onBack, onRead, onReply }) {
         </button>
         <p className="font-mono text-xs uppercase tracking-[.24em] text-[#9a8f6a]">MESSAGES</p>
         <h1 className="mt-3 font-display text-5xl tracking-[-.03em]">Inbox</h1>
-        <p className="mt-3 text-sm text-[#75736d]">{count} message{count !== 1 ? "s" : ""}. Some senders prefer to stay anonymous.</p>
+        <p className="mt-3 text-sm text-[#75736d]">{count} message{count !== 1 ? "s" : ""}.</p>
 
         <div className="mt-8 space-y-2">
           {count === 0 && pending.length === 0 && <p className="text-sm text-[#5d5b56]">No messages yet. Keep working cases.</p>}
