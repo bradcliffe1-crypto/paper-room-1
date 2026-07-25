@@ -1,9 +1,10 @@
+export const fieldManual = {
+  id: "field-manual", number: "00", title: "Field Manual", type: "manual",
+  goal: "Learn to read a New Hampshire campaign finance filing before you start flagging.",
+  lesson: "", legend: [], lines: []
+};
+
 export const tutorials = [
-  {
-    id: "field-manual", number: "00", title: "Field Manual", type: "manual",
-    goal: "Learn to read a New Hampshire campaign finance filing before you start flagging.",
-    lesson: "", legend: [], lines: []
-  },
   {
     id: "straw-donors", number: "01", title: "Names in a Row", skill: "Straw donor patterns", difficulty: "Beginner",
     filer: "Morgan Vale for State Senate", office: "State Senate, District 18", period: "04/01/2026 – 06/30/2026", report: "Quarterly R&E Report", goal: "Find contributions that suggest one source may be reimbursing several named donors.",

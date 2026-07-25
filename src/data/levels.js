@@ -102,5 +102,32 @@ export const levels = [
     report: "Receipt & Expenditure Report", type: "flag",
     task: "Ayotte's donors. Read the names. Some of them shouldn't be giving that much.",
     briefing: FLAG_BRIEF, legend: LEGEND, lines: []
+  },
+  {
+    id: "l11", number: "11", title: "███", candidate: "[redacted]",
+    filer: "Pending filing data", office: "[redacted]", period: "[redacted]",
+    report: "Receipt & Expenditure Report", type: "flag",
+    task: "The filings you've read were practice. This one isn't. Open it when you're ready.",
+    briefing: FLAG_BRIEF, legend: LEGEND, lines: [],
+    secret: true,
+    unlocksWith: ctx => ctx.allBaseComplete && ctx.allMailRead
+  },
+  {
+    id: "l12", number: "12", title: "███", candidate: "[redacted]",
+    filer: "Pending filing data", office: "[redacted]", period: "[redacted]",
+    report: "Receipt & Expenditure Report", type: "flag",
+    task: "You read every filing. Every message. There's one more. It found you.",
+    briefing: FLAG_BRIEF, legend: LEGEND, lines: [],
+    secret: true,
+    unlocksWith: ctx => ctx.allBaseComplete && ctx.allMailRead
+  },
+  {
+    id: "l13", number: "13", title: "█", candidate: "[redacted]",
+    filer: "Pending filing data", office: "[redacted]", period: "[redacted]",
+    report: "Receipt & Expenditure Report", type: "flag",
+    task: "You tried to reach everyone. Everyone. Now read the last filing. It reads you back.",
+    briefing: FLAG_BRIEF, legend: LEGEND, lines: [],
+    secret: true,
+    unlocksWith: ctx => ctx.l11l12Complete && ctx.emailedAllFour
   }
 ];

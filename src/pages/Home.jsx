@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { tutorials } from "@/data/tutorialLevels";
+import { tutorials, fieldManual } from "@/data/tutorialLevels";
 import { levels } from "@/data/levels";
 import { messages } from "@/data/messages";
 import OpeningScreen from "@/components/game/OpeningScreen";
@@ -38,12 +38,29 @@ export default function Home() {
   const replies = progress.replies || [];
   const unreadCount = messages.filter(m => m.unlock(progress) && !read.includes(m.id)).length
     + replies.filter(m => !read.includes(m.id)).length;
+
+  const baseCaseIds = levels.filter(l => !l.secret).map(l => l.id);
+  const allBaseComplete = baseCaseIds.every(id => progress.completed.includes(id));
+  const allMailRead =
+    messages.filter(m => m.unlock(progress)).every(m => read.includes(m.id)) &&
+    replies.every(m => read.includes(m.id));
+  const l11l12Complete = ["l11", "l12"].every(id => progress.completed.includes(id));
+  const sentCounts = progress.sent || {};
+  const emailedAllFour = ["mercer", "anon", "withheld", "reyes"].every(k => (sentCounts[k] || 0) > 0);
+  const ctx = { allBaseComplete, allMailRead, l11l12Complete, emailedAllFour };
+
   const list = activeList === "tutorials" ? tutorials : levels;
 
   const choose = (listName, i) => {
     setActiveList(listName);
     setActiveIndex(i);
     setActiveLevel(listName === "tutorials" ? tutorials[i] : levels[i]);
+    setSelected([]);
+    setScreen("level");
+  };
+
+  const openManual = () => {
+    setActiveLevel(fieldManual);
     setSelected([]);
     setScreen("level");
   };
@@ -91,23 +108,6 @@ export default function Home() {
     }
   };
 
-  const completeManual = () => {
-    setProgress(p => ({
-      completed: [...new Set([...p.completed, activeLevel.id])],
-      scores: p.scores,
-      readMessages: p.readMessages || []
-    }));
-    const nextIdx = activeIndex + 1;
-    if (nextIdx < list.length) {
-      setActiveIndex(nextIdx);
-      setActiveLevel(list[nextIdx]);
-      setSelected([]);
-      setScreen("level");
-    } else {
-      setScreen("menu");
-    }
-  };
-
   const markRead = id =>
     setProgress(p => ({ ...p, readMessages: [...new Set([...(p.readMessages || []), id])] }));
 
@@ -142,11 +142,11 @@ export default function Home() {
       const delay = REYES_DELAY_MS[0] + Math.floor(Math.random() * (REYES_DELAY_MS[1] - REYES_DELAY_MS[0] + 1));
       setProgress(p => {
         const seq = (p.replySeq || 1000) + 1;
-        return { ...p, replySeq: seq, pending: [...(p.pending || []), { id: "r-" + seq, deliverAt: Date.now() + delay, body: brief, order: seq }] };
+        return { ...p, replySeq: seq, sent: { ...(p.sent || {}), reyes: ((p.sent || {}).reyes || 0) + 1 }, pending: [...(p.pending || []), { id: "r-" + seq, deliverAt: Date.now() + delay, body: brief, order: seq }] };
       });
       return;
     }
-    const key = to === "Mercer" ? "mercer" : "anon";
+    const key = to === "Mercer" ? "mercer" : to === "RESTRICTED" ? "anon" : "withheld";
     setProgress(p => {
       const count = ((p.sent || {})[key] || 0) + 1;
       let seq = p.replySeq || 1000;
@@ -154,7 +154,7 @@ export default function Home() {
       seq += 1;
       adds.push({ id: "b-" + seq, from: "MAILER-DAEMON", role: "unknown", time: fmtTime(Date.now()), body: bounceBody(to), order: seq, isReply: true });
       let warnings = p.warnings || {};
-      const fire = count >= BOUNCE_THRESHOLD && !warnings[key];
+      const fire = (to === "Mercer" || to === "RESTRICTED") && count >= BOUNCE_THRESHOLD && !warnings[key];
       if (fire) {
         warnings = { ...warnings, [key]: true };
         seq += 1;
@@ -174,7 +174,9 @@ export default function Home() {
         completed={progress.completed}
         onSelect={choose}
         onOpenInbox={() => setScreen("inbox")}
+        onOpenManual={openManual}
         unreadCount={unreadCount}
+        ctx={ctx}
       />
     );
 
@@ -188,7 +190,7 @@ export default function Home() {
       : <AnalysisDebrief level={level} selected={selected} onNext={next} onRetry={() => setScreen("level")} />;
 
   if (type === "manual")
-    return <ManualScreen level={level} onBack={() => setScreen("menu")} onComplete={completeManual} />;
+    return <ManualScreen level={level} onBack={() => setScreen("menu")} onComplete={() => setScreen("menu")} />;
 
   const hasData = level.lines.length > 0;
   return (

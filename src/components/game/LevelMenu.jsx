@@ -37,19 +37,27 @@ function CaseCard({ level, unlocked, completed, onSelect }) {
   );
 }
 
-export default function LevelMenu({ tutorials, levels, completed, onSelect, onOpenInbox, unreadCount }) {
+export default function LevelMenu({ tutorials, levels, completed, onSelect, onOpenInbox, onOpenManual, unreadCount, ctx }) {
   const tutUnlocked = i => i === 0 || completed.includes(tutorials[i - 1].id);
-  const lvlUnlocked = i => levels[i].lines.length > 0 && (i === 0 || completed.includes(levels[i - 1].id));
 
   return (
     <main className="min-h-screen bg-[#0a0a0b] px-6 py-12 text-[#d8d5cd] sm:px-10 lg:px-16">
       <div className="mx-auto max-w-5xl">
         <header className="flex items-center justify-between border-b border-[#262629] pb-6">
-          <h1 className="font-mono text-2xl lowercase tracking-[.05em]">paper room</h1>
-          <button onClick={onOpenInbox} className="flex items-center gap-2 border border-[#262629] px-4 py-2 font-mono text-xs uppercase tracking-[.2em] text-[#d8d5cd] transition hover:border-[#3a3a3e] hover:text-[#9a8f6a]">
-            inbox
-            {unreadCount > 0 && <span className="rounded-full bg-[#b0523e] px-1.5 text-[10px] leading-5 text-white">{unreadCount}</span>}
-          </button>
+          <h1 className="font-mono text-2xl lowercase tracking-[.05em]">_desktop_</h1>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={onOpenManual}
+              aria-label="Field manual"
+              className="flex h-9 w-9 items-center justify-center border border-[#262629] font-mono text-lg leading-none text-[#9a8f6a] transition hover:border-[#3a3a3e] hover:text-[#aea370]"
+            >
+              ?
+            </button>
+            <button onClick={onOpenInbox} className="flex items-center gap-2 border border-[#262629] px-4 py-2 font-mono text-xs uppercase tracking-[.2em] text-[#d8d5cd] transition hover:border-[#3a3a3e] hover:text-[#9a8f6a]">
+              inbox
+              {unreadCount > 0 && <span className="rounded-full bg-[#b0523e] px-1.5 text-[10px] leading-5 text-white">{unreadCount}</span>}
+            </button>
+          </div>
         </header>
 
         <section className="py-10">
@@ -64,9 +72,12 @@ export default function LevelMenu({ tutorials, levels, completed, onSelect, onOp
         <section className="border-t border-[#262629] py-10">
           <p className="mb-5 font-mono text-[10px] uppercase tracking-[.3em] text-[#9a8f6a]">Cases</p>
           <div className="grid gap-px border border-[#262629] bg-[#262629] sm:grid-cols-2 lg:grid-cols-3">
-            {levels.map((level, i) => (
-              <CaseCard key={level.id} level={level} unlocked={lvlUnlocked(i)} completed={completed.includes(level.id)} onSelect={() => onSelect("levels", i)} />
-            ))}
+            {levels.map((level, i) => {
+              const isSecret = !!level.secret;
+              if (isSecret && !(level.unlocksWith && level.unlocksWith(ctx))) return null;
+              const unlocked = isSecret || (level.lines.length > 0 && (i === 0 || completed.includes(levels[i - 1].id)));
+              return <CaseCard key={level.id} level={level} unlocked={unlocked} completed={completed.includes(level.id)} onSelect={() => onSelect("levels", i)} />;
+            })}
           </div>
         </section>
       </div>
