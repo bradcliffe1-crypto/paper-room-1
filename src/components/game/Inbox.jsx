@@ -67,8 +67,8 @@ export default function Inbox({ progress, onBack, onRead, onReply }) {
     return (
       <main className="min-h-screen bg-[#0a0a0b] p-6 text-[#d8d5cd] sm:p-10">
         <div className="mx-auto max-w-2xl">
-          <button onClick={() => { setOpenId(null); setStatus(""); setDraft(""); }} className="mb-8 flex items-center gap-2 font-mono text-xs uppercase tracking-[.2em] text-[#75736d] hover:text-[#d8d5cd]">
-            <ArrowLeft size={15} /> Inbox
+          <button onClick={() => { setOpenId(null); setStatus(""); setDraft(""); }} aria-label="Back" className="mb-10 text-[#75736d] transition hover:text-[#d8d5cd]">
+            <ArrowLeft size={16} />
           </button>
           <div className="border border-[#262629] bg-[#131316] p-7">
             <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[.2em]">
@@ -109,12 +109,10 @@ export default function Inbox({ progress, onBack, onRead, onReply }) {
   return (
     <main className="min-h-screen bg-[#0a0a0b] p-6 text-[#d8d5cd] sm:p-10">
       <div className="mx-auto max-w-2xl">
-        <button onClick={onBack} className="mb-8 flex items-center gap-2 font-mono text-xs uppercase tracking-[.2em] text-[#75736d] hover:text-[#d8d5cd]">
-          <ArrowLeft size={15} /> Casebook
+        <button onClick={onBack} aria-label="Back" className="mb-10 text-[#75736d] transition hover:text-[#d8d5cd]">
+          <ArrowLeft size={16} />
         </button>
-        <p className="font-mono text-xs uppercase tracking-[.24em] text-[#9a8f6a]">MESSAGES</p>
-        <h1 className="mt-3 font-display text-5xl tracking-[-.03em]">Inbox</h1>
-        <p className="mt-3 text-sm text-[#75736d]">{count} message{count !== 1 ? "s" : ""}.</p>
+        <p className="text-sm text-[#75736d]">{count} message{count !== 1 ? "s" : ""}.</p>
 
         <div className="mt-8 space-y-2">
           {count === 0 && pending.length === 0 && <p className="text-sm text-[#5d5b56]">No messages yet. Keep working cases.</p>}

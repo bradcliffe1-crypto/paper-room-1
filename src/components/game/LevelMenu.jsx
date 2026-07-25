@@ -12,6 +12,16 @@ function FolderIcon({ completed }) {
   );
 }
 
+function PixelQ() {
+  const rows = ["01110", "10001", "00001", "00110", "00100", "00100", "00000", "00100"];
+  const px = 3;
+  return (
+    <svg width={5 * px} height={rows.length * px} viewBox={`0 0 ${5 * px} ${rows.length * px}`} fill="none" xmlns="http://www.w3.org/2000/svg">
+      {rows.flatMap((r, y) => r.split("").map((c, x) => (c === "1" ? <rect key={x + "-" + y} x={x * px} y={y * px} width={px} height={px} fill="#9a8f6a" /> : null)))}
+    </svg>
+  );
+}
+
 function TutorialCard({ level, unlocked, completed, onSelect }) {
   return (
     <button
@@ -51,7 +61,7 @@ export default function LevelMenu({ tutorials, levels, completed, onSelect, onOp
     <main className="min-h-screen bg-[#0a0a0b] px-6 py-16 text-[#d8d5cd] sm:px-12 lg:px-20">
       <div className="mx-auto max-w-4xl">
         <header className="flex items-center justify-between pb-8">
-          <h1 className="font-mono text-2xl lowercase tracking-[.05em]">_desktop</h1>
+          <h1 className="font-mono text-2xl lowercase tracking-[.05em]">{allTrainingComplete ? "_desktop" : "_training"}</h1>
           <div className="flex items-center gap-3">
             <button onClick={onOpenInbox} className="flex items-center gap-2 border border-[#262629] px-4 py-2 font-mono text-xs uppercase tracking-[.2em] text-[#d8d5cd] transition hover:border-[#3a3a3e] hover:text-[#9a8f6a]">
               inbox
@@ -60,9 +70,9 @@ export default function LevelMenu({ tutorials, levels, completed, onSelect, onOp
             <button
               onClick={onOpenManual}
               aria-label="Field manual"
-              className="flex h-9 w-9 items-center justify-center border border-[#262629] font-mono text-lg leading-none text-[#9a8f6a] transition hover:border-[#3a3a3e] hover:text-[#aea370]"
+              className="flex h-9 w-9 items-center justify-center border border-[#262629] transition hover:border-[#3a3a3e]"
             >
-              ?
+              <PixelQ />
             </button>
           </div>
         </header>
