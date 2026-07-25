@@ -21,7 +21,7 @@ function Row({ m, isRead, onOpen }) {
           <span className="font-mono text-xs uppercase tracking-[.15em]" style={{ color: ROLE_COLOR[m.role] }}>{m.from}</span>
           <span className="font-mono text-[10px] text-[#5d5b56]">{m.time}</span>
         </div>
-        <p className="mt-2 truncate text-sm text-[#8c8a84]">{m.body}</p>
+        <p className="mt-2 truncate font-mono text-sm text-[#8c8a84]">{m.body}</p>
       </div>
       {!isRead && <span className="h-2 w-2 shrink-0 rounded-full" style={{ background: ROLE_COLOR[m.role] }} />}
     </button>
@@ -75,7 +75,7 @@ export default function Inbox({ progress, onBack, onRead, onReply }) {
               <span style={{ color: ROLE_COLOR[open.role] }}>{open.from}</span>
               <span className="text-[#5d5b56]">{open.time}</span>
             </div>
-            <p className="mt-5 whitespace-pre-line text-[15px] leading-7 text-[#c4c1ba]">{open.body}</p>
+            <p className="mt-5 whitespace-pre-line font-mono text-[14px] leading-7 text-[#c4c1ba]">{open.body}</p>
           </div>
 
           {canReply && (
