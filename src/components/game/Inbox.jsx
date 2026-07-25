@@ -3,7 +3,7 @@ import { ArrowLeft, Mail, MailOpen, Send } from "lucide-react";
 import { messages } from "@/data/messages";
 import { CORRESPONDENTS } from "@/data/correspondence";
 
-const ROLE_COLOR = { operative: "#9a8f6a", journalist: "#7a8a6a", unknown: "#b0523e" };
+const ROLE_COLOR = { operative: "#9a8f6a", journalist: "#7a8a6a", unknown: "#b0523e", politician: "#6a7a8a" };
 
 const fmtRemaining = (ms) => {
   const s = Math.max(0, Math.round(ms / 1000));

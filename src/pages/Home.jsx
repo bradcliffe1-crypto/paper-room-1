@@ -34,7 +34,6 @@ export default function Home() {
 
   useEffect(() => localStorage.setItem("casebook-progress", JSON.stringify(progress)), [progress]);
 
-  const total = Object.values(progress.scores).reduce((a, b) => a + b, 0);
   const read = progress.readMessages || [];
   const replies = progress.replies || [];
   const unreadCount = messages.filter(m => m.unlock(progress) && !read.includes(m.id)).length
@@ -173,7 +172,6 @@ export default function Home() {
         tutorials={tutorials}
         levels={levels}
         completed={progress.completed}
-        score={total}
         onSelect={choose}
         onOpenInbox={() => setScreen("inbox")}
         unreadCount={unreadCount}
