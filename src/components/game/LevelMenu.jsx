@@ -25,7 +25,7 @@ function SectionCard({ level, unlocked, completed, onSelect, showCandidate }) {
       ) : (
         <h2 className="mt-5 font-display text-2xl text-[#d8d5cd]">{level.title}</h2>
       )}
-      <p className="mt-3 text-sm leading-6 text-[#8c8a84]">{level.task}</p>
+      <p className="mt-3 text-sm leading-6 text-[#8c8a84]">{level.task || level.goal}</p>
       <div className="mt-auto flex items-center gap-2 pt-6 font-mono text-[10px] uppercase tracking-[.2em] text-[#75736d] transition group-hover:text-[#9a8f6a]">
         Open <ArrowRight size={12} className="transition group-hover:translate-x-1" />
       </div>

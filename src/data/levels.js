@@ -1,6 +1,7 @@
 // Real investigation levels. `lines` arrays are intentionally empty —
-// filing data is supplied per level. Titles and tasks are deliberately
-// cryptic to preserve the mystery; the player must find the pattern.
+// filing data is supplied per level. `task` is now an incoming DM from
+// the operative "Mercer": atmospheric, non-spoiling. The player must
+// find the pattern themselves.
 //   type "flag"    → flag suspicious line items (1,2,4,5,6,8,10)
 //   type "analyze" → spreadsheet research: find rows, select, total (3,7,9)
 // For "analyze" levels each matching line gets `answer: true` when data is added.
@@ -25,21 +26,21 @@ export const levels = [
     id: "l01", number: "01", title: "Fronts", candidate: "John Stephen",
     filer: "Pending filing data", office: "Pending filing data", period: "Pending filing data",
     report: "Receipt & Expenditure Report", type: "flag",
-    task: "Some entries share more than they should. Flag what warrants a closer look.",
+    task: "Stephen's filings look tidy. Too tidy. Find where the money really comes from.",
     briefing: FLAG_BRIEF, legend: LEGEND, lines: []
   },
   {
     id: "l02", number: "02", title: "Outlays", candidate: "Karen Liot Hill",
     filer: "Pending filing data", office: "Pending filing data", period: "Pending filing data",
     report: "Receipt & Expenditure Report", type: "flag",
-    task: "Not every expense serves the campaign. Flag what warrants a closer look.",
+    task: "Hill burns through cash. Read every expense. Tell me what she's actually buying.",
     briefing: FLAG_BRIEF, legend: LEGEND, lines: []
   },
   {
     id: "l03", number: "03", title: "Origins", candidate: "John E. Sununu",
     filer: "Pending filing data", office: "Pending filing data", period: "Pending filing data",
     report: "Receipt & Expenditure Report", type: "analyze",
-    task: "How much of this money came from out of state? Find it and total it.",
+    task: "Sununu says he's one of us. Count the out-of-state money. I want a number.",
     briefing: ANALYZE_BRIEF, analyzeTask: { label: "Out-of-state total", unit: "currency" },
     legend: LEGEND, lines: []
   },
@@ -47,7 +48,7 @@ export const levels = [
     id: "l04", number: "04", title: "Clipping", candidate: "Kelly Ayotte",
     filer: "Pending filing data", office: "Pending filing data", period: "Pending filing data",
     report: "Receipt & Expenditure Report", type: "flag",
-    task: "A news clipping precedes this filing. Cross-reference it. Flag what warrants a closer look.",
+    task: "Someone sent me a clipping. Read it. Then read her filing. Whose names show up in both?",
     briefing: "Read the clipping, then the filing. Compare names between them. A flag is a lead, not a conclusion.",
     legend: LEGEND,
     hint: {
@@ -62,21 +63,21 @@ export const levels = [
     id: "l05", number: "05", title: "Charges", candidate: "Joe Kenny",
     filer: "Pending filing data", office: "Pending filing data", period: "Pending filing data",
     report: "Receipt & Expenditure Report", type: "flag",
-    task: "Not every expense serves the campaign. Flag what warrants a closer look.",
+    task: "Kenny. Small fish, big spending. Look at what he buys. Something won't sit right.",
     briefing: FLAG_BRIEF, legend: LEGEND, lines: []
   },
   {
     id: "l06", number: "06", title: "Venues", candidate: "Kelly Ayotte",
     filer: "Pending filing data", office: "Pending filing data", period: "Pending filing data",
     report: "Receipt & Expenditure Report", type: "flag",
-    task: "Some entries share more than they should. Flag what warrants a closer look.",
+    task: "Ayotte again. Money keeps moving through names I can't trace. Follow it.",
     briefing: FLAG_BRIEF, legend: LEGEND, lines: []
   },
   {
     id: "l07", number: "07", title: "Affiliations", candidate: "Chris Pappas",
     filer: "Pending filing data", office: "Pending filing data", period: "Pending filing data",
     report: "Receipt & Expenditure Report", type: "analyze",
-    task: "Which committees and affiliated groups align? Find them and total their giving.",
+    task: "Pappas has friends. Certain committees. Find them. Total what they gave.",
     briefing: ANALYZE_BRIEF, analyzeTask: { label: "Aligned committee total", unit: "currency" },
     legend: LEGEND, lines: []
   },
@@ -84,14 +85,14 @@ export const levels = [
     id: "l08", number: "08", title: "Forgiven", candidate: "John Stephen",
     filer: "Pending filing data", office: "Pending filing data", period: "Pending filing data",
     report: "Receipt & Expenditure Report", type: "flag",
-    task: "Some debts quietly disappear. Flag what warrants a closer look.",
+    task: "Stephen borrowed a lot. Then the borrowing stopped making sense. Look at the loans.",
     briefing: FLAG_BRIEF, legend: LEGEND, lines: []
   },
   {
     id: "l09", number: "09", title: "Backers", candidate: "John E. Sununu",
     filer: "Pending filing data", office: "Pending filing data", period: "Pending filing data",
     report: "Receipt & Expenditure Report", type: "analyze",
-    task: "How much came from executives and PACs versus grassroots? Find it and total it.",
+    task: "Same candidate. How much is corporate — executives, PACs — versus real grassroots?",
     briefing: ANALYZE_BRIEF, analyzeTask: { label: "Executive & PAC total", unit: "currency" },
     legend: LEGEND, lines: []
   },
@@ -99,7 +100,7 @@ export const levels = [
     id: "l10", number: "10", title: "Namesakes", candidate: "Kelly Ayotte",
     filer: "Pending filing data", office: "Pending filing data", period: "Pending filing data",
     report: "Receipt & Expenditure Report", type: "flag",
-    task: "Some donors share more than a name. Flag what warrants a closer look.",
+    task: "Ayotte's donors. Read the names. Some of them shouldn't be giving that much.",
     briefing: FLAG_BRIEF, legend: LEGEND, lines: []
   }
 ];
