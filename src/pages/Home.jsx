@@ -14,6 +14,13 @@ import AnalysisDebrief from "@/components/game/AnalysisDebrief";
 import NewsHint from "@/components/game/NewsHint";
 import Inbox from "@/components/game/Inbox";
 import ManualScreen from "@/components/game/ManualScreen";
+import { base44 } from "@/api/base44Client";
+import { REYES_SYSTEM, REYES_DELAY_MS, BOUNCE_THRESHOLD, MERCER_WARNING, ANON_WARNING, bounceBody } from "@/data/correspondence";
+
+const fmtTime = (ms) => {
+  const d = new Date(ms);
+  return String(d.getHours()).padStart(2, "0") + ":" + String(d.getMinutes()).padStart(2, "0");
+};
 
 export default function Home() {
   const [screen, setScreen] = useState("opening");
@@ -29,7 +36,9 @@ export default function Home() {
 
   const total = Object.values(progress.scores).reduce((a, b) => a + b, 0);
   const read = progress.readMessages || [];
-  const unreadCount = messages.filter(m => m.unlock(progress) && !read.includes(m.id)).length;
+  const replies = progress.replies || [];
+  const unreadCount = messages.filter(m => m.unlock(progress) && !read.includes(m.id)).length
+    + replies.filter(m => !read.includes(m.id)).length;
   const list = activeList === "tutorials" ? tutorials : levels;
 
   const choose = (listName, i) => {
@@ -103,8 +112,61 @@ export default function Home() {
   const markRead = id =>
     setProgress(p => ({ ...p, readMessages: [...new Set([...(p.readMessages || []), id])] }));
 
+  useEffect(() => {
+    const t = setInterval(() => {
+      setProgress(p => {
+        const now = Date.now();
+        const due = (p.pending || []).filter(x => x.deliverAt <= now);
+        if (!due.length) return p;
+        return {
+          ...p,
+          pending: (p.pending || []).filter(x => x.deliverAt > now),
+          replies: [...(p.replies || []), ...due.map(x => ({
+            id: x.id, from: "Reyes", role: "journalist",
+            time: fmtTime(x.deliverAt), body: x.body, order: x.order, isReply: true
+          }))]
+        };
+      });
+    }, 4000);
+    return () => clearInterval(t);
+  }, []);
+
+  const sendReply = async (to, text) => {
+    const body = (text || "").trim();
+    if (!body) return;
+    if (to === "Reyes") {
+      const res = await base44.integrations.Core.InvokeLLM({
+        prompt: REYES_SYSTEM + "\n\n--- Tipster's message ---\n" + body,
+        response_json_schema: { type: "object", properties: { brief: { type: "string" } }, required: ["brief"] }
+      });
+      const brief = res && typeof res === "object" && res.brief ? res.brief : (typeof res === "string" ? res : "");
+      const delay = REYES_DELAY_MS[0] + Math.floor(Math.random() * (REYES_DELAY_MS[1] - REYES_DELAY_MS[0] + 1));
+      setProgress(p => {
+        const seq = (p.replySeq || 1000) + 1;
+        return { ...p, replySeq: seq, pending: [...(p.pending || []), { id: "r-" + seq, deliverAt: Date.now() + delay, body: brief, order: seq }] };
+      });
+      return;
+    }
+    const key = to === "Mercer" ? "mercer" : "anon";
+    setProgress(p => {
+      const count = ((p.sent || {})[key] || 0) + 1;
+      let seq = p.replySeq || 1000;
+      const adds = [];
+      seq += 1;
+      adds.push({ id: "b-" + seq, from: "MAILER-DAEMON", role: "unknown", time: fmtTime(Date.now()), body: bounceBody(to), order: seq, isReply: true });
+      let warnings = p.warnings || {};
+      const fire = count >= BOUNCE_THRESHOLD && !warnings[key];
+      if (fire) {
+        warnings = { ...warnings, [key]: true };
+        seq += 1;
+        adds.push({ id: "w-" + seq, from: to, role: to === "Mercer" ? "operative" : "unknown", time: fmtTime(Date.now()), body: to === "Mercer" ? MERCER_WARNING : ANON_WARNING, order: seq, isReply: true });
+      }
+      return { ...p, replySeq: seq, sent: { ...(p.sent || {}), [key]: count }, replies: [...(p.replies || []), ...adds], warnings };
+    });
+  };
+
   if (screen === "opening") return <OpeningScreen onEnter={() => setScreen("menu")} />;
-  if (screen === "inbox") return <Inbox progress={progress} onBack={() => setScreen("menu")} onRead={markRead} />;
+  if (screen === "inbox") return <Inbox progress={progress} onBack={() => setScreen("menu")} onRead={markRead} onReply={sendReply} />;
   if (screen === "menu")
     return (
       <LevelMenu
