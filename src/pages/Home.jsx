@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { tutorials } from "@/data/tutorialLevels";
 import { levels } from "@/data/levels";
+import { messages } from "@/data/messages";
 import OpeningScreen from "@/components/game/OpeningScreen";
 import LevelMenu from "@/components/game/LevelMenu";
 import FilingHeader from "@/components/game/FilingHeader";
@@ -11,6 +12,8 @@ import SpreadsheetView from "@/components/game/SpreadsheetView";
 import Debrief from "@/components/game/Debrief";
 import AnalysisDebrief from "@/components/game/AnalysisDebrief";
 import NewsHint from "@/components/game/NewsHint";
+import Inbox from "@/components/game/Inbox";
+import ManualScreen from "@/components/game/ManualScreen";
 
 export default function Home() {
   const [screen, setScreen] = useState("opening");
@@ -25,6 +28,8 @@ export default function Home() {
   useEffect(() => localStorage.setItem("casebook-progress", JSON.stringify(progress)), [progress]);
 
   const total = Object.values(progress.scores).reduce((a, b) => a + b, 0);
+  const read = progress.readMessages || [];
+  const unreadCount = messages.filter(m => m.unlock(progress) && !read.includes(m.id)).length;
   const list = activeList === "tutorials" ? tutorials : levels;
 
   const choose = (listName, i) => {
@@ -64,7 +69,8 @@ export default function Home() {
     const score = computeScore();
     setProgress(p => ({
       completed: [...new Set([...p.completed, activeLevel.id])],
-      scores: { ...p.scores, [activeLevel.id]: Math.max(p.scores[activeLevel.id] || 0, score) }
+      scores: { ...p.scores, [activeLevel.id]: Math.max(p.scores[activeLevel.id] || 0, score) },
+      readMessages: p.readMessages || []
     }));
     const nextIdx = activeIndex + 1;
     if (nextIdx < list.length && list[nextIdx].lines.length > 0) {
@@ -77,9 +83,40 @@ export default function Home() {
     }
   };
 
+  const completeManual = () => {
+    setProgress(p => ({
+      completed: [...new Set([...p.completed, activeLevel.id])],
+      scores: p.scores,
+      readMessages: p.readMessages || []
+    }));
+    const nextIdx = activeIndex + 1;
+    if (nextIdx < list.length) {
+      setActiveIndex(nextIdx);
+      setActiveLevel(list[nextIdx]);
+      setSelected([]);
+      setScreen("level");
+    } else {
+      setScreen("menu");
+    }
+  };
+
+  const markRead = id =>
+    setProgress(p => ({ ...p, readMessages: [...new Set([...(p.readMessages || []), id])] }));
+
   if (screen === "opening") return <OpeningScreen onEnter={() => setScreen("menu")} />;
+  if (screen === "inbox") return <Inbox progress={progress} onBack={() => setScreen("menu")} onRead={markRead} />;
   if (screen === "menu")
-    return <LevelMenu tutorials={tutorials} levels={levels} completed={progress.completed} score={total} onSelect={choose} />;
+    return (
+      <LevelMenu
+        tutorials={tutorials}
+        levels={levels}
+        completed={progress.completed}
+        score={total}
+        onSelect={choose}
+        onOpenInbox={() => setScreen("inbox")}
+        unreadCount={unreadCount}
+      />
+    );
 
   const level = activeLevel;
   if (!level) return null;
@@ -89,6 +126,9 @@ export default function Home() {
     return type === "flag"
       ? <Debrief level={level} selected={selected} onNext={next} onRetry={() => setScreen("level")} />
       : <AnalysisDebrief level={level} selected={selected} onNext={next} onRetry={() => setScreen("level")} />;
+
+  if (type === "manual")
+    return <ManualScreen level={level} onBack={() => setScreen("menu")} onComplete={completeManual} />;
 
   const hasData = level.lines.length > 0;
   return (

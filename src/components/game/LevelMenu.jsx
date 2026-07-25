@@ -33,7 +33,7 @@ function SectionCard({ level, unlocked, completed, onSelect, showCandidate }) {
   );
 }
 
-export default function LevelMenu({ tutorials, levels, completed, score, onSelect }) {
+export default function LevelMenu({ tutorials, levels, completed, score, onSelect, onOpenInbox, unreadCount }) {
   const tutUnlocked = i => i === 0 || completed.includes(tutorials[i - 1].id);
   const lvlUnlocked = i => levels[i].lines.length > 0 && (i === 0 || completed.includes(levels[i - 1].id));
 
@@ -44,9 +44,15 @@ export default function LevelMenu({ tutorials, levels, completed, score, onSelec
           <p className="font-mono text-xs uppercase tracking-[.24em] text-[#9a8f6a]">CASEBOOK v.01</p>
           <h1 className="mt-3 font-display text-5xl tracking-[-.04em] sm:text-7xl">The Casebook</h1>
         </div>
-        <div className="text-right font-mono text-xs uppercase tracking-wider text-[#75736d]">
-          <p>Total score</p>
-          <strong className="text-2xl text-[#d8d5cd]">{score}</strong>
+        <div className="flex items-center gap-4">
+          <button onClick={onOpenInbox} className="flex items-center gap-2 border border-[#262629] px-4 py-2 font-mono text-xs uppercase tracking-wider text-[#d8d5cd] transition hover:border-[#3a3a3e]">
+            Inbox
+            {unreadCount > 0 && <span className="rounded-full bg-[#b0523e] px-1.5 text-[10px] leading-5 text-white">{unreadCount}</span>}
+          </button>
+          <div className="text-right font-mono text-xs uppercase tracking-wider text-[#75736d]">
+            <p>Total score</p>
+            <strong className="text-2xl text-[#d8d5cd]">{score}</strong>
+          </div>
         </div>
       </header>
 
