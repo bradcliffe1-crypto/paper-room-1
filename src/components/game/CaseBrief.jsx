@@ -5,12 +5,12 @@ export default function CaseBrief({ level }) {
   const briefing = level.briefing || level.lesson || level.searchHint;
   const legend = level.legend || [];
   const isAnalyze = level.type === "analyze";
-  const isReal = !!level.candidate;
+  const hasMercer = !!level.task;
 
   return (
     <aside className="lg:sticky lg:top-20 lg:self-start">
       <div className="bg-[#131316] p-6 text-[#d8d5cd]">
-        {isReal ? (
+        {hasMercer ? (
           <>
             <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[.2em]">
               <span className="text-[#9a8f6a]">Mercer</span>

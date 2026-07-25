@@ -6,8 +6,8 @@ export const fieldManual = {
 
 export const tutorials = [
   {
-    id: "straw-donors", number: "01", title: "Names in a Row", skill: "Straw donor patterns", difficulty: "Beginner",
-    filer: "Morgan Vale for State Senate", office: "State Senate, District 18", period: "04/01/2026 – 06/30/2026", report: "Quarterly R&E Report", goal: "Find contributions that suggest one source may be reimbursing several named donors.",
+    id: "straw-donors", number: "01", title: "Chorus", skill: "Straw donor patterns", difficulty: "Beginner",
+    filer: "Morgan Vale for State Senate", office: "State Senate, District 18", period: "04/01/2026 – 06/30/2026", report: "Quarterly R&E Report", task: "Same day. Same amount. Same employer. Three names that aren't a coincidence. Find them in the receipts.",
     lesson: "Receipts show money coming into a campaign. Compare dates, amounts, addresses, employers, and occupations. Repeated details are leads—not proof—and should be checked together.",
     legend: [{code:"R-IND", label:"Receipt · individual"},{code:"R-CAN", label:"Receipt · candidate"},{code:"R-ORG", label:"Receipt · organization"}],
     lines: [
@@ -20,8 +20,8 @@ export const tutorials = [
     ]
   },
   {
-    id: "shell-org", number: "02", title: "The Paper Company", skill: "Shell organizations", difficulty: "Beginner",
-    filer: "Friends of Riley North", office: "Executive Council, District 2", period: "07/01/2026 – 09/30/2026", report: "Quarterly R&E Report", goal: "Identify an organization whose identity and purpose need verification.",
+    id: "shell-org", number: "02", title: "Veneer", skill: "Shell organizations", difficulty: "Beginner",
+    filer: "Friends of Riley North", office: "Executive Council, District 2", period: "07/01/2026 – 09/30/2026", report: "Quarterly R&E Report", task: "One donor isn't a person. Find it. Ask me where the money really came from.",
     lesson: "For organization receipts, look beyond the name. A new or opaque entity, generic purpose, shared address, or money moving immediately after formation can justify deeper source-of-funds research.",
     legend: [{code:"R-ORG",label:"Receipt · organization"},{code:"R-IND",label:"Receipt · individual"},{code:"E-ADV",label:"Expenditure · advertising"}],
     lines: [
@@ -33,8 +33,8 @@ export const tutorials = [
     ]
   },
   {
-    id: "contribution-limit", number: "03", title: "Over the Line", skill: "Contribution aggregation", difficulty: "Intermediate",
-    filer: "Casey Hart for Governor", office: "Governor", period: "01/01/2026 – 03/31/2026", report: "Quarterly R&E Report", goal: "Add repeated receipts and find the donor whose aggregate needs a limit review.",
+    id: "contribution-limit", number: "03", title: "Tally", skill: "Contribution aggregation", difficulty: "Intermediate",
+    filer: "Casey Hart for Governor", office: "Governor", period: "01/01/2026 – 03/31/2026", report: "Quarterly R&E Report", task: "Donors repeat. Add them before you judge. Limits watch the total, not the line.",
     lesson: "Limits may apply across an election period, not just to one row. Search for repeated names and aggregate related receipts. The game marks a review lead; real limits depend on filer, donor, timing, and current law.",
     legend: [{code:"R-IND",label:"Receipt · individual"},{code:"R-CAN",label:"Receipt · candidate"},{code:"R-IN-K",label:"Receipt · in-kind"}],
     lines: [
@@ -46,8 +46,8 @@ export const tutorials = [
     ]
   },
   {
-    id: "personal-use", number: "04", title: "Campaign or Vacation?", skill: "Non-campaign spending", difficulty: "Intermediate",
-    filer: "Avery Reed for State Representative", office: "State Representative, Rockingham 9", period: "07/01/2026 – 09/30/2026", report: "Quarterly R&E Report", goal: "Flag spending whose stated purpose lacks a clear campaign connection.",
+    id: "personal-use", number: "04", title: "Detours", skill: "Non-campaign spending", difficulty: "Intermediate",
+    filer: "Avery Reed for State Representative", office: "State Representative, Rockingham 9", period: "07/01/2026 – 09/30/2026", report: "Quarterly R&E Report", task: "Every line says what it's for. One is lying. Find the expense that isn't a campaign.",
     lesson: "Expenditures should identify the payee, date, amount, and specific purpose. Vague memos and personal-looking vendors deserve scrutiny; context and supporting records determine whether spending is permissible.",
     legend: [{code:"E-ADV",label:"Expenditure · advertising"},{code:"E-OPS",label:"Expenditure · operations"},{code:"E-OTH",label:"Expenditure · other"}],
     lines: [
@@ -59,8 +59,8 @@ export const tutorials = [
     ]
   },
   {
-    id: "loan-loop", number: "05", title: "The Circular Loan", skill: "Loans & self-financing", difficulty: "Advanced",
-    filer: "Jordan Pike for Mayor", office: "Training jurisdiction", period: "10/01/2026 – 12/31/2026", report: "Quarterly R&E Report", goal: "Trace loan proceeds and find the transaction that obscures who supplied the money.",
+    id: "loan-loop", number: "05", title: "Revolving", skill: "Loans & self-financing", difficulty: "Advanced",
+    filer: "Jordan Pike for Mayor", office: "Training jurisdiction", period: "10/01/2026 – 12/31/2026", report: "Quarterly R&E Report", task: "Money moves in circles. Or it disappears. Read the loans — who gave, where from, what's owed.",
     lesson: "Loans create both cash and an obligation. Record the lender, terms, repayments, and outstanding balance. Candidate money is not automatically improper, but unexplained pass-throughs or inconsistent balances are warning signs.",
     legend: [{code:"L-REC",label:"Loan received"},{code:"L-REP",label:"Loan repayment"},{code:"R-CAN",label:"Receipt · candidate"}],
     lines: [
