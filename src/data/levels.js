@@ -1,110 +1,105 @@
 // Real investigation levels. `lines` arrays are intentionally empty —
-// filing data will be supplied per level. Each level has a `type`:
-//   "flag"    → flag suspicious line items (levels 1,2,4,5,6,8,10)
-//   "analyze" → spreadsheet analysis: find rows, select, total (levels 3,7,9)
-// For "analyze" levels, each line gets `answer: true` on rows that match the criteria.
+// filing data is supplied per level. Titles and tasks are deliberately
+// cryptic to preserve the mystery; the player must find the pattern.
+//   type "flag"    → flag suspicious line items (1,2,4,5,6,8,10)
+//   type "analyze" → spreadsheet research: find rows, select, total (3,7,9)
+// For "analyze" levels each matching line gets `answer: true` when data is added.
+
+const LEGEND = [
+  { code: "R-IND", label: "Receipt · individual" },
+  { code: "R-ORG", label: "Receipt · organization" },
+  { code: "R-CAN", label: "Receipt · candidate" },
+  { code: "E-ADV", label: "Expenditure · advertising" },
+  { code: "E-OPS", label: "Expenditure · operations" },
+  { code: "E-OTH", label: "Expenditure · other" },
+  { code: "L-REC", label: "Loan received" },
+  { code: "L-REP", label: "Loan repayment" },
+  { code: "L-FOR", label: "Loan forgiven" }
+];
+
+const FLAG_BRIEF = "Read each line. Compare names, dates, amounts, and addresses across the filing. A flag is a lead, not a conclusion.";
+const ANALYZE_BRIEF = "Use Find to search the filing. Select matching rows to see a running total, then submit.";
 
 export const levels = [
   {
-    id: "l01", number: "01", title: "The Whiby Address", candidate: "John Stephen",
+    id: "l01", number: "01", title: "Fronts", candidate: "John Stephen",
     filer: "Pending filing data", office: "Pending filing data", period: "Pending filing data",
     report: "Receipt & Expenditure Report", type: "flag",
-    task: "Identify the shell organization scheme — multiple organizations sharing one address.",
-    briefing: "Shell organizations can funnel money through entities that look independent. Trace shared addresses, vague entity names, and recent formation dates.",
-    legend: [{code:"R-ORG",label:"Receipt · organization"},{code:"R-IND",label:"Receipt · individual"},{code:"R-CAN",label:"Receipt · candidate"}],
-    lines: []
+    task: "Some entries share more than they should. Flag what warrants a closer look.",
+    briefing: FLAG_BRIEF, legend: LEGEND, lines: []
   },
   {
-    id: "l02", number: "02", title: "Questionable Spending", candidate: "Karen Liot Hill",
+    id: "l02", number: "02", title: "Outlays", candidate: "Karen Liot Hill",
     filer: "Pending filing data", office: "Pending filing data", period: "Pending filing data",
     report: "Receipt & Expenditure Report", type: "flag",
-    task: "Flag exorbitant expenditures that appear unrelated to the campaign.",
-    briefing: "Expenditures must identify the payee, date, amount, and specific campaign purpose. Vague memos or personal-looking vendors deserve scrutiny.",
-    legend: [{code:"E-ADV",label:"Expenditure · advertising"},{code:"E-OPS",label:"Expenditure · operations"},{code:"E-OTH",label:"Expenditure · other"}],
-    lines: []
+    task: "Not every expense serves the campaign. Flag what warrants a closer look.",
+    briefing: FLAG_BRIEF, legend: LEGEND, lines: []
   },
   {
-    id: "l03", number: "03", title: "Follow the Money Trail", candidate: "John E. Sununu",
+    id: "l03", number: "03", title: "Origins", candidate: "John E. Sununu",
     filer: "Pending filing data", office: "Pending filing data", period: "Pending filing data",
     report: "Receipt & Expenditure Report", type: "analyze",
-    task: "Opposition research: find all out-of-state contributions and calculate the total. Compare to in-state giving.",
-    briefing: "Use Find to search for state abbreviations or city names. Select matching rows to see a running total. This is opposition research — not a compliance flag.",
-    searchHint: "Tip: search for state abbreviations (e.g. \"NY\", \"CA\") or known out-of-state cities. Select all visible to total them.",
-    analyzeTask: { label: "Out-of-state total", unit: "currency" },
-    legend: [{code:"R-IND",label:"Receipt · individual"},{code:"R-ORG",label:"Receipt · organization"}],
-    lines: []
+    task: "How much of this money came from out of state? Find it and total it.",
+    briefing: ANALYZE_BRIEF, analyzeTask: { label: "Out-of-state total", unit: "currency" },
+    legend: LEGEND, lines: []
   },
   {
-    id: "l04", number: "04", title: "Appointments and Favors", candidate: "Kelly Ayotte",
+    id: "l04", number: "04", title: "Clipping", candidate: "Kelly Ayotte",
     filer: "Pending filing data", office: "Pending filing data", period: "Pending filing data",
     report: "Receipt & Expenditure Report", type: "flag",
-    task: "After reading the news hint, find donors in the filing who were appointed to a political committee — a possible quid pro quo.",
-    briefing: "Cross-reference the news article with the filing's donor list. Matching names between appointments and contributors is the lead.",
-    legend: [{code:"R-IND",label:"Receipt · individual"},{code:"R-ORG",label:"Receipt · organization"}],
+    task: "A news clipping precedes this filing. Cross-reference it. Flag what warrants a closer look.",
+    briefing: "Read the clipping, then the filing. Compare names between them. A flag is a lead, not a conclusion.",
+    legend: LEGEND,
     hint: {
-      headline: "Governor announces new COGE appointments",
+      headline: "New appointments to key committee announced",
       source: "Placeholder — replace with actual article",
       date: "Pending",
-      body: "A news article celebrating new appointments to a key government efficiency committee. Use it as a hint to cross-reference donor names in the filing."
+      body: "A news clipping reporting recent appointments to an important political committee. Use it as a clue to cross-reference names that appear in the filing."
     },
     lines: []
   },
   {
-    id: "l05", number: "05", title: "Questionable Spending", candidate: "Joe Kenny",
+    id: "l05", number: "05", title: "Charges", candidate: "Joe Kenny",
     filer: "Pending filing data", office: "Pending filing data", period: "Pending filing data",
     report: "Receipt & Expenditure Report", type: "flag",
-    task: "Flag exorbitant expenditures that appear unrelated to the campaign.",
-    briefing: "Expenditures must identify the payee, date, amount, and specific campaign purpose. Vague memos or personal-looking vendors deserve scrutiny.",
-    legend: [{code:"E-ADV",label:"Expenditure · advertising"},{code:"E-OPS",label:"Expenditure · operations"},{code:"E-OTH",label:"Expenditure · other"}],
-    lines: []
+    task: "Not every expense serves the campaign. Flag what warrants a closer look.",
+    briefing: FLAG_BRIEF, legend: LEGEND, lines: []
   },
   {
-    id: "l06", number: "06", title: "The Hospitality Shell", candidate: "Kelly Ayotte",
+    id: "l06", number: "06", title: "Venues", candidate: "Kelly Ayotte",
     filer: "Pending filing data", office: "Pending filing data", period: "Pending filing data",
     report: "Receipt & Expenditure Report", type: "flag",
-    task: "Identify the hospitality shell scheme — organizations or vendors masking the true source or purpose of funds.",
-    briefing: "A hospitality shell routes money through hospitality-linked entities to obscure its origin. Look for shared addresses, generic vendors, and round-trip flows.",
-    legend: [{code:"R-ORG",label:"Receipt · organization"},{code:"E-OTH",label:"Expenditure · other"},{code:"E-OPS",label:"Expenditure · operations"}],
-    lines: []
+    task: "Some entries share more than they should. Flag what warrants a closer look.",
+    briefing: FLAG_BRIEF, legend: LEGEND, lines: []
   },
   {
-    id: "l07", number: "07", title: "PACs and Affiliations", candidate: "Chris Pappas",
+    id: "l07", number: "07", title: "Affiliations", candidate: "Chris Pappas",
     filer: "Pending filing data", office: "Pending filing data", period: "Pending filing data",
     report: "Receipt & Expenditure Report", type: "analyze",
-    task: "Opposition research: find all pro-Israel PACs and affiliated groups/committees, and total their contributions.",
-    briefing: "Use Find to search for PAC names, committee names, or keywords. Select matching rows to total them.",
-    searchHint: "Tip: search for keywords like \"Israel\", \"PAC\", or committee names. Select all visible to total them.",
-    analyzeTask: { label: "Pro-Israel PAC total", unit: "currency" },
-    legend: [{code:"R-ORG",label:"Receipt · organization"},{code:"R-IND",label:"Receipt · individual"}],
-    lines: []
+    task: "Which committees and affiliated groups align? Find them and total their giving.",
+    briefing: ANALYZE_BRIEF, analyzeTask: { label: "Aligned committee total", unit: "currency" },
+    legend: LEGEND, lines: []
   },
   {
-    id: "l08", number: "08", title: "Forgiven Debts", candidate: "John Stephen",
+    id: "l08", number: "08", title: "Forgiven", candidate: "John Stephen",
     filer: "Pending filing data", office: "Pending filing data", period: "Pending filing data",
     report: "Receipt & Expenditure Report", type: "flag",
-    task: "Identify exorbitant and suspicious loan forgiveness — legal but questionable.",
-    briefing: "Loan forgiveness can effectively convert a loan into a contribution. Large or pattern-forgiven loans deserve scrutiny even when technically legal.",
-    legend: [{code:"L-REC",label:"Loan received"},{code:"L-REP",label:"Loan repayment"},{code:"L-FOR",label:"Loan forgiven"}],
-    lines: []
+    task: "Some debts quietly disappear. Flag what warrants a closer look.",
+    briefing: FLAG_BRIEF, legend: LEGEND, lines: []
   },
   {
-    id: "l09", number: "09", title: "Corporate vs Grassroots", candidate: "John E. Sununu",
+    id: "l09", number: "09", title: "Backers", candidate: "John E. Sununu",
     filer: "Pending filing data", office: "Pending filing data", period: "Pending filing data",
     report: "Receipt & Expenditure Report", type: "analyze",
-    task: "Opposition research: calculate how much came from corporate executives and PACs versus grassroots donations.",
-    briefing: "Use Find to search for employer names, executive titles, or PAC names. Select matching rows to total corporate/PAC giving, then compare to the rest.",
-    searchHint: "Tip: search for titles like \"CEO\", \"President\", \"Executive\" or PAC names. Select all visible to total them.",
-    analyzeTask: { label: "Corporate exec & PAC total", unit: "currency" },
-    legend: [{code:"R-IND",label:"Receipt · individual"},{code:"R-ORG",label:"Receipt · organization"}],
-    lines: []
+    task: "How much came from executives and PACs versus grassroots? Find it and total it.",
+    briefing: ANALYZE_BRIEF, analyzeTask: { label: "Executive & PAC total", unit: "currency" },
+    legend: LEGEND, lines: []
   },
   {
-    id: "l10", number: "10", title: "The Nucar Connection", candidate: "Kelly Ayotte",
+    id: "l10", number: "10", title: "Namesakes", candidate: "Kelly Ayotte",
     filer: "Pending filing data", office: "Pending filing data", period: "Pending filing data",
     report: "Receipt & Expenditure Report", type: "flag",
-    task: "Identify the Nucar dealership scheme and associated straw donor activity.",
-    briefing: "Straw donors reimburse individuals to contribute in their own names. Look for clusters of same-day, same-amount gifts sharing an employer or address — here linked to a dealership.",
-    legend: [{code:"R-IND",label:"Receipt · individual"},{code:"R-ORG",label:"Receipt · organization"}],
-    lines: []
+    task: "Some donors share more than a name. Flag what warrants a closer look.",
+    briefing: FLAG_BRIEF, legend: LEGEND, lines: []
   }
 ];

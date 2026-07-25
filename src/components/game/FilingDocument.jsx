@@ -1,3 +1,27 @@
 export default function FilingDocument({ level, children }) {
-  return <article><div className="mb-7 border-t-8 border-[#172529] bg-[#faf7ef] p-6 shadow-sm sm:p-8"><div className="flex flex-wrap justify-between gap-6"><div><p className="font-mono text-[10px] uppercase tracking-widest text-[#68716e]">New Hampshire campaign finance · simulated</p><h2 className="mt-3 font-display text-3xl">{level.report}</h2></div><span className="h-fit border-2 border-[#9c342d] px-3 py-2 font-mono text-xs uppercase text-[#9c342d]">Training only</span></div><dl className="mt-8 grid gap-4 border-t border-[#c9c2b4] pt-5 text-sm sm:grid-cols-2"><div><dt className="font-mono text-[10px] uppercase text-[#777f7b]">Filer name</dt><dd className="mt-1 font-bold">{level.filer}</dd></div><div><dt className="font-mono text-[10px] uppercase text-[#777f7b]">Office sought</dt><dd className="mt-1 font-bold">{level.office}</dd></div><div><dt className="font-mono text-[10px] uppercase text-[#777f7b]">Reporting period</dt><dd className="mt-1">{level.period}</dd></div><div><dt className="font-mono text-[10px] uppercase text-[#777f7b]">Report version</dt><dd className="mt-1">Original</dd></div></dl></div>{children}</article>;
+  const isReal = !!level.candidate;
+  return (
+    <article>
+      <div className="mb-7 border-t-4 border-[#16161a] bg-[#d8d4ca] p-6 shadow-sm sm:p-8">
+        <div className="flex flex-wrap justify-between gap-6">
+          <div>
+            <p className="font-mono text-[10px] uppercase tracking-widest text-[#75736d]">
+              New Hampshire campaign finance{isReal ? "" : " · simulated"}
+            </p>
+            <h2 className="mt-3 font-display text-3xl text-[#16161a]">{level.report}</h2>
+          </div>
+          <span className="h-fit border border-[#9a8f6a] px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-[#9a8f6a]">
+            {isReal ? "Public filing" : "Training only"}
+          </span>
+        </div>
+        <dl className="mt-8 grid gap-4 border-t border-[#b0ada3] pt-5 text-sm sm:grid-cols-2">
+          <div><dt className="font-mono text-[10px] uppercase text-[#75736d]">Filer name</dt><dd className="mt-1 font-bold text-[#16161a]">{level.filer}</dd></div>
+          <div><dt className="font-mono text-[10px] uppercase text-[#75736d]">Office sought</dt><dd className="mt-1 text-[#16161a]">{level.office}</dd></div>
+          <div><dt className="font-mono text-[10px] uppercase text-[#75736d]">Reporting period</dt><dd className="mt-1 text-[#16161a]">{level.period}</dd></div>
+          <div><dt className="font-mono text-[10px] uppercase text-[#75736d]">Report version</dt><dd className="mt-1 text-[#16161a]">Original</dd></div>
+        </dl>
+      </div>
+      {children}
+    </article>
+  );
 }

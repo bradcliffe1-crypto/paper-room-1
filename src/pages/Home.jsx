@@ -92,22 +92,22 @@ export default function Home() {
 
   const hasData = level.lines.length > 0;
   return (
-    <main className="min-h-screen bg-[#d8d1c3] text-[#172529]">
+    <main className="min-h-screen bg-[#0a0a0b] text-[#d8d5cd]">
       <FilingHeader level={level} flagged={selected.length} onBack={() => setScreen("menu")} />
       <div className="mx-auto grid max-w-7xl gap-7 px-4 py-7 sm:px-7 lg:grid-cols-[290px_1fr]">
         <CaseBrief level={level} />
         <FilingDocument level={level}>
           {level.hint && <NewsHint hint={level.hint} />}
           {!hasData ? (
-            <div className="border border-dashed border-[#bdb6a8] bg-[#faf7ef] p-12 text-center">
-              <p className="font-display text-2xl">Filing data pending</p>
-              <p className="mt-2 text-sm text-[#68716e]">Awaiting campaign finance data for {level.candidate}.</p>
+            <div className="border border-dashed border-[#b0ada3] bg-[#e3dfd6] p-12 text-center">
+              <p className="font-display text-2xl text-[#16161a]">Filing data pending</p>
+              <p className="mt-2 text-sm text-[#5d5b56]">Awaiting campaign finance data for {level.candidate}.</p>
             </div>
           ) : type === "flag" ? (
             <>
               <div className="mb-3 flex items-center justify-between">
-                <h3 className="font-display text-2xl">Itemized activity</h3>
-                <span className="font-mono text-[10px] uppercase tracking-widest">Flag any lead</span>
+                <h3 className="font-display text-2xl text-[#16161a]">Itemized activity</h3>
+                <span className="font-mono text-[10px] uppercase tracking-widest text-[#75736d]">Flag any lead</span>
               </div>
               <div className="max-h-[58vh] overflow-y-auto">
                 <FilingTable lines={level.lines} selected={selected} onToggle={toggle} />
@@ -115,22 +115,22 @@ export default function Home() {
               <button
                 disabled={!selected.length}
                 onClick={submit}
-                className="mt-5 w-full bg-[#9c342d] px-6 py-4 font-bold text-white transition hover:bg-[#7e2924] disabled:cursor-not-allowed disabled:opacity-40"
+                className="mt-5 w-full bg-[#b0523e] px-6 py-4 font-bold uppercase tracking-wider text-white transition hover:bg-[#9a4536] disabled:cursor-not-allowed disabled:opacity-40"
               >
-                Submit flagged items for review
+                Submit flagged items
               </button>
             </>
           ) : (
             <>
               <div className="mb-3 flex items-center justify-between">
-                <h3 className="font-display text-2xl">Itemized activity</h3>
-                <span className="font-mono text-[10px] uppercase tracking-widest">Search · select · total</span>
+                <h3 className="font-display text-2xl text-[#16161a]">Itemized activity</h3>
+                <span className="font-mono text-[10px] uppercase tracking-widest text-[#75736d]">Search · select · total</span>
               </div>
               <SpreadsheetView lines={level.lines} selected={selected} onToggle={toggle} onToggleMany={toggleMany} />
               <button
                 disabled={!selected.length}
                 onClick={submit}
-                className="mt-5 w-full bg-[#9c342d] px-6 py-4 font-bold text-white transition hover:bg-[#7e2924] disabled:cursor-not-allowed disabled:opacity-40"
+                className="mt-5 w-full bg-[#b0523e] px-6 py-4 font-bold uppercase tracking-wider text-white transition hover:bg-[#9a4536] disabled:cursor-not-allowed disabled:opacity-40"
               >
                 Submit findings
               </button>
