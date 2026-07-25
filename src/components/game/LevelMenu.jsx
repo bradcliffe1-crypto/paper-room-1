@@ -12,12 +12,11 @@ function FolderIcon({ completed }) {
   );
 }
 
-function PixelQ() {
-  const rows = ["01110", "10001", "00001", "00110", "00100", "00100", "00000", "00100"];
-  const px = 3;
+function GlyphQ() {
   return (
-    <svg width={5 * px} height={rows.length * px} viewBox={`0 0 ${5 * px} ${rows.length * px}`} fill="none" xmlns="http://www.w3.org/2000/svg">
-      {rows.flatMap((r, y) => r.split("").map((c, x) => (c === "1" ? <rect key={x + "-" + y} x={x * px} y={y * px} width={px} height={px} fill="#9a8f6a" /> : null)))}
+    <svg width="13" height="19" viewBox="0 0 13 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 3 H9 V7 L6.5 9.5 V12" stroke="#9a8f6a" strokeWidth="1.6" strokeLinecap="square" strokeLinejoin="miter" />
+      <rect x="5.7" y="15" width="1.6" height="1.6" fill="#9a8f6a" />
     </svg>
   );
 }
@@ -27,13 +26,13 @@ function TutorialCard({ level, unlocked, completed, onSelect }) {
     <button
       disabled={!unlocked}
       onClick={onSelect}
-      className="group flex min-h-36 flex-col justify-between border border-[#1c1c1f] bg-[#0f0f12] p-6 text-left transition hover:border-[#3a3a3e] hover:bg-[#131316] disabled:cursor-not-allowed disabled:opacity-40"
+      className="group flex min-h-32 flex-col justify-between border border-[#191919] bg-[#0b0b0c] p-6 text-left transition hover:border-[#2e2e30] hover:bg-[#0e0e10] disabled:cursor-not-allowed disabled:opacity-30"
     >
-      <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[.2em] text-[#75736d]">
-        <span>{level.number}</span>
-        {completed ? <Check size={13} className="text-[#7a8a6a]" /> : unlocked ? <span className="text-[#9a8f6a]">open</span> : <LockKeyhole size={12} />}
+      <div className="flex items-center justify-between font-mono text-[10px] tracking-[.2em] text-[#5d5b56]">
+        <span className="text-[#9a8f6a]">{level.number}</span>
+        {completed ? <Check size={13} className="text-[#7a8a6a]" /> : unlocked ? <span className="text-[#6a6a64]">›</span> : <LockKeyhole size={12} className="text-[#5d5b56]" />}
       </div>
-      <h2 className="mt-5 font-display text-2xl text-[#d8d5cd]">{level.title}</h2>
+      <h2 className="mt-6 font-mono text-lg lowercase tracking-[.02em] text-[#9c9a93] transition group-hover:text-[#d8d5cd]">{level.title}</h2>
     </button>
   );
 }
@@ -72,7 +71,7 @@ export default function LevelMenu({ tutorials, levels, completed, onSelect, onOp
               aria-label="Field manual"
               className="flex h-9 w-9 items-center justify-center border border-[#262629] transition hover:border-[#3a3a3e]"
             >
-              <PixelQ />
+              <GlyphQ />
             </button>
           </div>
         </header>
