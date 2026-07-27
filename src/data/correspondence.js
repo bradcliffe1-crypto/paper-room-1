@@ -6,7 +6,7 @@
 // Delays are in real milliseconds but presented to the player as in-game time.
 // Tune REYES_DELAY_MS to shorten the wait for testing.
 
-export const CORRESPONDENTS = ["Reyes", "Mercer", "RESTRICTED", "WITHHELD"];
+export const CORRESPONDENTS = ["Reyes", "Mercer", "anon", "WITHHELD"];
 
 export const REYES_DELAY_MS = [180000, 300000]; // 3–5 minutes
 

@@ -147,7 +147,7 @@ export default function Home() {
       });
       return;
     }
-    const key = to === "Mercer" ? "mercer" : to === "RESTRICTED" ? "anon" : "withheld";
+    const key = to === "Mercer" ? "mercer" : to === "anon" ? "anon" : "withheld";
     setProgress(p => {
       const count = ((p.sent || {})[key] || 0) + 1;
       let seq = p.replySeq || 1000;
@@ -155,7 +155,7 @@ export default function Home() {
       seq += 1;
       adds.push({ id: "b-" + seq, from: "MAILER-DAEMON", role: "unknown", time: fmtTime(Date.now()), body: bounceBody(to), order: seq, isReply: true });
       let warnings = p.warnings || {};
-      const fire = (to === "Mercer" || to === "RESTRICTED") && count >= BOUNCE_THRESHOLD && !warnings[key];
+      const fire = (to === "Mercer" || to === "anon") && count >= BOUNCE_THRESHOLD && !warnings[key];
       if (fire) {
         warnings = { ...warnings, [key]: true };
         seq += 1;

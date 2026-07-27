@@ -1,4 +1,4 @@
-import { ArrowRight, RotateCcw, CheckCircle2, XCircle } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, X } from "lucide-react";
 
 const money = n => new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(n);
 
@@ -11,48 +11,51 @@ export default function AnalysisDebrief({ level, selected, onNext, onRetry }) {
   const wrongSel = userLines.filter(l => !l.answer);
   const missed = correctLines.filter(l => !selected.includes(l.id));
   const exact = userTotal === expectedTotal;
-  const label = level.analyzeTask?.label || "Total";
+  const label = level.analyzeTask?.label || "total";
 
   return (
-    <main className="min-h-screen bg-[#0a0a0b] px-5 py-12 text-[#d8d5cd]">
-      <div className="mx-auto max-w-3xl">
-        <p className="font-mono text-xs uppercase tracking-[.25em] text-[#9a8f6a]">FILE {level.number} · RESEARCH DEBRIEF</p>
-        <h1 className="mt-4 font-display text-5xl tracking-[-.03em] sm:text-6xl">{exact ? "Dead on." : "Close — keep refining."}</h1>
-        <div className="mt-8 grid gap-4 sm:grid-cols-2">
-          <div className="border border-[#262629] bg-[#131316] p-5">
-            <p className="font-mono text-[10px] uppercase tracking-widest text-[#75736d]">{label} · your answer</p>
-            <p className="mt-2 font-display text-3xl text-[#9a8f6a]">{money(userTotal)}</p>
-            <p className="mt-1 text-sm text-[#8c8a84]">{userLines.length} rows selected</p>
+    <main className="min-h-screen bg-[#0a0a0b] px-5 py-16 text-[#d8d5cd] sm:px-8">
+      <div className="mx-auto max-w-2xl">
+        <header className="flex items-baseline gap-4">
+          <span className="font-mono text-[10px] uppercase tracking-[.25em] text-[#9a8f6a]">{level.number}</span>
+          <h1 className="font-mono text-2xl lowercase tracking-[.02em] text-[#d8d5cd]">{exact ? "dead on." : "keep refining."}</h1>
+        </header>
+
+        <div className="mt-8 font-mono text-[13px] lowercase">
+          <div className="flex items-baseline justify-between border-b border-[#191919] py-3">
+            <span className="text-[#7a7a72]">{label}</span>
+            <span className="text-[#d8d5cd]">{money(userTotal)}</span>
           </div>
-          <div className="border border-[#262629] bg-[#131316] p-5">
-            <p className="font-mono text-[10px] uppercase tracking-widest text-[#75736d]">{label} · expected</p>
-            <p className="mt-2 font-display text-3xl text-[#d8d5cd]">{money(expectedTotal)}</p>
-            <p className="mt-1 text-sm text-[#8c8a84]">{correctLines.length} matching rows</p>
+          <div className="flex items-baseline justify-between border-b border-[#191919] py-3">
+            <span className="text-[#7a7a72]">expected</span>
+            <span className="text-[#9a8f6a]">{money(expectedTotal)}</span>
+          </div>
+          <div className="mt-4 flex items-center gap-6 text-xs">
+            <span className="flex items-center gap-2 text-[#7a8a6a]"><Check size={13} /> {correctSel.length}</span>
+            <span className="flex items-center gap-2 text-[#b0523e]"><X size={13} /> {wrongSel.length}</span>
+            <span className="text-[#6a6a64]">{missed.length} missed</span>
           </div>
         </div>
-        <div className="mt-8 flex flex-wrap gap-6 font-mono text-sm">
-          <span className="flex items-center gap-2"><CheckCircle2 size={15} className="text-[#7a8a6a]" /> {correctSel.length} correct</span>
-          <span className="flex items-center gap-2"><XCircle size={15} className="text-[#b0523e]" /> {wrongSel.length} wrong</span>
-          <span className="text-[#75736d]">{missed.length} missed</span>
-        </div>
+
         {missed.length > 0 && (
-          <div className="mt-8">
-            <p className="font-mono text-[10px] uppercase tracking-widest text-[#75736d]">Rows you missed</p>
+          <div className="mt-10">
+            <p className="font-mono text-[10px] uppercase tracking-[.2em] text-[#5d5b56]">missed</p>
             <div className="mt-3 space-y-2">
               {missed.map(l => (
-                <div key={l.id} className="border border-[#262629] bg-[#131316] p-3 text-sm text-[#c4c1ba]">
-                  <b className="text-[#d8d5cd]">{l.name}</b> · {l.location} · {money(l.amount)}
+                <div key={l.id} className="border border-[#191919] bg-[#0b0b0c] p-4 font-mono text-xs lowercase text-[#8c8a84]">
+                  <span className="text-[#c4c1ba]">{l.name}</span> · {l.location} · {money(l.amount)}
                 </div>
               ))}
             </div>
           </div>
         )}
-        <div className="mt-10 flex flex-wrap gap-4">
-          <button onClick={onNext} className="flex items-center gap-3 bg-[#9a8f6a] px-6 py-4 font-bold text-[#0a0a0b]">
-            Continue <ArrowRight size={17} />
+
+        <div className="mt-12 flex items-center justify-between">
+          <button onClick={onRetry} aria-label="Review filing" className="text-[#75736d] transition hover:text-[#d8d5cd]">
+            <ArrowLeft size={16} />
           </button>
-          <button onClick={onRetry} className="flex items-center gap-3 border border-[#3a3a3e] px-6 py-4 text-[#d8d5cd]">
-            <RotateCcw size={16} /> Review filing
+          <button onClick={onNext} aria-label="Continue" className="text-[#d8d5cd] transition hover:text-[#9a8f6a]">
+            <ArrowRight size={16} />
           </button>
         </div>
       </div>

@@ -24,7 +24,7 @@ export const messages = [
   },
   {
     id: "m-anon-backoff",
-    from: "RESTRICTED",
+    from: "anon",
     role: "unknown",
     time: "03:33",
     body: "Nice little hobby. Digging through filings. Hope it stays a hobby. People who look too close tend to find things they wish they hadn't. Just a friendly word.",
@@ -45,6 +45,14 @@ export const messages = [
     time: "11:48",
     body: "Got a tip. The filings hold more than what's on the surface. Flag every suspicious line you can find — across every case, not just one. Something opens when you do. That's all I can say for now.",
     unlock: p => p.completed.length >= 5
+  },
+  {
+    id: "m-withheld-ayotte",
+    from: "WITHHELD",
+    role: "politician",
+    time: "00:00",
+    body: "Three files. Mine. You read them all. I noticed. — [name withheld]",
+    unlock: p => ["l04", "l06", "l10"].every(id => p.completed.includes(id))
   },
 
   // — case file unlock notifications —
