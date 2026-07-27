@@ -51,7 +51,7 @@ export const messages = [
     from: "WITHHELD",
     role: "politician",
     time: "00:00",
-    body: "Spending a lot of time in the public record lately. People notice that. — [name withheld]",
+    body: "On behalf of the Governor: she does not appreciate the aspersions you've been casting on her campaign. Consider this your only notice. — Office of the Governor",
     unlock: p => ["l04", "l06", "l10"].every(id => p.completed.includes(id))
   },
 
