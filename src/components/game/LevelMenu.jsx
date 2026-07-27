@@ -96,13 +96,6 @@ export default function LevelMenu({ tutorials, levels, completed, onSelect, onOp
                 })}
               </div>
             </section>
-            <section className="border-t border-[#1c1c1f] py-12 opacity-60">
-              <div className="grid gap-4 sm:grid-cols-2">
-                {tutorials.map((level, i) => (
-                  <TutorialCard key={level.id} level={level} unlocked={tutUnlocked(i)} completed={completed.includes(level.id)} onSelect={() => onSelect("tutorials", i)} />
-                ))}
-              </div>
-            </section>
           </>
         )}
       </div>

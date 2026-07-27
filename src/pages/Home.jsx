@@ -4,6 +4,7 @@ import { levels } from "@/data/levels";
 import { messages } from "@/data/messages";
 import OpeningScreen from "@/components/game/OpeningScreen";
 import IntroScreen from "@/components/game/IntroScreen";
+import TrainingComplete from "@/components/game/TrainingComplete";
 import LevelMenu from "@/components/game/LevelMenu";
 import FilingHeader from "@/components/game/FilingHeader";
 import CaseBrief from "@/components/game/CaseBrief";
@@ -104,6 +105,8 @@ export default function Home() {
       setActiveLevel(list[nextIdx]);
       setSelected([]);
       setScreen("level");
+    } else if (activeList === "tutorials" && activeIndex === tutorials.length - 1) {
+      setScreen("training-complete");
     } else {
       setScreen("menu");
     }
@@ -167,6 +170,7 @@ export default function Home() {
 
   if (screen === "opening") return <OpeningScreen onEnter={() => setScreen("intro")} />;
   if (screen === "intro") return <IntroScreen onContinue={() => setScreen("menu")} />;
+  if (screen === "training-complete") return <TrainingComplete onContinue={() => setScreen("menu")} />;
   if (screen === "inbox") return <Inbox progress={progress} onBack={() => setScreen("menu")} onRead={markRead} onReply={sendReply} />;
   if (screen === "menu")
     return (
