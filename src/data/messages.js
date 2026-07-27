@@ -51,7 +51,7 @@ export const messages = [
     from: "WITHHELD",
     role: "politician",
     time: "00:00",
-    body: "Three files. Mine. You read them all. I noticed. — [name withheld]",
+    body: "Spending a lot of time in the public record lately. People notice that. — [name withheld]",
     unlock: p => ["l04", "l06", "l10"].every(id => p.completed.includes(id))
   },
 
