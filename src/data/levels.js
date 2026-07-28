@@ -146,10 +146,10 @@ export const levels = [
   },
   {
     id: "l07", number: "07", title: "Affiliations", candidate: "Chris Pappas",
-    filer: "Chris Pappas for Senate", office: "U.S. Senate — New Hampshire", period: "01/01/2025 – 06/30/2025",
-    report: "April & July Quarterly Reports (FEC Form 3)", type: "analyze",
+    filer: "Chris Pappas for Senate", office: "U.S. Senate — New Hampshire", period: "01/01/2025 – 03/31/2026",
+    report: "Quarterly & Year-End Reports (FEC Form 3)", type: "analyze",
     task: "Pappas has friends. Certain committees. Find them. Total what they gave.",
-    briefing: ANALYZE_BRIEF, analyzeTask: { label: "Aligned committee total", unit: "currency" },
+    briefing: ANALYZE_BRIEF, analyzeTask: { label: "Pro-Israel committee total", unit: "currency" },
     legend: LEGEND, lines: level07Lines
   },
   {
