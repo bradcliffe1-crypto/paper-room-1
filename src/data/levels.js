@@ -4,6 +4,7 @@ import { level05Lines } from "@/data/level05Data";
 import { level06Lines } from "@/data/level06Data";
 import { level07Lines } from "@/data/level07Data";
 import { level08Lines } from "@/data/level08Data";
+import { level09Lines } from "@/data/level09Data";
 
 // Real investigation levels. `lines` arrays are intentionally empty —
 // filing data is supplied per level. `task` is now an incoming DM from
@@ -162,11 +163,11 @@ export const levels = [
   },
   {
     id: "l09", number: "09", title: "Backers", candidate: "John E. Sununu",
-    filer: "Pending filing data", office: "Pending filing data", period: "Pending filing data",
-    report: "Receipt & Expenditure Report", type: "analyze",
+    filer: "Sununu Senator", office: "U.S. Senate — New Hampshire", period: "10/22/2025 – 03/31/2026",
+    report: "Year-End 2025 & April Quarterly 2026 (FEC Form 3)", type: "analyze",
     task: "Same candidate. How much is corporate — executives, PACs — versus real grassroots?",
     briefing: ANALYZE_BRIEF, analyzeTask: { label: "Executive & PAC total", unit: "currency" },
-    legend: LEGEND, lines: []
+    legend: LEGEND, lines: level09Lines
   },
   {
     id: "l10", number: "10", title: "Namesakes", candidate: "Kelly Ayotte",
