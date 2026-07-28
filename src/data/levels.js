@@ -2,6 +2,7 @@ import { level03Lines } from "@/data/level03Data";
 import { level04Lines } from "@/data/level04Data";
 import { level05Lines } from "@/data/level05Data";
 import { level06Lines } from "@/data/level06Data";
+import { level07Lines } from "@/data/level07Data";
 
 // Real investigation levels. `lines` arrays are intentionally empty —
 // filing data is supplied per level. `task` is now an incoming DM from
@@ -145,11 +146,11 @@ export const levels = [
   },
   {
     id: "l07", number: "07", title: "Affiliations", candidate: "Chris Pappas",
-    filer: "Pending filing data", office: "Pending filing data", period: "Pending filing data",
-    report: "Receipt & Expenditure Report", type: "analyze",
+    filer: "Chris Pappas for Senate", office: "U.S. Senate — New Hampshire", period: "01/01/2025 – 06/30/2025",
+    report: "April & July Quarterly Reports (FEC Form 3)", type: "analyze",
     task: "Pappas has friends. Certain committees. Find them. Total what they gave.",
     briefing: ANALYZE_BRIEF, analyzeTask: { label: "Aligned committee total", unit: "currency" },
-    legend: LEGEND, lines: []
+    legend: LEGEND, lines: level07Lines
   },
   {
     id: "l08", number: "08", title: "Forgiven", candidate: "John Stephen",
