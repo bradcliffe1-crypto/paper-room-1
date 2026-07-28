@@ -29,7 +29,7 @@ export default function SpreadsheetView({ lines, selected, onToggle, onToggleMan
         </div>
         <button onClick={toggleVisible} className="flex items-center gap-2 border border-[#b0ada3] bg-[#f0ede5] px-3 py-2 text-xs font-bold uppercase tracking-wider text-[#5d5b56]">
           {allVisibleSelected ? <Square size={13} /> : <CheckSquare size={13} />}
-          {allVisibleSelected ? "Clear" : "Select visible"}
+          {allVisibleSelected ? "Clear visible" : query ? "Select visible" : "Select all"}
         </button>
         <div className="ml-auto border-l border-[#b0ada3] pl-4 font-mono text-xs">
           <span className="text-[#75736d]">SEL </span><b className="text-[#16161a]">{selectedLines.length}</b>
@@ -37,6 +37,9 @@ export default function SpreadsheetView({ lines, selected, onToggle, onToggleMan
           <span className="text-[#75736d]">TOTAL </span><b className="text-[#b0523e]">{money(sum)}</b>
         </div>
       </div>
+      <p className="mt-2 font-mono text-[10px] uppercase tracking-widest text-[#75736d]">
+        select all · find a state · clear it · read the total
+      </p>
       <div className="max-h-[55vh] overflow-y-auto border border-t-0 border-[#b0ada3] bg-[#e3dfd6]">
         <div className="sticky top-0 z-10 hidden grid-cols-[44px_90px_82px_1fr_130px] border-b border-[#16161a] bg-[#d2cec3] px-3 py-2 font-mono text-[10px] uppercase tracking-widest text-[#5d5b56] md:grid">
           <span></span><span>Date</span><span>Code</span><span>Name / purpose</span><span className="text-right">Amount</span>
