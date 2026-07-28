@@ -108,7 +108,7 @@ export const levels = [
     filer: "Sununu Senator", office: "U.S. Senate — New Hampshire", period: "01/01/2026 – 03/31/2026",
     report: "April Quarterly Report (FEC Form 3N)", type: "analyze",
     task: "Sununu says he's one of us. Count the out-of-state money. I want a number.",
-    briefing: ANALYZE_BRIEF, analyzeTask: { label: "Out-of-state total", unit: "currency" },
+    briefing: ANALYZE_BRIEF, analyzeTask: { label: "Out-of-state total", unit: "currency", groupBy: "state", homeState: "NH" },
     legend: LEGEND, lines: level03Lines
   },
   {

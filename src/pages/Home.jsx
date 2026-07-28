@@ -234,7 +234,7 @@ export default function Home() {
                 <h3 className="font-display text-2xl text-[#16161a]">Itemized activity</h3>
                 <span className="font-mono text-[10px] uppercase tracking-widest text-[#75736d]">Search · select · total</span>
               </div>
-              <SpreadsheetView lines={level.lines} selected={selected} onToggle={toggle} onToggleMany={toggleMany} />
+              <SpreadsheetView lines={level.lines} selected={selected} onToggle={toggle} onToggleMany={toggleMany} analyzeTask={level.analyzeTask} />
               <button
                 disabled={!selected.length}
                 onClick={submit}
