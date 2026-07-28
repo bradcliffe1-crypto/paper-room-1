@@ -1,4 +1,5 @@
 import { level03Lines } from "@/data/level03Data";
+import { level04Lines } from "@/data/level04Data";
 
 // Real investigation levels. `lines` arrays are intentionally empty —
 // filing data is supplied per level. `task` is now an incoming DM from
@@ -113,18 +114,18 @@ export const levels = [
   },
   {
     id: "l04", number: "04", title: "Clipping", candidate: "Kelly Ayotte",
-    filer: "Pending filing data", office: "Pending filing data", period: "Pending filing data",
-    report: "Receipt & Expenditure Report", type: "flag",
+    filer: "Kelly for New Hampshire", office: "Governor — New Hampshire", period: "01/01/2024 – 11/05/2024",
+    report: "Statement of Receipts and Expenditures (RSA 664)", type: "flag",
     task: "Someone sent me a clipping. Read it. Then read her filing. Whose names show up in both?",
     briefing: "Read the clipping, then the filing. Compare names between them. A flag is a lead, not a conclusion.",
     legend: LEGEND,
     hint: {
-      headline: "New appointments to key committee announced",
-      source: "Placeholder — replace with actual article",
-      date: "Pending",
-      body: "A news clipping reporting recent appointments to an important political committee. Use it as a clue to cross-reference names that appear in the filing."
+      headline: "Ayotte turns to familiar names to lead her new government efficiency commission",
+      source: "New Hampshire Public Radio",
+      date: "January 10, 2025",
+      body: "Hours after being sworn in, Gov. Kelly Ayotte issued her first executive order, creating a 15-member Commission on Government Efficiency — \"COGE.\" She named former Gov. Craig Benson and Bedford businessman Andy Crews — described as \"a longtime political donor to Ayotte\" — as co-chairs. The other members: Sherman Packard (Speaker of the House), Mark McConkey (state senator), Al Letizio Jr. (A.J. Letizio Sales & Marketing), Brad Kreick (AccessHope), Brendan Keegan (bFEARLESS Ventures), Christopher Clement (McClure Engineering), Dianne Mercier (People's United Bank), Drew Cline (Josiah Bartlett Center), Felicia Thomas (Planet Fitness), Jennifer Parent (McLane Middleton), John Marasco (NH DMV), Kimberly Abare (New England Die Cutting), and Robert Monaco (Intelligent Manufacturing Solutions). Cross-reference the roster against the filing. Whose names — or companies — show up in both?"
     },
-    lines: []
+    lines: level04Lines
   },
   {
     id: "l05", number: "05", title: "Charges", candidate: "Joe Kenny",
