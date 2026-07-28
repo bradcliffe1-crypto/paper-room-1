@@ -217,16 +217,16 @@ export default function Home() {
                 <h3 className="font-display text-2xl text-[#16161a]">Itemized activity</h3>
                 <span className="font-mono text-[10px] uppercase tracking-widest text-[#75736d]">Flag any lead</span>
               </div>
-              <div className="max-h-[58vh] overflow-y-auto">
-                <FilingTable lines={level.lines} selected={selected} onToggle={toggle} />
+              <FilingTable lines={level.lines} selected={selected} onToggle={toggle} />
+              <div className="sticky bottom-0 z-20 mt-5 border-t border-[#2a2a2c] bg-[#0a0a0b]/95 px-1 py-4 backdrop-blur">
+                <button
+                  disabled={!selected.length}
+                  onClick={submit}
+                  className="w-full bg-[#b0523e] px-6 py-4 font-bold uppercase tracking-wider text-white transition hover:bg-[#9a4536] disabled:cursor-not-allowed disabled:opacity-40"
+                >
+                  Submit flagged items
+                </button>
               </div>
-              <button
-                disabled={!selected.length}
-                onClick={submit}
-                className="mt-5 w-full bg-[#b0523e] px-6 py-4 font-bold uppercase tracking-wider text-white transition hover:bg-[#9a4536] disabled:cursor-not-allowed disabled:opacity-40"
-              >
-                Submit flagged items
-              </button>
             </>
           ) : (
             <>
@@ -235,13 +235,15 @@ export default function Home() {
                 <span className="font-mono text-[10px] uppercase tracking-widest text-[#75736d]">Search · select · total</span>
               </div>
               <SpreadsheetView lines={level.lines} selected={selected} onToggle={toggle} onToggleMany={toggleMany} analyzeTask={level.analyzeTask} />
-              <button
-                disabled={!selected.length}
-                onClick={submit}
-                className="mt-5 w-full bg-[#b0523e] px-6 py-4 font-bold uppercase tracking-wider text-white transition hover:bg-[#9a4536] disabled:cursor-not-allowed disabled:opacity-40"
-              >
-                Submit findings
-              </button>
+              <div className="sticky bottom-0 z-20 mt-5 border-t border-[#2a2a2c] bg-[#0a0a0b]/95 px-1 py-4 backdrop-blur">
+                <button
+                  disabled={!selected.length}
+                  onClick={submit}
+                  className="w-full bg-[#b0523e] px-6 py-4 font-bold uppercase tracking-wider text-white transition hover:bg-[#9a4536] disabled:cursor-not-allowed disabled:opacity-40"
+                >
+                  Submit findings
+                </button>
+              </div>
             </>
           )}
         </FilingDocument>

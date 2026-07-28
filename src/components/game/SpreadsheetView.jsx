@@ -64,7 +64,7 @@ export default function SpreadsheetView({ lines, selected, onToggle, onToggleMan
         <p className="mt-2 font-mono text-[10px] uppercase tracking-widest text-[#75736d]">
           select all · then deselect new hampshire · read the total
         </p>
-        <div className="max-h-[55vh] overflow-y-auto border border-t-0 border-[#b0ada3] bg-[#e3dfd6]">
+        <div className="border border-t-0 border-[#b0ada3] bg-[#e3dfd6]">
           <div className="sticky top-0 z-10 hidden grid-cols-[44px_90px_82px_1fr_130px] border-b border-[#16161a] bg-[#d2cec3] px-3 py-2 font-mono text-[10px] uppercase tracking-widest text-[#5d5b56] md:grid">
             <span></span><span>Date</span><span>Code</span><span>Name / purpose</span><span className="text-right">Amount</span>
           </div>
@@ -120,7 +120,7 @@ export default function SpreadsheetView({ lines, selected, onToggle, onToggleMan
       <p className="mt-2 font-mono text-[10px] uppercase tracking-widest text-[#75736d]">
         select all · find a state · clear it · read the total
       </p>
-      <div className="max-h-[55vh] overflow-y-auto border border-t-0 border-[#b0ada3] bg-[#e3dfd6]">
+      <div className="border border-t-0 border-[#b0ada3] bg-[#e3dfd6]">
         <div className="sticky top-0 z-10 hidden grid-cols-[44px_90px_82px_1fr_130px] border-b border-[#16161a] bg-[#d2cec3] px-3 py-2 font-mono text-[10px] uppercase tracking-widest text-[#5d5b56] md:grid">
           <span></span><span>Date</span><span>Code</span><span>Name / purpose</span><span className="text-right">Amount</span>
         </div>
