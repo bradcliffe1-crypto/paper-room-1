@@ -36,6 +36,18 @@ export default function Home() {
 
   useEffect(() => localStorage.setItem("casebook-progress", JSON.stringify(progress)), [progress]);
 
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).get("unlock") === "all") {
+      setProgress({
+        completed: [...tutorials.map(t => t.id), ...levels.filter(l => !l.secret).map(l => l.id)],
+        scores: {},
+        readMessages: []
+      });
+      setScreen("menu");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const read = progress.readMessages || [];
   const replies = progress.replies || [];
   const unreadCount = messages.filter(m => m.unlock(progress) && !read.includes(m.id)).length
