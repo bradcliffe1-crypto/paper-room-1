@@ -85,6 +85,7 @@ export const levels = [
       {id:"l02-12",section:"Expenditures",code:"E-OPS",date:"04/08/2024",name:"American Airlines",location:"PO Box 619616, DFW Airport, TX",detail:"Travel",amount:346.76},
       {id:"l02-13",section:"Expenditures",code:"E-OTH",date:"04/12/2024",name:"Aldi",location:"Alexandria, VA",detail:"Meal",amount:57.76,flag:true,why:"Aldi is a grocery store, not a restaurant. A 'Meal' charge at a grocery store looks like personal shopping billed to the campaign. Flag."},
       {id:"l02-14",section:"Expenditures",code:"E-OPS",date:"04/13/2024",name:"Jiffy Mart",location:"96 Hanover St, Lebanon, NH 03766",detail:"Gas",amount:36.97},
+      {id:"l02-14a",section:"Expenditures",code:"E-OTH",date:"04/25/2024",name:"HomeGoods",location:"1248 N Plainfield Rd, West Lebanon, NH",detail:"Hostess Gifts",amount:34.95,flag:true,why:"HomeGoods is a home-décor store, and 'Hostess Gifts' is a personal courtesy — gifts for a social host, not a campaign activity. Flag as a non-campaign expenditure."},
       {id:"l02-15",section:"Expenditures",code:"E-OPS",date:"05/03/2024",name:"Circle K",location:"89 Main Street, West Lebanon, NH 03784",detail:"Gas",amount:54.59},
       {id:"l02-16",section:"Expenditures",code:"E-ADV",date:"06/20/2024",name:"Staples",location:"254 N Plainfield Rd, West Lebanon, NH",detail:"Photocopies",amount:11.51},
       {id:"l02-17",section:"Expenditures",code:"E-OPS",date:"06/20/2024",name:"Citgo",location:"89 Main Street, West Lebanon, NH",detail:"Gas",amount:54.02},
@@ -95,7 +96,6 @@ export const levels = [
       {id:"l02-22",section:"Expenditures",code:"E-ADV",date:"07/29/2024",name:"Staples",location:"254 N Plainfield Rd, West Lebanon, NH",detail:"Postcards",amount:179.18},
       {id:"l02-23",section:"Expenditures",code:"E-OPS",date:"08/08/2024",name:"Cumberland Farms",location:"196 N Main St, Concord, NH 03301",detail:"Gas",amount:54.88},
       {id:"l02-24",section:"Expenditures",code:"E-OPS",date:"08/19/2024",name:"Panera Bread",location:"267 N Plainfield Rd, West Lebanon, NH",detail:"Meals",amount:34.11},
-      {id:"l02-25",section:"Expenditures",code:"E-OTH",date:"08/26/2024",name:"Walmart",location:"285 N Plainfield Rd, West Lebanon, NH",detail:"Supplies",amount:242.47,flag:true,why:"A vague 'Supplies' charge at a big-box store with no itemized campaign purpose — personal-use risk. Flag for review."},
       {id:"l02-26",section:"Expenditures",code:"E-ADV",date:"09/11/2024",name:"e stone Press",location:"520 E Industrial Park Dr, Manchester, NH",detail:"Mailing",amount:3713.93},
       {id:"l02-27",section:"Expenditures",code:"E-OTH",date:"09/16/2024",name:"Luxury Nails",location:"410 Miracle Mile, Lebanon, NH 03766",detail:"Salon Services",amount:117,flag:true,why:"A nail salon charging the campaign for 'Salon Services' — personal grooming, not a campaign expense. Flag."},
       {id:"l02-28",section:"Expenditures",code:"E-OPS",date:"10/18/2024",name:"Double Tree Radisson",location:"700 Elm St, Manchester, NH",detail:"Travel",amount:276.25}
