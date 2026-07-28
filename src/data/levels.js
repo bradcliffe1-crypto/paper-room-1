@@ -1,6 +1,7 @@
 import { level03Lines } from "@/data/level03Data";
 import { level04Lines } from "@/data/level04Data";
 import { level05Lines } from "@/data/level05Data";
+import { level06Lines } from "@/data/level06Data";
 
 // Real investigation levels. `lines` arrays are intentionally empty —
 // filing data is supplied per level. `task` is now an incoming DM from
@@ -137,10 +138,10 @@ export const levels = [
   },
   {
     id: "l06", number: "06", title: "Venues", candidate: "Kelly Ayotte",
-    filer: "Pending filing data", office: "Pending filing data", period: "Pending filing data",
-    report: "Receipt & Expenditure Report", type: "flag",
+    filer: "Kelly for New Hampshire", office: "Governor — New Hampshire", period: "06/01/2024 – 08/21/2024",
+    report: "Statement of Receipts and Expenditures (RSA 664)", type: "flag",
     task: "Ayotte again. Money keeps moving through names I can't trace. Follow it.",
-    briefing: FLAG_BRIEF, legend: LEGEND, lines: []
+    briefing: FLAG_BRIEF, legend: LEGEND, lines: level06Lines
   },
   {
     id: "l07", number: "07", title: "Affiliations", candidate: "Chris Pappas",
