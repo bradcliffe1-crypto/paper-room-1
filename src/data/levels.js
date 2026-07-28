@@ -1,3 +1,5 @@
+import { level03Lines } from "@/data/level03Data";
+
 // Real investigation levels. `lines` arrays are intentionally empty —
 // filing data is supplied per level. `task` is now an incoming DM from
 // the operative "Mercer": atmospheric, non-spoiling. The player must
@@ -103,11 +105,11 @@ export const levels = [
   },
   {
     id: "l03", number: "03", title: "Origins", candidate: "John E. Sununu",
-    filer: "Pending filing data", office: "Pending filing data", period: "Pending filing data",
-    report: "Receipt & Expenditure Report", type: "analyze",
+    filer: "Sununu Senator", office: "U.S. Senate — New Hampshire", period: "01/01/2026 – 03/31/2026",
+    report: "April Quarterly Report (FEC Form 3N)", type: "analyze",
     task: "Sununu says he's one of us. Count the out-of-state money. I want a number.",
     briefing: ANALYZE_BRIEF, analyzeTask: { label: "Out-of-state total", unit: "currency" },
-    legend: LEGEND, lines: []
+    legend: LEGEND, lines: level03Lines
   },
   {
     id: "l04", number: "04", title: "Clipping", candidate: "Kelly Ayotte",
