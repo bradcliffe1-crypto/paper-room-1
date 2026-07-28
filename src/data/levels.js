@@ -3,6 +3,7 @@ import { level04Lines } from "@/data/level04Data";
 import { level05Lines } from "@/data/level05Data";
 import { level06Lines } from "@/data/level06Data";
 import { level07Lines } from "@/data/level07Data";
+import { level08Lines } from "@/data/level08Data";
 
 // Real investigation levels. `lines` arrays are intentionally empty —
 // filing data is supplied per level. `task` is now an incoming DM from
@@ -154,10 +155,10 @@ export const levels = [
   },
   {
     id: "l08", number: "08", title: "Forgiven", candidate: "John Stephen",
-    filer: "Pending filing data", office: "Pending filing data", period: "Pending filing data",
+    filer: "Friends of John Stephen", office: "Exploratory — 2024", period: "04/15/2024 – 05/30/2025",
     report: "Receipt & Expenditure Report", type: "flag",
     task: "Stephen borrowed a lot. Then the borrowing stopped making sense. Look at the loans.",
-    briefing: FLAG_BRIEF, legend: LEGEND, lines: []
+    briefing: FLAG_BRIEF, legend: LEGEND, lines: level08Lines
   },
   {
     id: "l09", number: "09", title: "Backers", candidate: "John E. Sununu",
