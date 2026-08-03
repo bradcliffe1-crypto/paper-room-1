@@ -11,7 +11,6 @@ export default function SpreadsheetView({ lines, selected, onToggle, onToggleMan
   const stateMode = analyzeTask?.groupBy === "state";
   const home = (analyzeTask?.homeState || "").toUpperCase();
   const [query, setQuery] = useState("");
-  const [action, setAction] = useState("");
 
   const q = query.toLowerCase();
   const filtered = !stateMode && q
@@ -26,14 +25,6 @@ export default function SpreadsheetView({ lines, selected, onToggle, onToggleMan
     const outIds = lines.filter(l => stateOf(l) !== home).map(l => l.id);
     const allSelected = allIds.length > 0 && allIds.every(id => selected.includes(id));
 
-    const applyAction = (val) => {
-      if (val === "deselect-nh") onToggleMany(nhIds, false);
-      else if (val === "only-nh") { onToggleMany(allIds, false); onToggleMany(nhIds, true); }
-      else if (val === "deselect-out") onToggleMany(outIds, false);
-      else if (val === "only-out") { onToggleMany(allIds, false); onToggleMany(outIds, true); }
-      setAction("");
-    };
-
     return (
       <div>
         <div className="flex flex-wrap items-center gap-3 border border-[#262629] bg-[#0c0c0d] p-3">
@@ -44,17 +35,6 @@ export default function SpreadsheetView({ lines, selected, onToggle, onToggleMan
             {allSelected ? <Square size={13} /> : <CheckSquare size={13} />}
             {allSelected ? "clear all" : "select all"}
           </button>
-          <select
-            value={action}
-            onChange={e => applyAction(e.target.value)}
-            className="border border-[#262629] bg-[#131316] px-3 py-2 font-mono text-xs uppercase tracking-[.15em] text-[#75736d]"
-          >
-            <option value="">— filter by state —</option>
-            <option value="deselect-nh">deselect new hampshire</option>
-            <option value="only-nh">select only new hampshire</option>
-            <option value="deselect-out">deselect out-of-state</option>
-            <option value="only-out">select only out-of-state</option>
-          </select>
           <div className="ml-auto border-l border-[#262629] pl-4 font-mono text-xs">
             <span className="text-[#75736d]">sel </span><b className="text-[#d8d5cd]">{selectedLines.length}</b>
             <span className="mx-2 text-[#262629]">|</span>
@@ -62,7 +42,7 @@ export default function SpreadsheetView({ lines, selected, onToggle, onToggleMan
           </div>
         </div>
         <p className="mt-2 font-mono text-[10px] uppercase tracking-[.15em] text-[#45433f]">
-          select all · then deselect new hampshire · read the total
+          select all · then deselect new hampshire by hand — or pick only new hampshire and read the total
         </p>
         <div className="border border-t-0 border-[#262629] bg-[#0c0c0d]">
           <div className="sticky top-0 z-10 hidden grid-cols-[44px_90px_82px_1fr_130px] border-b border-[#262629] bg-[#0c0c0d] px-3 py-2 font-mono text-[10px] uppercase tracking-[.15em] text-[#45433f] md:grid">

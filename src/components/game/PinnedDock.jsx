@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 // Persistent top-right dock: inbox + field-manual glyph.
 // Rendered fixed so the player can always reach them from the menu or a level.
 
@@ -11,12 +12,23 @@ function GlyphQ() {
 }
 
 export default function PinnedDock({ unreadCount, onOpenInbox, onOpenManual, hidden }) {
+  const prevCount = useRef(unreadCount);
+  const [pulse, setPulse] = useState(false);
+  useEffect(() => {
+    if (unreadCount > prevCount.current) {
+      setPulse(true);
+      const t = setTimeout(() => setPulse(false), 2200);
+      prevCount.current = unreadCount;
+      return () => clearTimeout(t);
+    }
+    prevCount.current = unreadCount;
+  }, [unreadCount]);
   if (hidden) return null;
   return (
     <div className="pointer-events-none fixed right-4 top-4 z-50 flex items-center gap-3 sm:right-6 sm:top-6">
       <button
         onClick={onOpenInbox}
-        className="pointer-events-auto flex items-center gap-2 border border-[#262629] bg-[#0a0a0b]/80 px-4 py-2 font-mono text-xs uppercase tracking-[.2em] text-[#d8d5cd] backdrop-blur transition hover:border-[#3a3a3e] hover:text-[#9a8f6a]"
+        className={`pointer-events-auto flex items-center gap-2 border bg-[#0a0a0b]/80 px-4 py-2 font-mono text-xs uppercase tracking-[.2em] text-[#d8d5cd] backdrop-blur transition hover:border-[#3a3a3e] hover:text-[#9a8f6a] ${pulse ? "inbox-pulse border-[#b0523e]" : "border-[#262629]"}`}
       >
         inbox
         {unreadCount > 0 && (
