@@ -61,7 +61,8 @@ export default function Home() {
   const l11l12Complete = ["l11", "l12"].every(id => progress.completed.includes(id));
   const sentCounts = progress.sent || {};
   const emailedAllFour = ["mercer", "anon", "withheld", "reyes"].every(k => (sentCounts[k] || 0) > 0);
-  const ctx = { allBaseComplete, allMailRead, l11l12Complete, emailedAllFour };
+  const completedL10 = progress.completed.includes("l10");
+  const ctx = { allBaseComplete, allMailRead, l11l12Complete, emailedAllFour, completedL10 };
 
   const list = activeList === "tutorials" ? tutorials : levels;
 

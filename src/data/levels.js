@@ -188,7 +188,7 @@ export const levels = [
     task: "You read every filing. Every message. There's one more. It found you.",
     briefing: FLAG_BRIEF, legend: LEGEND, lines: [],
     secret: true,
-    unlocksWith: ctx => ctx.allMailRead && ctx.emailedAllFour
+    unlocksWith: ctx => ctx.completedL10 && ctx.allMailRead && ctx.emailedAllFour
   },
   {
     id: "l13", number: "13", title: "█", candidate: "[redacted]",
