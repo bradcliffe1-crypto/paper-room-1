@@ -1,17 +1,23 @@
-import { levels } from "@/data/levels";
+import { tutorials } from "@/data/tutorialLevels";
 
 // Inbox messages. `unlock(progress)` decides when each appears.
 // progress shape: { completed: [], scores: {}, readMessages: [], replies: [], pending: [] }
 // Roles drive the accent color in the inbox UI:
-//   operative (Mercer) · journalist (Reyes) · unknown (interference) · politician (nameless)
+//   operative (Mercer) · journalist (Reyes) · unknown (interference) · politician (Withheld)
 //
-// Two kinds of message:
-//   1) recurring-narrative beats, unlocked by overall progress
-//   2) one per real case file, unlocked exactly when that case becomes playable
-//      (its filing data exists AND the previous case is completed)
+// Cadence (per the director's script):
+//   Mercer   — (1) on entering _desktop; (2) after case 6: congrats + vague warning.
+//   Reyes    — (1) after case 3: NHPR reporter, offers to help; (2) at case 7: "be careful with Mercer".
+//   Anon     — increasingly chilling at cases 4, 5, and 8.
+//   Withheld — (1) after the 2nd Ayotte filing, formal, via a staffer;
+//              (2) after the 3rd/final Ayotte filing, informal, from Kelly herself.
 
-const caseUnlocked = i => p =>
-  levels[i].lines.length > 0 && (i === 0 || p.completed.includes(levels[i - 1].id));
+const trainingDone = p => tutorials.every(t => p.completed.includes(t.id));
+const l03done = p => p.completed.includes("l03");
+const l04done = p => p.completed.includes("l04");
+const l06done = p => p.completed.includes("l06");
+const l07done = p => p.completed.includes("l07");
+const l10done = p => p.completed.includes("l10");
 
 export const messages = [
   {
@@ -19,121 +25,71 @@ export const messages = [
     from: "Mercer",
     role: "operative",
     time: "01:14",
-    body: "You're in. Don't make me regret it. Read the field manual first — learn what a filing looks like before you start flagging. Then we talk real cases.",
-    unlock: () => true
-  },
-  {
-    id: "m-anon-backoff",
-    from: "anon",
-    role: "unknown",
-    time: "03:33",
-    body: "Nice little hobby. Digging through filings. Hope it stays a hobby. People who look too close tend to find things they wish they hadn't. Just a friendly word.",
-    unlock: p => p.completed.length >= 1
+    body: "You're on the desktop now. Ten filings — each one a real New Hampshire report. Read the field manual before you touch any of them. Then we talk cases.",
+    unlock: trainingDone
   },
   {
     id: "m-reyes-intro",
     from: "Reyes",
     role: "journalist",
     time: "09:02",
-    body: "Heard you're working with Mercer. Careful with that one. I cover these filings for a living — if you get stuck, I might know where to look. Don't tell him we talk.",
-    unlock: p => p.completed.length >= 3
+    body: "Name's Reyes. NHPR. I've been covering campaign finance in this state longer than you've been alive. Heard you're auditing filings — for Mercer, which means you're either brave or naive. If you get stuck on a report, I'm reachable. Ask me anything. Don't tell him we talk.",
+    unlock: l03done
   },
   {
-    id: "m-reyes-tip",
+    id: "m-anon-1",
+    from: "anon",
+    role: "unknown",
+    time: "03:33",
+    body: "Nice little hobby. Digging through filings. Hope it stays a hobby. People who look too close tend to find things they wish they hadn't. Just a friendly word.",
+    unlock: l03done
+  },
+  {
+    id: "m-anon-2",
+    from: "anon",
+    role: "unknown",
+    time: "02:17",
+    body: "You're still looking. I told you it was a hobby. There are names in those filings that don't want to be read out loud. Keep going and one of them will learn yours.",
+    unlock: l04done
+  },
+  {
+    id: "m-mercer-congrats",
+    from: "Mercer",
+    role: "operative",
+    time: "11:58",
+    body: "Six filings. You're still here. I'm almost impressed. Don't get comfortable. There are people — I won't say who — who've noticed what you're doing and would like to see your name in a different kind of report. Keep your head down. Keep reading.",
+    unlock: l06done
+  },
+  {
+    id: "m-reyes-becareful",
     from: "Reyes",
     role: "journalist",
-    time: "11:48",
-    body: "Got a tip. The filings hold more than what's on the surface. Flag every suspicious line you can find — across every case, not just one. Something opens when you do. That's all I can say for now.",
-    unlock: p => p.completed.length >= 5
+    time: "12:41",
+    body: "Be careful with Mercer. He points you at the filings and lets you take the risk. When this goes sideways — and it will — you'll be the one holding the shovel, not him. I'll keep helping. But watch your back.",
+    unlock: l06done
   },
   {
-    id: "m-withheld-ayotte",
+    id: "m-withheld-1",
     from: "WITHHELD",
     role: "politician",
-    time: "00:00",
+    time: "16:00",
     body: "On behalf of the Governor: she does not appreciate the aspersions you've been casting on her campaign. Consider this your only notice. — Office of the Governor",
-    unlock: p => ["l04", "l06", "l10"].every(id => p.completed.includes(id))
-  },
-
-  // — case file unlock notifications —
-  {
-    id: "case-l01",
-    from: "Mercer",
-    role: "operative",
-    time: "02:40",
-    body: "New file's live. Stephen. Start with the receipts. Come back when something doesn't add up.",
-    unlock: caseUnlocked(0)
+    unlock: l06done
   },
   {
-    id: "case-l02",
+    id: "m-anon-3",
+    from: "anon",
+    role: "unknown",
+    time: "01:01",
+    body: "I told you to stop. You didn't. I know your name now. I know where you sleep. Keep digging and I'll come say hello. This is the last time I ask nicely.",
+    unlock: l07done
+  },
+  {
+    id: "m-withheld-2",
     from: "WITHHELD",
     role: "politician",
-    time: "04:12",
-    body: "A filing went public. Hill. I'd have preferred it stayed buried. — [name withheld]",
-    unlock: caseUnlocked(1)
-  },
-  {
-    id: "case-l03",
-    from: "Reyes",
-    role: "journalist",
-    time: "05:55",
-    body: "Sununu's open. Count the out-of-state money before you flag anything. I want a number, not a feeling.",
-    unlock: caseUnlocked(2)
-  },
-  {
-    id: "case-l04",
-    from: "Mercer",
-    role: "operative",
-    time: "07:21",
-    body: "Ayotte. Someone left a clipping under my door. Read it first, then read her filing. Tell me whose names show up in both.",
-    unlock: caseUnlocked(3)
-  },
-  {
-    id: "case-l05",
-    from: "WITHHELD",
-    role: "politician",
-    time: "08:09",
-    body: "Kenny's filings are up. Small race. Watch what he buys. — [name withheld]",
-    unlock: caseUnlocked(4)
-  },
-  {
-    id: "case-l06",
-    from: "Reyes",
-    role: "journalist",
-    time: "09:47",
-    body: "Ayotte again. Follow the money through the names you can't place. It stops making sense before it stops moving.",
-    unlock: caseUnlocked(5)
-  },
-  {
-    id: "case-l07",
-    from: "Mercer",
-    role: "operative",
-    time: "10:30",
-    body: "Pappas. Certain committees. Find them. Total what they gave. I want a number.",
-    unlock: caseUnlocked(6)
-  },
-  {
-    id: "case-l08",
-    from: "WITHHELD",
-    role: "politician",
-    time: "12:05",
-    body: "Stephen borrowed. Then the borrowing stopped making sense. Loans are a door. Look behind it. — [name withheld]",
-    unlock: caseUnlocked(7)
-  },
-  {
-    id: "case-l09",
-    from: "Reyes",
-    role: "journalist",
-    time: "13:51",
-    body: "Sununu again. How much is corporate — executives, PACs — versus real people? Run the numbers. Tell me what it says.",
-    unlock: caseUnlocked(8)
-  },
-  {
-    id: "case-l10",
-    from: "Mercer",
-    role: "operative",
-    time: "15:19",
-    body: "Ayotte's donors are live. Some of those names shouldn't be giving that much. That's all I'll say.",
-    unlock: caseUnlocked(9)
+    time: "23:48",
+    body: "You've read three of mine now. Three. I don't know who you think you are, but I promise you this — I've buried bigger problems than you. Walk away. — K",
+    unlock: l10done
   }
 ];
