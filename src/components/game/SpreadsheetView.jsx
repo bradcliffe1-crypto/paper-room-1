@@ -21,7 +21,6 @@ export default function SpreadsheetView({ lines, selected, onToggle, onToggleMan
 
   if (stateMode) {
     const allIds = lines.map(l => l.id);
-    const allSelected = allIds.length > 0 && allIds.every(id => selected.includes(id));
     const states = {};
     lines.forEach(l => { const c = stateOf(l); if (c) states[c] = (states[c] || 0) + 1; });
     const stateList = Object.keys(states).sort();
@@ -32,11 +31,16 @@ export default function SpreadsheetView({ lines, selected, onToggle, onToggleMan
       <div>
         <div className="flex flex-wrap items-center gap-3 border border-[#262629] bg-[#0c0c0d] p-3">
           <button
-            onClick={() => onToggleMany(allIds, !allSelected)}
+            onClick={() => onToggleMany(allIds, true)}
             className="flex items-center gap-2 border border-[#262629] bg-[#131316] px-3 py-2 font-mono text-xs uppercase tracking-[.15em] text-[#75736d] transition hover:text-[#d8d5cd]"
           >
-            {allSelected ? <Square size={13} /> : <CheckSquare size={13} />}
-            {allSelected ? "clear all" : "select all"}
+            <CheckSquare size={13} /> select all
+          </button>
+          <button
+            onClick={() => onToggleMany(allIds, false)}
+            className="flex items-center gap-2 border border-[#262629] bg-[#131316] px-3 py-2 font-mono text-xs uppercase tracking-[.15em] text-[#75736d] transition hover:text-[#d8d5cd]"
+          >
+            <Square size={13} /> deselect all
           </button>
           <div className="ml-auto border-l border-[#262629] pl-4 font-mono text-xs">
             <span className="text-[#75736d]">sel </span><b className="text-[#d8d5cd]">{selectedLines.length}</b>
@@ -45,17 +49,27 @@ export default function SpreadsheetView({ lines, selected, onToggle, onToggleMan
           </div>
         </div>
         <div className="mt-2 flex flex-wrap gap-2">
-          {stateList.map(code => (
-            <button
-              key={code}
-              onClick={() => onToggleMany(lines.filter(l => stateOf(l) === code).map(l => l.id), false)}
-              className={`border px-2.5 py-1 font-mono text-[11px] uppercase tracking-[.1em] transition ${code === home ? "border-[#3a4a2a] text-[#7a8a5a] hover:bg-[#1a1f12]" : "border-[#262629] text-[#75736d] hover:text-[#d8d5cd]"}`}
-            >
-              {code}
-            </button>
-          ))}
+          {stateList.map(code => {
+            const stateIds = lines.filter(l => stateOf(l) === code).map(l => l.id);
+            const stateOn = stateIds.length > 0 && stateIds.every(id => selected.includes(id));
+            return (
+              <button
+                key={code}
+                onClick={() => onToggleMany(stateIds, !stateOn)}
+                className={`border px-2.5 py-1 font-mono text-[11px] uppercase tracking-[.1em] transition ${
+                  stateOn
+                    ? "border-[#5a3a2a] bg-[#1a1411] text-[#b0523e]"
+                    : code === home
+                      ? "border-[#3a4a2a] text-[#7a8a5a] hover:bg-[#1a1f12]"
+                      : "border-[#262629] text-[#75736d] hover:text-[#d8d5cd]"
+                }`}
+              >
+                {code}
+              </button>
+            );
+          })}
         </div>
-        <p className="mt-2 font-mono text-[10px] uppercase tracking-[.15em] text-[#45433f]">select all · click a state to subtract it · read the total</p>
+        <p className="mt-2 font-mono text-[10px] uppercase tracking-[.15em] text-[#45433f]">select all · click a state to toggle it · deselect all · read the total</p>
         <div className="border border-t-0 border-[#262629] bg-[#0c0c0d]">
           <div className="sticky top-0 z-10 hidden grid-cols-[44px_90px_82px_1fr_130px] border-b border-[#262629] bg-[#0c0c0d] px-3 py-2 font-mono text-[10px] uppercase tracking-[.15em] text-[#45433f] md:grid">
             <span></span><span>date</span><span>code</span><span>name / purpose</span><span className="text-right">amount</span>
