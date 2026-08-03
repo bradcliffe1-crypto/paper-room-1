@@ -51,7 +51,7 @@ export default function SpreadsheetView({ lines, selected, onToggle, onToggleMan
               onClick={() => onToggleMany(lines.filter(l => stateOf(l) === code).map(l => l.id), false)}
               className={`border px-2.5 py-1 font-mono text-[11px] uppercase tracking-[.1em] transition ${code === home ? "border-[#3a4a2a] text-[#7a8a5a] hover:bg-[#1a1f12]" : "border-[#262629] text-[#75736d] hover:text-[#d8d5cd]"}`}
             >
-              {code} ×{states[code]}
+              {code}
             </button>
           ))}
         </div>
