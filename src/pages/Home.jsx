@@ -16,6 +16,7 @@ import AnalysisDebrief from "@/components/game/AnalysisDebrief";
 import NewsHint from "@/components/game/NewsHint";
 import Inbox from "@/components/game/Inbox";
 import ManualScreen from "@/components/game/ManualScreen";
+import PinnedDock from "@/components/game/PinnedDock";
 import { base44 } from "@/api/base44Client";
 import { REYES_SYSTEM, REYES_DELAY_MS, BOUNCE_THRESHOLD, MERCER_WARNING, ANON_WARNING, bounceBody } from "@/data/correspondence";
 
@@ -213,6 +214,7 @@ export default function Home() {
   const hasData = level.lines.length > 0;
   return (
     <main className="min-h-screen bg-[#0a0a0b] text-[#d8d5cd]">
+      <PinnedDock unreadCount={unreadCount} onOpenInbox={() => setScreen("inbox")} onOpenManual={openManual} />
       <FilingHeader level={level} flagged={selected.length} onBack={() => setScreen("menu")} />
       <div className="mx-auto grid max-w-7xl gap-7 px-4 py-7 sm:px-7 lg:grid-cols-[290px_1fr]">
         <CaseBrief level={level} />
