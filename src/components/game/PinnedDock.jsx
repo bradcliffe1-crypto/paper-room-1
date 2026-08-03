@@ -28,11 +28,15 @@ export default function PinnedDock({ unreadCount, onOpenInbox, onOpenManual, hid
     <div className="pointer-events-none fixed right-4 top-4 z-50 flex items-center gap-3 sm:right-6 sm:top-6">
       <button
         onClick={onOpenInbox}
-        className={`pointer-events-auto flex items-center gap-2 border bg-[#0a0a0b]/80 px-4 py-2 font-mono text-xs uppercase tracking-[.2em] text-[#d8d5cd] backdrop-blur transition hover:border-[#3a3a3e] hover:text-[#9a8f6a] ${pulse ? "inbox-pulse border-[#b0523e]" : "border-[#262629]"}`}
+        className={`pointer-events-auto relative flex items-center gap-2 border bg-[#0a0a0b]/80 px-4 py-2 font-mono text-xs uppercase tracking-[.2em] text-[#d8d5cd] backdrop-blur transition hover:border-[#3a3a3e] hover:text-[#9a8f6a] ${
+          unreadCount > 0 ? "border-[#b0523e] inbox-glow" : "border-[#262629]"
+        } ${pulse ? "inbox-pulse" : ""}`}
       >
         inbox
         {unreadCount > 0 && (
-          <span className="rounded-full bg-[#b0523e] px-1.5 text-[10px] leading-5 text-white">{unreadCount}</span>
+          <span className="absolute -right-1.5 -top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-[#b0523e] font-mono text-[9px] font-bold leading-none text-white">
+            {unreadCount}
+          </span>
         )}
       </button>
       <button

@@ -104,3 +104,9 @@
   75% { transform: translateY(-1px) rotate(-1deg); }
 }
 .inbox-pulse { animation: inboxWiggle 0.8s ease-in-out 2; }
+
+@keyframes inboxGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(176, 82, 62, 0); }
+  50% { box-shadow: 0 0 6px 1px rgba(176, 82, 62, 0.85), 0 0 14px 3px rgba(176, 82, 62, 0.45); }
+}
+.inbox-glow { animation: inboxGlow 1.4s ease-in-out infinite; }
