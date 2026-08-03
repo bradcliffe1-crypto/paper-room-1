@@ -80,7 +80,9 @@ export default function ManualScreen({ onBack, onComplete }) {
 
           <Section n="06" title="thresholds &amp; limits">
             <p>small committees may not file at all. gifts past a threshold must list the donor; larger ones, the employer.</p>
-            <p>limits apply per cycle and depend on the donor and the office. always add up repeated gifts before you judge.</p>
+            <p>under new hampshire (rsa 664:4), an individual may give up to <b className="text-[#c4c1ba]">$1,000 per election</b> to a candidate committee; a political committee up to <b className="text-[#c4c1ba]">$5,000 per election</b>. the governor's race carries higher limits.</p>
+            <p>limits run per election across the whole cycle — not per line. small gifts from the same donor must be added together before you test them. a loan that is forgiven becomes a contribution, and counts.</p>
+            <p>exceeding the limit is a violation even when the money arrives in pieces. flag every entry from a donor whose cycle total crosses the line.</p>
           </Section>
 
           <Section n="07" title="the codes">
