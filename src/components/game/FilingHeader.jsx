@@ -1,4 +1,4 @@
-import { ArrowLeft, Flag } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { useTypewriter } from "@/hooks/useTypewriter";
 
 export default function FilingHeader({ level, flagged, onBack }) {
@@ -16,10 +16,6 @@ export default function FilingHeader({ level, flagged, onBack }) {
             {isReal ? `FILE ${level.number} · ${level.candidate}` : `TRAINING CASE ${level.number} · FICTIONAL`}
           </p>
           <h1 className="truncate font-display text-xl text-[#d8d5cd]">{typed}{typing && <span className="ml-0.5 inline-block h-4 w-[7px] translate-y-0.5 bg-[#9a8f6a]" />}</h1>
-        </div>
-        <div className="flex items-center gap-2 border-l border-[#262629] pl-4 font-mono text-xs text-[#75736d]">
-          <Flag size={14} className="text-[#b0523e]" />
-          <span>{flagged} flagged</span>
         </div>
       </div>
     </header>
