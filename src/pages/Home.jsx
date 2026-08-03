@@ -112,17 +112,7 @@ export default function Home() {
       scores: { ...p.scores, [activeLevel.id]: Math.max(p.scores[activeLevel.id] || 0, score) },
       readMessages: p.readMessages || []
     }));
-    const nextIdx = activeIndex + 1;
-    if (nextIdx < list.length && list[nextIdx].lines.length > 0) {
-      setActiveIndex(nextIdx);
-      setActiveLevel(list[nextIdx]);
-      setSelected([]);
-      setScreen("level");
-    } else if (activeList === "tutorials" && activeIndex === tutorials.length - 1) {
-      setScreen("training-complete");
-    } else {
-      setScreen("menu");
-    }
+    setScreen("menu");
   };
 
   const markRead = id =>
