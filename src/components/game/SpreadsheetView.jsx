@@ -11,7 +11,6 @@ export default function SpreadsheetView({ lines, selected, onToggle, onToggleMan
   const stateMode = analyzeTask?.groupBy === "state";
   const home = (analyzeTask?.homeState || "").toUpperCase();
   const [query, setQuery] = useState("");
-  const [stateInput, setStateInput] = useState("");
 
   const q = query.toLowerCase();
   const filtered = !stateMode && q
@@ -29,14 +28,6 @@ export default function SpreadsheetView({ lines, selected, onToggle, onToggleMan
     const nhCount = lines.filter(l => stateOf(l) === home).length;
     const outCount = lines.length - nhCount;
 
-    const deselectState = () => {
-      const code = stateInput.trim().toUpperCase();
-      if (!code) return;
-      const ids = lines.filter(l => stateOf(l) === code).map(l => l.id);
-      if (ids.length) onToggleMany(ids, false);
-      setStateInput("");
-    };
-
     return (
       <div>
         <div className="flex flex-wrap items-center gap-3 border border-[#262629] bg-[#0c0c0d] p-3">
@@ -47,30 +38,24 @@ export default function SpreadsheetView({ lines, selected, onToggle, onToggleMan
             {allSelected ? <Square size={13} /> : <CheckSquare size={13} />}
             {allSelected ? "clear all" : "select all"}
           </button>
-          <div className="flex items-center gap-2">
-            <input
-              value={stateInput}
-              onChange={e => setStateInput(e.target.value)}
-              onKeyDown={e => { if (e.key === "Enter") deselectState(); }}
-              placeholder="state"
-              className="w-20 border border-[#262629] bg-[#131316] px-2 py-2 font-mono text-xs uppercase tracking-[.1em] text-[#d8d5cd] placeholder:text-[#45433f]"
-            />
-            <button
-              onClick={deselectState}
-              className="flex items-center gap-2 border border-[#262629] bg-[#131316] px-3 py-2 font-mono text-xs uppercase tracking-[.15em] text-[#75736d] transition hover:text-[#d8d5cd]"
-            >
-              <Square size={13} /> deselect
-            </button>
-          </div>
           <div className="ml-auto border-l border-[#262629] pl-4 font-mono text-xs">
             <span className="text-[#75736d]">sel </span><b className="text-[#d8d5cd]">{selectedLines.length}</b>
             <span className="mx-2 text-[#262629]">|</span>
             <span className="text-[#75736d]">total </span><b className="text-[#b0523e]">{money(sum)}</b>
           </div>
         </div>
-        <p className="mt-2 font-mono text-[10px] uppercase tracking-[.15em] text-[#45433f]">
-          select all · then deselect a state by code ({stateList.join(" · ")}) · read the total
-        </p>
+        <div className="mt-2 flex flex-wrap gap-2">
+          {stateList.map(code => (
+            <button
+              key={code}
+              onClick={() => onToggleMany(lines.filter(l => stateOf(l) === code).map(l => l.id), false)}
+              className={`border px-2.5 py-1 font-mono text-[11px] uppercase tracking-[.1em] transition ${code === home ? "border-[#3a4a2a] text-[#7a8a5a] hover:bg-[#1a1f12]" : "border-[#262629] text-[#75736d] hover:text-[#d8d5cd]"}`}
+            >
+              {code} ×{states[code]}
+            </button>
+          ))}
+        </div>
+        <p className="mt-2 font-mono text-[10px] uppercase tracking-[.15em] text-[#45433f]">select all · click a state to subtract it · read the total</p>
         <div className="border border-t-0 border-[#262629] bg-[#0c0c0d]">
           <div className="sticky top-0 z-10 hidden grid-cols-[44px_90px_82px_1fr_130px] border-b border-[#262629] bg-[#0c0c0d] px-3 py-2 font-mono text-[10px] uppercase tracking-[.15em] text-[#45433f] md:grid">
             <span></span><span>date</span><span>code</span><span>name / purpose</span><span className="text-right">amount</span>
@@ -101,7 +86,6 @@ export default function SpreadsheetView({ lines, selected, onToggle, onToggleMan
 
   const allVisibleSelected = filtered.length > 0 && filtered.every(l => selected.includes(l.id));
   const toggleVisible = () => onToggleMany(filtered.map(l => l.id), !allVisibleSelected);
-  const deselectVisible = () => onToggleMany(filtered.map(l => l.id), false);
 
   return (
     <div>
@@ -119,18 +103,13 @@ export default function SpreadsheetView({ lines, selected, onToggle, onToggleMan
           {allVisibleSelected ? <Square size={13} /> : <CheckSquare size={13} />}
           {allVisibleSelected ? "clear visible" : query ? "select visible" : "select all"}
         </button>
-        <button onClick={deselectVisible} className="flex items-center gap-2 border border-[#262629] bg-[#131316] px-3 py-2 font-mono text-xs uppercase tracking-[.15em] text-[#75736d] transition hover:text-[#d8d5cd]">
-          <Square size={13} /> deselect visible
-        </button>
         <div className="ml-auto border-l border-[#262629] pl-4 font-mono text-xs">
           <span className="text-[#75736d]">sel </span><b className="text-[#d8d5cd]">{selectedLines.length}</b>
           <span className="mx-2 text-[#262629]">|</span>
           <span className="text-[#75736d]">total </span><b className="text-[#b0523e]">{money(sum)}</b>
         </div>
       </div>
-      <p className="mt-2 font-mono text-[10px] uppercase tracking-[.15em] text-[#45433f]">
-        select all · find a term · deselect what doesn't belong · read the total
-      </p>
+      <p className="mt-2 font-mono text-[10px] uppercase tracking-[.15em] text-[#45433f]">select all · find a term · click rows to refine · read the total</p>
       <div className="border border-t-0 border-[#262629] bg-[#0c0c0d]">
         <div className="sticky top-0 z-10 hidden grid-cols-[44px_90px_82px_1fr_130px] border-b border-[#262629] bg-[#0c0c0d] px-3 py-2 font-mono text-[10px] uppercase tracking-[.15em] text-[#45433f] md:grid">
           <span></span><span>date</span><span>code</span><span>name / purpose</span><span className="text-right">amount</span>

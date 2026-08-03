@@ -1,10 +1,10 @@
 // Tutorial casebook — six fictional training filings. Each one mirrors a
 // desktop objective without reusing the real data: employer-bundled maxed
-// checks (Chorus), a shell-LLC giving cluster (Veneer), personal-use
-// expenditures (Tally), an individual cycle-limit violation built from
-// many small gifts (Detours), a burst of loan forgiveness (Revolving), and
-// an out-of-state spreadsheet total (Sums). Decoy rows are benign on
-// purpose — the player learns to read past them.
+// checks (Chorus), a shell-LLC giving cluster (Veneer), home-repair
+// expenditures billed to a campaign (Tally), an individual cycle-limit
+// violation built from many small gifts (Detours), a burst of loan
+// forgiveness (Revolving), and an out-of-state spreadsheet total (Sums).
+// Decoy rows are benign on purpose — the player learns to read past them.
 
 export const fieldManual = {
   id: "field-manual", number: "00", title: "Field Manual", type: "manual",
@@ -50,55 +50,60 @@ export const tutorials = [
     legend: [{ code: "R-ORG", label: "Receipt · organization" }, { code: "R-IND", label: "Receipt · individual" }, { code: "R-CAN", label: "Receipt · candidate" }, { code: "E-ADV", label: "Expenditure · advertising" }],
     lines: [
       { id: "b01", section: "Receipts", code: "R-IND", date: "07/09/2026", name: "Mira Stoltz", location: "Laconia, NH", detail: "Nurse · Lakes Region Hospital", amount: 150 },
-      { id: "b02", section: "Receipts", code: "R-IND", date: "07/15/2026", name: "Ben Arrowood", location: "Portsmouth, NH", detail: "Retired", amount: 250 },
-      { id: "b03", section: "Receipts", code: "R-ORG", date: "07/22/2026", name: "Seacoast Restaurant Alliance PAC", location: "Portsmouth, NH", detail: "Registered political committee", amount: 1000 },
-      { id: "b04", section: "Receipts", code: "R-IND", date: "07/29/2026", name: "Tess Whitlock", location: "Bedford, NH", detail: "Attorney · Whitlock & Reed", amount: 500 },
-      { id: "b05", section: "Receipts", code: "R-IND", date: "08/05/2026", name: "Marcus Pell", location: "Dover, NH", detail: "Engineer · Self-employed", amount: 300 },
-      { id: "b06", section: "Receipts", code: "R-ORG", date: "08/12/2026", name: "Dover Machine Works", location: "Dover, NH", detail: "Itemized monetary contribution", amount: 1500 },
-      { id: "b07", section: "Receipts", code: "R-IND", date: "08/19/2026", name: "Dana Price", location: "Salem, NH", detail: "Teacher", amount: 180 },
-      { id: "b08", section: "Receipts", code: "R-IND", date: "08/27/2026", name: "Iris Calder", location: "Lebanon, NH", detail: "Designer · Self-employed", amount: 220 },
-      { id: "b09", section: "Expenditures", code: "E-ADV", date: "09/02/2026", name: "WMUR", location: "Manchester, NH", detail: "Television advertising", amount: 4200 },
-      { id: "b10", section: "Receipts", code: "R-ORG", date: "09/10/2026", name: "Granite Horizon Capital LLC", location: "1200 Worthen St, Suite 9, Manchester, NH", detail: "Itemized monetary contribution", amount: 5000, flag: true, why: "One of six 'Granite Horizon' LLCs at one address (1200 Worthen St, Suite 9) giving the maximum $5,000 on the same day — a fleet of shell entities for coordinated giving. Flag for source-of-funds review." },
-      { id: "b11", section: "Receipts", code: "R-ORG", date: "09/10/2026", name: "Granite Horizon Holdings LLC", location: "1200 Worthen St, Suite 9, Manchester, NH", detail: "Itemized monetary contribution", amount: 5000, flag: true, why: "Same 'Granite Horizon' cluster — same address, same day, same maximum. Flag." },
-      { id: "b12", section: "Receipts", code: "R-ORG", date: "09/10/2026", name: "Granite Horizon Ventures LLC", location: "1200 Worthen St, Suite 9, Manchester, NH", detail: "Itemized monetary contribution", amount: 5000, flag: true, why: "Same 'Granite Horizon' cluster — same address, same day, same maximum. Flag." },
-      { id: "b13", section: "Receipts", code: "R-ORG", date: "09/10/2026", name: "Granite Horizon Realty LLC", location: "1200 Worthen St, Suite 9, Manchester, NH", detail: "Itemized monetary contribution", amount: 5000, flag: true, why: "Same 'Granite Horizon' cluster — same address, same day, same maximum. Flag." },
-      { id: "b14", section: "Receipts", code: "R-ORG", date: "09/10/2026", name: "Granite Horizon Development LLC", location: "1200 Worthen St, Suite 9, Manchester, NH", detail: "Itemized monetary contribution", amount: 5000, flag: true, why: "Same 'Granite Horizon' cluster — same address, same day, same maximum. Flag." },
-      { id: "b15", section: "Receipts", code: "R-ORG", date: "09/10/2026", name: "Granite Horizon Partners LLC", location: "1200 Worthen St, Suite 9, Manchester, NH", detail: "Itemized monetary contribution", amount: 5000, flag: true, why: "Sixth 'Granite Horizon' entity at the same address on the same day for the maximum — the cluster that turns one donor into six. Flag." },
-      { id: "b16", section: "Expenditures", code: "E-ADV", date: "09/16/2026", name: "Pinnacle Print", location: "Concord, NH", detail: "Door hangers", amount: 640 },
-      { id: "b17", section: "Receipts", code: "R-IND", date: "09/20/2026", name: "Noah Beck", location: "Salem, NH", detail: "Retired", amount: 250 },
-      { id: "b18", section: "Receipts", code: "R-CAN", date: "09/24/2026", name: "Wes Pemberton", location: "Bedford, NH", detail: "Candidate contribution", amount: 1000 },
-      { id: "b19", section: "Receipts", code: "R-IND", date: "09/27/2026", name: "Eli Rowan", location: "Keene, NH", detail: "Electrician · Rowan Electric", amount: 200 },
-      { id: "b20", section: "Expenditures", code: "E-ADV", date: "09/29/2026", name: "Meta Platforms", location: "Online", detail: "District-targeted digital ads", amount: 1200 }
+      { id: "b02", section: "Receipts", code: "R-ORG", date: "07/22/2026", name: "Seacoast Restaurant Alliance PAC", location: "Portsmouth, NH", detail: "Registered political committee", amount: 1000 },
+      { id: "b03", section: "Receipts", code: "R-IND", date: "07/29/2026", name: "Tess Whitlock", location: "Bedford, NH", detail: "Attorney · Whitlock & Reed", amount: 500 },
+      { id: "b04", section: "Receipts", code: "R-IND", date: "08/05/2026", name: "Marcus Pell", location: "Dover, NH", detail: "Engineer · Self-employed", amount: 300 },
+      { id: "b05", section: "Receipts", code: "R-ORG", date: "09/10/2026", name: "Granite Horizon Capital LLC", location: "1200 Worthen St, Suite 9, Manchester, NH", detail: "Itemized monetary contribution", amount: 5000, flag: true, why: "One of six 'Granite Horizon' LLCs at one address (1200 Worthen St, Suite 9) giving the maximum $5,000 on the same day — a fleet of shell entities for coordinated giving. Flag for source-of-funds review." },
+      { id: "b06", section: "Receipts", code: "R-IND", date: "08/12/2026", name: "Dana Price", location: "Salem, NH", detail: "Teacher", amount: 180 },
+      { id: "b07", section: "Receipts", code: "R-ORG", date: "08/12/2026", name: "Dover Machine Works", location: "Dover, NH", detail: "Itemized monetary contribution", amount: 1500 },
+      { id: "b08", section: "Receipts", code: "R-IND", date: "08/19/2026", name: "Ben Arrowood", location: "Portsmouth, NH", detail: "Retired", amount: 250 },
+      { id: "b09", section: "Receipts", code: "R-ORG", date: "09/10/2026", name: "Granite Horizon Holdings LLC", location: "1200 Worthen St, Suite 9, Manchester, NH", detail: "Itemized monetary contribution", amount: 5000, flag: true, why: "Same 'Granite Horizon' cluster — same address, same day, same maximum. Flag." },
+      { id: "b10", section: "Expenditures", code: "E-ADV", date: "09/02/2026", name: "WMUR", location: "Manchester, NH", detail: "Television advertising", amount: 4200 },
+      { id: "b11", section: "Receipts", code: "R-IND", date: "08/27/2026", name: "Iris Calder", location: "Lebanon, NH", detail: "Designer · Self-employed", amount: 220 },
+      { id: "b12", section: "Receipts", code: "R-IND", date: "09/03/2026", name: "Cara Linwood", location: "Hanover, NH", detail: "Architect · Linwood Studio", amount: 300 },
+      { id: "b13", section: "Receipts", code: "R-ORG", date: "09/10/2026", name: "Granite Horizon Ventures LLC", location: "1200 Worthen St, Suite 9, Manchester, NH", detail: "Itemized monetary contribution", amount: 5000, flag: true, why: "Same 'Granite Horizon' cluster — same address, same day, same maximum. Flag." },
+      { id: "b14", section: "Receipts", code: "R-IND", date: "09/05/2026", name: "Eli Rowan", location: "Keene, NH", detail: "Electrician · Rowan Electric", amount: 200 },
+      { id: "b15", section: "Receipts", code: "R-ORG", date: "09/06/2026", name: "Concord Dentistry PAC", location: "Concord, NH", detail: "Registered political committee", amount: 750 },
+      { id: "b16", section: "Receipts", code: "R-ORG", date: "09/10/2026", name: "Granite Horizon Realty LLC", location: "1200 Worthen St, Suite 9, Manchester, NH", detail: "Itemized monetary contribution", amount: 5000, flag: true, why: "Same 'Granite Horizon' cluster — same address, same day, same maximum. Flag." },
+      { id: "b17", section: "Receipts", code: "R-IND", date: "09/08/2026", name: "Noah Beck", location: "Salem, NH", detail: "Retired", amount: 250 },
+      { id: "b18", section: "Receipts", code: "R-IND", date: "09/09/2026", name: "Jen Okafor", location: "Concord, NH", detail: "Teacher · Bow Memorial School", amount: 200 },
+      { id: "b19", section: "Receipts", code: "R-ORG", date: "09/10/2026", name: "Granite Horizon Development LLC", location: "1200 Worthen St, Suite 9, Manchester, NH", detail: "Itemized monetary contribution", amount: 5000, flag: true, why: "Same 'Granite Horizon' cluster — same address, same day, same maximum. Flag." },
+      { id: "b20", section: "Expenditures", code: "E-ADV", date: "09/16/2026", name: "Pinnacle Print", location: "Concord, NH", detail: "Door hangers", amount: 640 },
+      { id: "b21", section: "Receipts", code: "R-IND", date: "09/20/2026", name: "Walt Doherty", location: "Nashua, NH", detail: "Retired", amount: 200 },
+      { id: "b22", section: "Receipts", code: "R-ORG", date: "09/10/2026", name: "Granite Horizon Partners LLC", location: "1200 Worthen St, Suite 9, Manchester, NH", detail: "Itemized monetary contribution", amount: 5000, flag: true, why: "Sixth 'Granite Horizon' entity at the same address on the same day for the maximum — the cluster that turns one donor into six. Flag." },
+      { id: "b23", section: "Receipts", code: "R-CAN", date: "09/24/2026", name: "Wes Pemberton", location: "Bedford, NH", detail: "Candidate contribution", amount: 1000 },
+      { id: "b24", section: "Expenditures", code: "E-ADV", date: "09/29/2026", name: "Meta Platforms", location: "Online", detail: "District-targeted digital ads", amount: 1200 }
     ]
   },
   {
     id: "personal-use", number: "03", title: "Tally", skill: "Non-campaign expenditures", difficulty: "Intermediate",
-    filer: "Boland for State Rep", office: "State Representative, Hillsborough 7", period: "07/01/2026 – 09/30/2026",
+    filer: "Powell for State Rep", office: "State Representative, Rockingham 1", period: "07/01/2026 – 09/30/2026",
     report: "Quarterly R&E Report", type: "flag",
-    task: "Every expense wears a memo. Some memos are costumes. Read what she actually bought — and flag the charges that dressed up a personal life as a campaign.",
-    lesson: "Expenditures should name the payee, date, amount, and a specific campaign purpose. Vague memos and personal-looking vendors deserve scrutiny; context and supporting records decide whether the spend is permissible. A florist for a fundraiser is not the same as a salon.",
+    task: "Every expense wears a memo. Some memos are costumes. Read what he actually bought — and flag the charges that dressed up a home repair as a campaign.",
+    lesson: "Expenditures should name the payee, date, amount, and a specific campaign purpose. Vague memos and residential-service vendors deserve scrutiny; context and supporting records decide whether the spend is permissible. A print shop for palm cards is not the same as a furnace service.",
     legend: [{ code: "E-ADV", label: "Expenditure · advertising" }, { code: "E-OPS", label: "Expenditure · operations" }, { code: "E-OTH", label: "Expenditure · other" }],
     lines: [
       { id: "c01", section: "Expenditures", code: "E-ADV", date: "07/08/2026", name: "Seacoast Printworks", location: "Portsmouth, NH", detail: "Palm cards · 2,500 units", amount: 785 },
       { id: "c02", section: "Expenditures", code: "E-OPS", date: "07/22/2026", name: "USPS", location: "Portsmouth, NH", detail: "Campaign mailing postage", amount: 410 },
       { id: "c03", section: "Expenditures", code: "E-OPS", date: "07/30/2026", name: "Staples", location: "Manchester, NH", detail: "Office supplies", amount: 86 },
-      { id: "c04", section: "Expenditures", code: "E-OTH", date: "08/05/2026", name: "Mirror Salon", location: "Portsmouth, NH", detail: "Grooming", amount: 140, flag: true, why: "Personal grooming at a salon billed to the campaign — a non-campaign expense wearing a thin memo. Flag." },
-      { id: "c05", section: "Expenditures", code: "E-ADV", date: "08/12/2026", name: "WMUR", location: "Manchester, NH", detail: "Broadcast advertising", amount: 5000 },
-      { id: "c06", section: "Expenditures", code: "E-OTH", date: "08/16/2026", name: "Summit Ridge Lodge & Spa", location: "Bretton Woods, NH", detail: "Strategy retreat", amount: 3200, flag: true, why: "A costly resort charge with only 'strategy retreat' as its purpose — leisure billed to the campaign. Flag." },
-      { id: "c07", section: "Expenditures", code: "E-OPS", date: "08/20/2026", name: "Market Corner", location: "Portsmouth, NH", detail: "Supplies", amount: 86, flag: true, why: "A grocery market charged as 'supplies' — personal shopping dressed as campaign operations. Flag." },
-      { id: "c08", section: "Expenditures", code: "E-OTH", date: "08/28/2026", name: "Iron Body Fitness", location: "Manchester, NH", detail: "Member dues", amount: 600, flag: true, why: "A gym membership billed to the campaign as 'member dues' — a personal expense. Flag." },
-      { id: "c09", section: "Expenditures", code: "E-OPS", date: "09/02/2026", name: "Verizon", location: "Online", detail: "Wireless", amount: 120, flag: true, why: "A personal wireless bill charged to the campaign with no campaign-purpose detail. Flag." },
-      { id: "c10", section: "Expenditures", code: "E-OTH", date: "09/10/2026", name: "HomeNest Decor", location: "Bedford, NH", detail: "Office décor", amount: 185, flag: true, why: "A home-décor store charged as 'office décor' — a personal purchase dressed as a campaign expense. Flag." },
-      { id: "c11", section: "Expenditures", code: "E-OTH", date: "09/14/2026", name: "Bloom & Co Florals", location: "Concord, NH", detail: "Event florals · fundraiser", amount: 210 },
-      { id: "c12", section: "Expenditures", code: "E-ADV", date: "09/19/2026", name: "Meta Platforms", location: "Online", detail: "District-targeted digital ads", amount: 600 },
-      { id: "c13", section: "Expenditures", code: "E-OPS", date: "09/25/2026", name: "City Diner", location: "Concord, NH", detail: "Staff meals · 12 people", amount: 144 }
+      { id: "c04", section: "Expenditures", code: "E-OPS", date: "08/04/2026", name: "VoterVault Software", location: "Online", detail: "Voter file subscription", amount: 300 },
+      { id: "c05", section: "Expenditures", code: "E-OTH", date: "08/05/2026", name: "Granite Mechanical", location: "Concord, NH", detail: "Office HVAC service", amount: 1850, flag: true, why: "An HVAC/furnace service call billed to the campaign as 'office HVAC service' — home maintenance dressed as a campaign expense. Flag." },
+      { id: "c06", section: "Expenditures", code: "E-ADV", date: "08/12/2026", name: "WMUR", location: "Manchester, NH", detail: "Broadcast advertising", amount: 5000 },
+      { id: "c07", section: "Expenditures", code: "E-OTH", date: "08/15/2026", name: "Summit Roofing Co.", location: "Concord, NH", detail: "Facility repair", amount: 2400, flag: true, why: "A roof repair billed to the campaign as 'facility repair' — residential maintenance, not a campaign cost. Flag." },
+      { id: "c08", section: "Expenditures", code: "E-OPS", date: "08/21/2026", name: "Reliant Plumbing & Heating", location: "Concord, NH", detail: "Plumbing repair", amount: 640, flag: true, why: "A plumbing / water-heater repair billed to the campaign as 'plumbing repair' — home maintenance. Flag." },
+      { id: "c09", section: "Expenditures", code: "E-OTH", date: "08/28/2026", name: "Arrow Tree Service", location: "Concord, NH", detail: "Lot clearing", amount: 525, flag: true, why: "'Lot clearing' at a tree-service vendor — residential tree removal billed to the campaign. Flag." },
+      { id: "c10", section: "Expenditures", code: "E-OPS", date: "09/03/2026", name: "Voltside Electric", location: "Concord, NH", detail: "Electrical upgrade", amount: 1100, flag: true, why: "An 'electrical upgrade' at the candidate's home billed to the campaign — a residential panel upgrade, not a campaign cost. Flag." },
+      { id: "c11", section: "Expenditures", code: "E-OTH", date: "09/10/2026", name: "Driftless Plowing", location: "Concord, NH", detail: "Snow removal", amount: 340, flag: true, why: "Residential driveway snow removal billed to the campaign as 'snow removal' — a personal property cost. Flag." },
+      { id: "c12", section: "Expenditures", code: "E-OTH", date: "09/14/2026", name: "Bloom & Co Florals", location: "Concord, NH", detail: "Event florals · fundraiser", amount: 210 },
+      { id: "c13", section: "Expenditures", code: "E-ADV", date: "09/19/2026", name: "Meta Platforms", location: "Online", detail: "District-targeted digital ads", amount: 600 },
+      { id: "c14", section: "Expenditures", code: "E-OPS", date: "09/25/2026", name: "City Diner", location: "Concord, NH", detail: "Staff meals · 12 people", amount: 144 }
     ]
   },
   {
     id: "contribution-limit", number: "04", title: "Detours", skill: "Individual cycle-limit violation", difficulty: "Intermediate",
     filer: "Adler for State Senate", office: "State Senate, District 12", period: "01/01/2026 – 11/05/2026",
     report: "R&E Report", type: "flag",
-    task: "A thousand dollars is the ceiling for one person in one election. Ceilings are measured from the floor up — every gift counts. Read the names. One of them keeps giving, and the running total climbed past the line.",
+    task: "Read the receipts the way the state does — one donor at a time, across the whole season. One of them came back too often.",
     lesson: "Under RSA 664:4, an individual may give up to $1,000 per election to a candidate committee. The limit runs across the whole cycle, not per line. Add up every gift from one donor before you judge — a contribution split into small pieces that crosses the limit is still a violation.",
     legend: [{ code: "R-IND", label: "Receipt · individual" }, { code: "R-CAN", label: "Receipt · candidate" }, { code: "R-ORG", label: "Receipt · organization" }, { code: "R-IN-K", label: "Receipt · in-kind" }],
     lines: [
@@ -122,7 +127,7 @@ export const tutorials = [
     id: "loan-loop", number: "05", title: "Revolving", skill: "Loan forgiveness bursts", difficulty: "Advanced",
     filer: "Torres for Mayor", office: "Mayor · Training City", period: "04/01/2026 – 06/30/2026",
     report: "Quarterly R&E Report", type: "flag",
-    task: "He borrowed, then the borrowing began to disappear — not in one clean stroke, but in a rash of small forgivenesses, days apart, no two alike. Read the loans. Debt that melts in pieces was never meant to be repaid.",
+    task: "He borrowed. Then, over a week in May, the debt went away — in small, uneven pieces. Read the loans.",
     lesson: "A loan that is forgiven becomes a contribution and must be reported as such. A burst of forgiveness entries on consecutive days — different sizes, no clean accounting — is the signature of debt quietly converted to a gift. Compare the dates and the codes.",
     legend: [{ code: "L-REC", label: "Loan received" }, { code: "L-REP", label: "Loan repayment" }, { code: "L-FOR", label: "Loan forgiven" }, { code: "R-IND", label: "Receipt · individual" }, { code: "E-ADV", label: "Expenditure · advertising" }],
     lines: [
@@ -136,7 +141,7 @@ export const tutorials = [
       { id: "e08", section: "Loans", code: "L-FOR", date: "05/15/2026", name: "Rosa Torres", location: "Concord, NH", detail: "Loan forgiven · candidate loan", amount: 1200, flag: true, why: "Fourth forgiveness in the burst — a small slice, same pattern. Flag." },
       { id: "e09", section: "Loans", code: "L-FOR", date: "05/16/2026", name: "Rosa Torres", location: "Concord, NH", detail: "Loan forgiven · candidate loan", amount: 2500, flag: true, why: "Fifth forgiveness in the burst — different size again. Flag." },
       { id: "e10", section: "Loans", code: "L-FOR", date: "05/19/2026", name: "Rosa Torres", location: "Concord, NH", detail: "Loan forgiven · candidate loan", amount: 1800, flag: true, why: "Sixth forgiveness in the burst — the run continues. Flag." },
-      { id: "e11", section: "Loans", code: "L-FOR", date: "05/20/2026", name: "Rosa Torres", location: "Concord, NH", detail: "Loan forgiven · candidate loan", amount: 2000, flag: true, why: "Seventh forgiveness in nine days — $14,000 of debt dissolved in pieces, never meant to be repaid. Flag." },
+      { id: "e11", section: "Loans", code: "L-FOR", date: "05/20/2026", name: "Rosa Torres", location: "Concord, NH", detail: "Loan forgiven · candidate loan", amount: 2000, flag: true, why: "Seventh forgiveness in nine days — $14,000 of debt dissolved in pieces. Flag." },
       { id: "e12", section: "Receipts", code: "R-IND", date: "05/22/2026", name: "Noah Beck", location: "Salem, NH", detail: "Retired", amount: 250 },
       { id: "e13", section: "Loans", code: "L-REP", date: "05/27/2026", name: "Rosa Torres", location: "Concord, NH", detail: "Interest payment on candidate loan", amount: 200 },
       { id: "e14", section: "Expenditures", code: "E-ADV", date: "06/10/2026", name: "Meta Platforms", location: "Online", detail: "Citywide digital ads", amount: 800 }
