@@ -1,9 +1,7 @@
-import { BookOpen, Target, Search } from "lucide-react";
+import { Target, Search } from "lucide-react";
 
 export default function CaseBrief({ level }) {
   const task = level.task || level.goal;
-  const briefing = level.briefing || level.lesson || level.searchHint;
-  const legend = level.legend || [];
   const isAnalyze = level.type === "analyze";
   const hasMercer = !!level.task;
 
@@ -28,27 +26,6 @@ export default function CaseBrief({ level }) {
           </>
         )}
       </div>
-      {briefing && (
-        <div className="border border-t-0 border-[#262629] bg-[#16161a] p-6">
-          <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[.2em] text-[#75736d]">
-            <BookOpen size={14} /> {isAnalyze ? "METHOD" : "READING NOTE"}
-          </div>
-          <p className="mt-3 text-sm leading-6 text-[#8c8a84]">{briefing}</p>
-          {legend.length > 0 && (
-            <div className="mt-5 border-t border-[#262629] pt-4">
-              {legend.map(x => (
-                <p key={x.code} className="mb-2 flex gap-3 text-xs">
-                  <b className="w-14 font-mono text-[#9a8f6a]">{x.code}</b>
-                  <span className="text-[#8c8a84]">{x.label}</span>
-                </p>
-              ))}
-            </div>
-          )}
-          <p className="mt-5 text-[11px] leading-5 text-[#5d5b56]">
-            {isAnalyze ? "A research total, not a legal conclusion." : "A flag is a lead, not a legal conclusion."}
-          </p>
-        </div>
-      )}
     </aside>
   );
 }

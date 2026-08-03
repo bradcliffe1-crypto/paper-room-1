@@ -35,7 +35,7 @@ export const levels = [
     id: "l01", number: "01", title: "Fronts", candidate: "John Stephen",
     filer: "Friends of John Stephen", office: "Exploratory — 2024", period: "04/15/2024 – 11/04/2024",
     report: "Receipt & Expenditure Report", type: "flag",
-    task: "Stephen's filings look tidy. Too tidy. Find where the money really comes from.",
+    task: "Stephen's filings look tidy. Too tidy. Read the receipts — watch for a cluster of maxed-out gifts from different companies at one address, all on the same day. That's where the money really comes from.",
     briefing: FLAG_BRIEF, legend: LEGEND,
     lines: [
       {id:"l01-01",section:"Receipts",code:"R-ORG",date:"04/15/2024",name:"Child Welfare Safety Solutions LLC",location:"814 Elm Street, Suite 309, Manchester, NH 03101",detail:"Itemized monetary contribution",amount:5000},
@@ -77,7 +77,7 @@ export const levels = [
     id: "l02", number: "02", title: "Outlays", candidate: "Karen Liot Hill",
     filer: "Karen Liot Hill for Executive Council District 2", office: "Executive Council, District 2", period: "12/06/2023 – 11/13/2024",
     report: "Receipt & Expenditure Report", type: "flag",
-    task: "Hill burns through cash. Read every expense. Tell me what she's actually buying.",
+    task: "Hill burns through cash. Read every expense. Some payees don't match the memo — a salon, a grocery run, a gift. Tell me what she's actually buying, not what it says she bought.",
     briefing: FLAG_BRIEF, legend: LEGEND,
     lines: [
       {id:"l02-01",section:"Expenditures",code:"E-OPS",date:"12/04/2023",name:"ActBlue",location:"366 Summer St, Somerville, MA 02144",detail:"Credit Card Processing",amount:139.74},
@@ -114,7 +114,7 @@ export const levels = [
     id: "l03", number: "03", title: "Origins", candidate: "John E. Sununu",
     filer: "Sununu Senator", office: "U.S. Senate — New Hampshire", period: "01/01/2026 – 03/31/2026",
     report: "April Quarterly Report (FEC Form 3N)", type: "analyze",
-    task: "Sununu says he's one of us. Count the out-of-state money. I want a number.",
+    task: "Sununu says he's one of us. Count the out-of-state money. Select everything, then peel away New Hampshire — I want the number that's left.",
     briefing: ANALYZE_BRIEF, analyzeTask: { label: "Out-of-state total", unit: "currency", groupBy: "state", homeState: "NH" },
     legend: LEGEND, lines: level03Lines
   },
@@ -122,7 +122,7 @@ export const levels = [
     id: "l04", number: "04", title: "Clipping", candidate: "Kelly Ayotte",
     filer: "Kelly for New Hampshire", office: "Governor — New Hampshire", period: "01/01/2024 – 11/05/2024",
     report: "Statement of Receipts and Expenditures (RSA 664)", type: "flag",
-    task: "Someone sent me a clipping. Read it. Then read her filing. Whose names show up in both?",
+    task: "Someone sent me a clipping. Read it, then read her filing. Cross-reference the names — and the companies — against the roster. Whose show up in both?",
     briefing: "Read the clipping, then the filing. Compare names between them. A flag is a lead, not a conclusion.",
     legend: LEGEND,
     hint: {
@@ -137,21 +137,21 @@ export const levels = [
     id: "l05", number: "05", title: "Charges", candidate: "Joe Kenny",
     filer: "Friends of Joe Kenny", office: "State Senate — District 6", period: "06/01/2024 – 11/05/2024",
     report: "Receipt & Expenditure Report", type: "flag",
-    task: "Kenny. Small fish, big spending. Look at what he buys. Something won't sit right.",
+    task: "Kenny. Small fish, big spending. Read the expenses. Look for the personal ones — gas, oil changes, fast food, a phone bill. And one big payment that doesn't smell like printing at all.",
     briefing: FLAG_BRIEF, legend: LEGEND, lines: level05Lines
   },
   {
     id: "l06", number: "06", title: "Venues", candidate: "Kelly Ayotte",
     filer: "Kelly for New Hampshire", office: "Governor — New Hampshire", period: "06/01/2024 – 08/21/2024",
     report: "Statement of Receipts and Expenditures (RSA 664)", type: "flag",
-    task: "Ayotte again. Money keeps moving through names I can't trace. Follow it.",
+    task: "Ayotte again. One day, a stack of maxed-out receipts — all from companies with the same word in their name. Same family of LLCs, same date. Follow it.",
     briefing: FLAG_BRIEF, legend: LEGEND, lines: level06Lines
   },
   {
     id: "l07", number: "07", title: "Affiliations", candidate: "Chris Pappas",
     filer: "Chris Pappas for Senate", office: "U.S. Senate — New Hampshire", period: "01/01/2025 – 03/31/2026",
     report: "Quarterly & Year-End Reports (FEC Form 3)", type: "analyze",
-    task: "Pappas has friends. Certain committees. Find them. Total what they gave.",
+    task: "Pappas has friends. Certain committees give again and again — the pro-Israel ones. Find them by name, total what they gave.",
     briefing: ANALYZE_BRIEF, analyzeTask: { label: "Pro-Israel committee total", unit: "currency" },
     legend: LEGEND, lines: level07Lines
   },
@@ -159,14 +159,14 @@ export const levels = [
     id: "l08", number: "08", title: "Forgiven", candidate: "John Stephen",
     filer: "Friends of John Stephen", office: "Exploratory — 2024", period: "04/15/2024 – 05/30/2025",
     report: "Receipt & Expenditure Report", type: "flag",
-    task: "Stephen borrowed a lot. Then the borrowing stopped making sense. Look at the loans.",
+    task: "Stephen borrowed a lot. Then the borrowing stopped making sense. Read the loans — who forgave what, and when. Same day is the tell.",
     briefing: FLAG_BRIEF, legend: LEGEND, lines: level08Lines
   },
   {
     id: "l09", number: "09", title: "Backers", candidate: "John E. Sununu",
     filer: "Sununu Senator", office: "U.S. Senate — New Hampshire", period: "10/22/2025 – 03/31/2026",
     report: "Year-End 2025 & April Quarterly 2026 (FEC Form 3)", type: "analyze",
-    task: "Same candidate. How much is corporate — executives, PACs — versus real grassroots?",
+    task: "Same candidate. How much is corporate — executives and PACs — versus real grassroots? Select the suits, total them.",
     briefing: ANALYZE_BRIEF, analyzeTask: { label: "Executive & PAC total", unit: "currency" },
     legend: LEGEND, lines: level09Lines
   },
@@ -174,7 +174,7 @@ export const levels = [
     id: "l10", number: "10", title: "Namesakes", candidate: "Kelly Ayotte",
     filer: "Kelly for New Hampshire", office: "Governor — New Hampshire", period: "01/22/2024 – 10/16/2024",
     report: "Statement of Receipts and Expenditures (RSA 664)", type: "flag",
-    task: "Ayotte's donors. Read the names. Some of them shouldn't be giving that much.",
+    task: "Ayotte's donors. Read the names. Some shouldn't be giving that much. Watch for one employer, one address, one day — and a lot of maxed-out checks.",
     briefing: FLAG_BRIEF, legend: LEGEND, lines: level10Lines
   },
   {
