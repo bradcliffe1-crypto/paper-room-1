@@ -13,7 +13,7 @@ export default function FilingHeader({ level, flagged, onBack }) {
         </button>
         <div className="min-w-0 flex-1">
           <p className="font-mono text-[10px] uppercase tracking-[.2em] text-[#9a8f6a]">
-            {isReal ? `FILE ${level.number} · ${level.candidate}` : `TRAINING CASE ${level.number} · FICTIONAL`}
+            {isReal ? `FILE ${level.number} · ${level.candidate}` : `TRAINING CASE ${level.number}`}
           </p>
           <h1 className="truncate font-display text-xl text-[#d8d5cd]">{typed}{typing && <span className="ml-0.5 inline-block h-4 w-[7px] translate-y-0.5 bg-[#9a8f6a]" />}</h1>
         </div>

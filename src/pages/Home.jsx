@@ -229,7 +229,7 @@ export default function Home() {
             <>
               <div className="mb-3 flex items-center justify-between">
                 <h3 className="font-display text-2xl text-[#16161a]">Itemized activity</h3>
-                <span className="font-mono text-[10px] uppercase tracking-widest text-[#75736d]">Flag any lead</span>
+                {activeList !== "tutorials" && <span className="font-mono text-[10px] uppercase tracking-widest text-[#75736d]">Flag any lead</span>}
               </div>
               <FilingTable lines={level.lines} selected={selected} onToggle={toggle} findOnPage={level.findOnPage} />
               <div className="sticky bottom-0 z-20 mt-5 border-t border-[#2a2a2c] bg-[#0a0a0b]/95 px-1 py-4 backdrop-blur">
