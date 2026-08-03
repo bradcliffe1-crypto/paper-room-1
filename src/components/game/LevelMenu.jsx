@@ -1,5 +1,4 @@
 import { Check, LockKeyhole } from "lucide-react";
-import { motion } from "framer-motion";
 import { useTypewriter } from "@/hooks/useTypewriter";
 import PinnedDock from "@/components/game/PinnedDock";
 
@@ -14,11 +13,6 @@ function FolderIcon({ completed }) {
     </svg>
   );
 }
-
-const reveal = {
-  hidden: { opacity: 0, y: 14 },
-  show: i => ({ opacity: 1, y: 0, transition: { delay: 0.06 * i, duration: 0.5, ease: "easeOut" } })
-};
 
 export default function LevelMenu({ tutorials, levels, completed, onSelect, onOpenInbox, onOpenManual, unreadCount, ctx }) {
   const tutUnlocked = i => i === 0 || completed.includes(tutorials[i - 1].id);
@@ -45,12 +39,8 @@ export default function LevelMenu({ tutorials, levels, completed, onSelect, onOp
                 const unlocked = tutUnlocked(i);
                 const done = completed.includes(level.id);
                 return (
-                  <motion.button
+                  <button
                     key={level.id}
-                    custom={i}
-                    variants={reveal}
-                    initial="hidden"
-                    animate="show"
                     disabled={!unlocked}
                     onClick={() => onSelect("tutorials", i)}
                     className="group flex min-h-44 flex-col justify-between border border-[#151515] bg-[#0b0b0c] p-9 text-left transition hover:border-[#262626] disabled:cursor-not-allowed disabled:opacity-20"
@@ -60,7 +50,7 @@ export default function LevelMenu({ tutorials, levels, completed, onSelect, onOp
                       {done ? <Check size={13} className="text-[#7a8a6a]" /> : unlocked ? <span className="text-[#3a3a38]">›</span> : <LockKeyhole size={12} className="text-[#45433f]" />}
                     </div>
                     <h2 className="mt-12 font-mono text-lg lowercase tracking-[.02em] text-[#6a675f] transition group-hover:text-[#d8d5cd]">{level.title}</h2>
-                  </motion.button>
+                  </button>
                 );
               })}
             </div>
@@ -74,12 +64,8 @@ export default function LevelMenu({ tutorials, levels, completed, onSelect, onOp
                 const unlocked = isSecret || (level.lines.length > 0 && (i === 0 || completed.includes(levels[i - 1].id)));
                 const done = completed.includes(level.id);
                 return (
-                  <motion.button
+                  <button
                     key={level.id}
-                    custom={i}
-                    variants={reveal}
-                    initial="hidden"
-                    animate="show"
                     disabled={!unlocked}
                     onClick={() => onSelect("levels", i)}
                     className="group flex flex-col items-center gap-6 py-10 text-center transition hover:bg-[#0e0e10] disabled:cursor-not-allowed disabled:opacity-15"
@@ -88,7 +74,7 @@ export default function LevelMenu({ tutorials, levels, completed, onSelect, onOp
                     <span className={"font-mono text-[11px] tracking-[.15em] " + (done ? "text-[#5a6a4a]" : unlocked ? "text-[#7a7770]" : "text-[#45433f]")}>
                       {level.number}
                     </span>
-                  </motion.button>
+                  </button>
                 );
               })}
             </div>
