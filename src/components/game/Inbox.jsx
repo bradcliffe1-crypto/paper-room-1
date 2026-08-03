@@ -67,8 +67,8 @@ export default function Inbox({ progress, onBack, onRead, onReply }) {
     return (
       <main className="min-h-screen bg-[#0a0a0b] p-6 text-[#d8d5cd] sm:p-10">
         <div className="mx-auto max-w-2xl">
-          <button onClick={() => { setOpenId(null); setStatus(""); setDraft(""); }} aria-label="Back" className="mb-10 text-[#75736d] transition hover:text-[#d8d5cd]">
-            <ArrowLeft size={16} />
+          <button onClick={() => { setOpenId(null); setStatus(""); setDraft(""); }} aria-label="Back" className="mb-10 flex h-10 w-10 items-center justify-center rounded-full border border-[#3a3a3e] text-[#d8d5cd] transition hover:border-[#9a8f6a] hover:text-[#9a8f6a]">
+            <ArrowLeft size={20} />
           </button>
           <div className="border border-[#262629] bg-[#131316] p-7">
             <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[.2em]">
@@ -109,8 +109,8 @@ export default function Inbox({ progress, onBack, onRead, onReply }) {
   return (
     <main className="min-h-screen bg-[#0a0a0b] p-6 text-[#d8d5cd] sm:p-10">
       <div className="mx-auto max-w-2xl">
-        <button onClick={onBack} aria-label="Back" className="mb-10 text-[#75736d] transition hover:text-[#d8d5cd]">
-          <ArrowLeft size={16} />
+        <button onClick={onBack} aria-label="Back" className="mb-10 flex h-10 w-10 items-center justify-center rounded-full border border-[#3a3a3e] text-[#d8d5cd] transition hover:border-[#9a8f6a] hover:text-[#9a8f6a]">
+          <ArrowLeft size={20} />
         </button>
         <p className="text-sm text-[#75736d]">{count} message{count !== 1 ? "s" : ""}.</p>
 
