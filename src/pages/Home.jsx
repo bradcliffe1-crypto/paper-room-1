@@ -17,7 +17,7 @@ import NewsHint from "@/components/game/NewsHint";
 import Inbox from "@/components/game/Inbox";
 import ManualScreen from "@/components/game/ManualScreen";
 import PinnedDock from "@/components/game/PinnedDock";
-import { BOUNCE_THRESHOLD, MERCER_WARNING, ANON_WARNING, bounceBody } from "@/data/correspondence";
+import { BOUNCE_THRESHOLD, MERCER_WARNING, ANON_WARNING, bounceBody, REYES_BOUNCE } from "@/data/correspondence";
 
 const fmtTime = (ms) => {
   const d = new Date(ms);
@@ -60,7 +60,7 @@ export default function Home() {
     replies.every(m => read.includes(m.id));
   const l11l12Complete = ["l11", "l12"].every(id => progress.completed.includes(id));
   const sentCounts = progress.sent || {};
-  const emailedAllFour = ["mercer", "anon", "withheld"].every(k => (sentCounts[k] || 0) > 0);
+  const emailedAllFour = ["mercer", "anon", "withheld", "reyes"].every(k => (sentCounts[k] || 0) > 0);
   const ctx = { allBaseComplete, allMailRead, l11l12Complete, emailedAllFour };
 
   const list = activeList === "tutorials" ? tutorials : levels;
@@ -130,6 +130,18 @@ export default function Home() {
   const sendReply = async (to, text) => {
     const body = (text || "").trim();
     if (!body) return;
+    if (to === "Reyes") {
+      setProgress(p => {
+        const seq = (p.replySeq || 1000) + 1;
+        return {
+          ...p,
+          replySeq: seq,
+          sent: { ...(p.sent || {}), reyes: ((p.sent || {}).reyes || 0) + 1 },
+          replies: [...(p.replies || []), { id: "rb-" + seq, from: "Reyes", role: "journalist", time: fmtTime(Date.now()), body: REYES_BOUNCE, order: seq, isReply: true }]
+        };
+      });
+      return;
+    }
     const key = to === "Mercer" ? "mercer" : to === "anon" ? "anon" : "withheld";
     setProgress(p => {
       const count = ((p.sent || {})[key] || 0) + 1;

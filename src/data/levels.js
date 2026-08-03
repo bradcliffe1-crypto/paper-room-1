@@ -179,7 +179,7 @@ export const levels = [
     task: "The filings you've read were practice. This one isn't. Open it when you're ready.",
     briefing: FLAG_BRIEF, legend: LEGEND, lines: [],
     secret: true,
-    unlocksWith: ctx => ctx.allBaseComplete && ctx.allMailRead
+    unlocksWith: ctx => ctx.allBaseComplete
   },
   {
     id: "l12", number: "12", title: "███", candidate: "[redacted]",
@@ -188,7 +188,7 @@ export const levels = [
     task: "You read every filing. Every message. There's one more. It found you.",
     briefing: FLAG_BRIEF, legend: LEGEND, lines: [],
     secret: true,
-    unlocksWith: ctx => ctx.allBaseComplete && ctx.allMailRead
+    unlocksWith: ctx => ctx.allMailRead && ctx.emailedAllFour
   },
   {
     id: "l13", number: "13", title: "█", candidate: "[redacted]",
@@ -197,6 +197,6 @@ export const levels = [
     task: "You tried to reach everyone. Everyone. Now read the last filing. It reads you back.",
     briefing: FLAG_BRIEF, legend: LEGEND, lines: [],
     secret: true,
-    unlocksWith: ctx => ctx.l11l12Complete && ctx.emailedAllFour
+    unlocksWith: ctx => ctx.allBaseComplete && ctx.allMailRead && ctx.emailedAllFour
   }
 ];

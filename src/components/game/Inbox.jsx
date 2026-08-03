@@ -55,7 +55,7 @@ export default function Inbox({ progress, onBack, onRead, onReply }) {
     try {
       await onReply(open.from, draft);
       setDraft("");
-      setStatus(open.from === "Reyes" ? "Sent. Reyes is drafting a reply — check back shortly." : "Returned to sender.");
+      setStatus(open.from === "Reyes" ? "Reyes doesn't reply from this account." : "Returned to sender.");
     } catch {
       setStatus("Something went wrong. Try again.");
     } finally {
