@@ -17,8 +17,7 @@ import NewsHint from "@/components/game/NewsHint";
 import Inbox from "@/components/game/Inbox";
 import ManualScreen from "@/components/game/ManualScreen";
 import PinnedDock from "@/components/game/PinnedDock";
-import { base44 } from "@/api/base44Client";
-import { REYES_SYSTEM, REYES_DELAY_MS, BOUNCE_THRESHOLD, MERCER_WARNING, ANON_WARNING, bounceBody } from "@/data/correspondence";
+import { BOUNCE_THRESHOLD, MERCER_WARNING, ANON_WARNING, bounceBody } from "@/data/correspondence";
 
 const fmtTime = (ms) => {
   const d = new Date(ms);
@@ -61,7 +60,7 @@ export default function Home() {
     replies.every(m => read.includes(m.id));
   const l11l12Complete = ["l11", "l12"].every(id => progress.completed.includes(id));
   const sentCounts = progress.sent || {};
-  const emailedAllFour = ["mercer", "anon", "withheld", "reyes"].every(k => (sentCounts[k] || 0) > 0);
+  const emailedAllFour = ["mercer", "anon", "withheld"].every(k => (sentCounts[k] || 0) > 0);
   const ctx = { allBaseComplete, allMailRead, l11l12Complete, emailedAllFour };
 
   const list = activeList === "tutorials" ? tutorials : levels;
@@ -128,41 +127,9 @@ export default function Home() {
   const markRead = id =>
     setProgress(p => ({ ...p, readMessages: [...new Set([...(p.readMessages || []), id])] }));
 
-  useEffect(() => {
-    const t = setInterval(() => {
-      setProgress(p => {
-        const now = Date.now();
-        const due = (p.pending || []).filter(x => x.deliverAt <= now);
-        if (!due.length) return p;
-        return {
-          ...p,
-          pending: (p.pending || []).filter(x => x.deliverAt > now),
-          replies: [...(p.replies || []), ...due.map(x => ({
-            id: x.id, from: "Reyes", role: "journalist",
-            time: fmtTime(x.deliverAt), body: x.body, order: x.order, isReply: true
-          }))]
-        };
-      });
-    }, 4000);
-    return () => clearInterval(t);
-  }, []);
-
   const sendReply = async (to, text) => {
     const body = (text || "").trim();
     if (!body) return;
-    if (to === "Reyes") {
-      const res = await base44.integrations.Core.InvokeLLM({
-        prompt: REYES_SYSTEM + "\n\n--- Tipster's message ---\n" + body,
-        response_json_schema: { type: "object", properties: { brief: { type: "string" } }, required: ["brief"] }
-      });
-      const brief = res && typeof res === "object" && res.brief ? res.brief : (typeof res === "string" ? res : "");
-      const delay = REYES_DELAY_MS[0] + Math.floor(Math.random() * (REYES_DELAY_MS[1] - REYES_DELAY_MS[0] + 1));
-      setProgress(p => {
-        const seq = (p.replySeq || 1000) + 1;
-        return { ...p, replySeq: seq, sent: { ...(p.sent || {}), reyes: ((p.sent || {}).reyes || 0) + 1 }, pending: [...(p.pending || []), { id: "r-" + seq, deliverAt: Date.now() + delay, body: brief, order: seq }] };
-      });
-      return;
-    }
     const key = to === "Mercer" ? "mercer" : to === "anon" ? "anon" : "withheld";
     setProgress(p => {
       const count = ((p.sent || {})[key] || 0) + 1;
