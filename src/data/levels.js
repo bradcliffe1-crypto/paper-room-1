@@ -122,15 +122,10 @@ export const levels = [
     id: "l04", number: "04", title: "Clipping", candidate: "Kelly Ayotte",
     filer: "Kelly for New Hampshire", office: "Governor — New Hampshire", period: "01/01/2024 – 11/05/2024",
     report: "Statement of Receipts and Expenditures (RSA 664)", type: "flag",
-    task: "Someone sent me a clipping. Read it, then read her filing. Cross-reference the names — and the companies — against the roster. Whose show up in both?",
-    briefing: "Read the clipping, then the filing. Compare names between them. A flag is a lead, not a conclusion.",
+    task: "Ayotte's first move was a commission — COGE, government efficiency. The roster isn't in this filing; it's out there. Go look up who she put on it. Then come back and use Find on page to pull each name out of her donors. Whose names — or companies — show up in both? Read carefully. Not every match is the match.",
+    briefing: "A flag is a lead, not a conclusion.",
     legend: LEGEND,
-    hint: {
-      headline: "Ayotte turns to familiar names to lead her new government efficiency commission",
-      source: "New Hampshire Public Radio",
-      date: "January 10, 2025",
-      body: "Hours after being sworn in, Gov. Kelly Ayotte issued her first executive order, creating a 15-member Commission on Government Efficiency — \"COGE.\" She named former Gov. Craig Benson and Bedford businessman Andy Crews — described as \"a longtime political donor to Ayotte\" — as co-chairs. The other members: Sherman Packard (Speaker of the House), Mark McConkey (state senator), Al Letizio Jr. (A.J. Letizio Sales & Marketing), Brad Kreick (AccessHope), Brendan Keegan (bFEARLESS Ventures), Christopher Clement (McClure Engineering), Dianne Mercier (People's United Bank), Drew Cline (Josiah Bartlett Center), Felicia Thomas (Planet Fitness), Jennifer Parent (McLane Middleton), John Marasco (NH DMV), Kimberly Abare (New England Die Cutting), and Robert Monaco (Intelligent Manufacturing Solutions). Cross-reference the roster against the filing. Whose names — or companies — show up in both?"
-    },
+    findOnPage: true,
     lines: level04Lines
   },
   {

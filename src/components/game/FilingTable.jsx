@@ -1,14 +1,32 @@
-import { Flag } from "lucide-react";
+import { useState } from "react";
+import { Flag, Search } from "lucide-react";
 
 const money = n => new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(n);
 
-export default function FilingTable({ lines, selected, onToggle }) {
+export default function FilingTable({ lines, selected, onToggle, findOnPage }) {
+  const [query, setQuery] = useState("");
+  const q = query.trim().toLowerCase();
+  const shown = findOnPage && q ? lines.filter(l => [l.date, l.code, l.name, l.location, l.detail].join(" ").toLowerCase().includes(q)) : lines;
   return (
     <div className="border border-[#262629] bg-[#0c0c0d]">
+      {findOnPage && (
+        <div className="border-b border-[#262629] p-3">
+          <div className="relative">
+            <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#45433f]" />
+            <input
+              value={query}
+              onChange={e => setQuery(e.target.value)}
+              placeholder="find on page…"
+              className="w-full border border-[#262629] bg-[#131316] py-2 pl-9 pr-3 font-mono text-sm text-[#d8d5cd] placeholder:text-[#45433f]"
+            />
+          </div>
+          {q && <p className="mt-2 font-mono text-[10px] uppercase tracking-[.15em] text-[#45433f]">{shown.length} of {lines.length} rows match</p>}
+        </div>
+      )}
       <div className="sticky top-0 z-10 hidden grid-cols-[100px_82px_1fr_140px] border-b border-[#262629] bg-[#0c0c0d] px-4 py-3 font-mono text-[10px] uppercase tracking-[.15em] text-[#45433f] md:grid">
         <span>date</span><span>code</span><span>name / purpose</span><span className="text-right">amount</span>
       </div>
-      {lines.map(line => {
+      {shown.map(line => {
         const active = selected.includes(line.id);
         return (
           <div key={line.id} className={`grid border-b border-[#181819] px-4 py-4 transition last:border-0 md:grid-cols-[100px_82px_1fr_140px] ${active ? "bg-[#1a1411]" : "hover:bg-[#131316]"}`}>
