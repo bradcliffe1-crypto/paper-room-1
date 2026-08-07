@@ -9,10 +9,10 @@ import { tutorials } from "@/data/tutorialLevels";
 //   Mercer   — (1) on entering _desktop; (2) after case 6: congrats + vague warning.
 //   Reyes    — intro on _desktop, then a one-way "note" after EACH case with the real
 //              New Hampshire / federal campaign-finance law behind that case's theme.
-//              Reyes is not replyable.
+//              Reyes is not replyable. Notes stay general — they teach the law, not the answer.
 //   Anon     — increasingly chilling at cases 4, 5, and 8.
 //   Withheld — (1) after the 2nd Ayotte filing, formal, via a staffer;
-//              (2) after the 3rd/final Ayotte filing, informal, from Kelly herself.
+//              (2) after the 3rd/final Ayotte filing, curt, from Kelly herself.
 
 const trainingDone = p => tutorials.every(t => p.completed.includes(t.id));
 const done = id => p => p.completed.includes(id);
@@ -31,7 +31,7 @@ export const messages = [
     from: "Reyes",
     role: "journalist",
     time: "09:02",
-    body: "Name's Reyes. NHPR. I've been covering New Hampshire campaign finance longer than you've been alive. You're working through Mercer's casebook — fine. I don't take replies, but after every case you close I'll send you the real law behind what you just saw: what's actually illegal in this state, what's just ugly, and what a reporter would need before they'd run it. Read the field manual first. Then we go case by case. Don't tell him we talk.",
+    body: "Reyes. NHPR. I cover New Hampshire campaign finance. You're working Mercer's casebook — your business. I don't take replies. After each case you close, I'll send you the law behind what you just read: what's actually illegal in this state, what's just ugly, and what a reporter would need before they'd run it. Read the field manual first. — Reyes",
     unlock: trainingDone
   },
   {
@@ -39,7 +39,7 @@ export const messages = [
     from: "Reyes",
     role: "journalist",
     time: "10:21",
-    body: "Fronts. Here's the real law: RSA 664:4 says no one may give anonymously, under a name that isn't the donor's, or in any other concealed manner — and no contribution may be made 'in the guise of a loan.' The cap an individual or corporation may give a candidate is $15,000 per cycle (it was $1,000 an election until January 2025). A row of maxed LLCs at one registered-agent address on one day isn't illegal on its face — each entity is a separate donor for limit purposes. What makes it a crime is one person's money traveling through them. That's a contribution in the name of another. The shared address is visible because 664:6 forces itemization of every receipt over $50 with a name and address. You can't hide a shell — you can only hope no one reads the filing.",
+    body: "Fronts. RSA 664:4 says no one may give anonymously, under a name that isn't their own, or in the guise of a loan. Each entity that gives is counted as a separate donor for the limit. What turns a cluster of donations into a crime is one person's money moving through them — a contribution in the name of another. The disclosure rules exist so you can see who gave. The rest is reading. — Reyes",
     unlock: done("l01")
   },
   {
@@ -47,7 +47,7 @@ export const messages = [
     from: "Reyes",
     role: "journalist",
     time: "11:40",
-    body: "Outlays. RSA 664:5 bars campaign funds from being spent on personal purposes, and 664:4-b says surplus can't be used for personal use either. The test isn't the memo line — it's the payee and the purpose together. A salon charge billed as 'salon services' is personal grooming; a grocery charge billed as 'meals' is personal shopping; 'hostess gifts' is a social courtesy. None of those promote the candidate. The Attorney General has pursued committees for exactly this. The memo is a label, not a permission slip — when the payee's business doesn't match a campaign purpose, that's where 'sloppy bookkeeping' becomes a question of what the money was actually for.",
+    body: "Outlays. RSA 664:5 bars campaign funds from being spent on personal purposes. The test isn't the memo line — it's the payee and the purpose together. When what was bought doesn't serve the campaign, the label on the line doesn't matter. The Attorney General has pursued committees for exactly this. — Reyes",
     unlock: done("l02")
   },
   {
@@ -55,7 +55,7 @@ export const messages = [
     from: "Reyes",
     role: "journalist",
     time: "13:05",
-    body: "Origins. Sununu's a federal race — U.S. Senate — so this one runs under FEC rules, not RSA 664. The FEC doesn't care where a donor lives. Any U.S. citizen or permanent resident may give up to the per-election cap (a few thousand dollars; primary and general are counted separately) to a candidate committee, and contributions over $200 in the aggregate per election get itemized with employer and occupation. Out-of-state money isn't illegal — it's disclosed. The number you just totaled isn't a violation; it's a measure of how much of his backing comes from outside New Hampshire. That's a story, not a charge.",
+    body: "Origins. Sununu is a federal race — U.S. Senate — so this runs under FEC rules, not RSA 664. The FEC doesn't care where a donor lives. Any U.S. citizen or permanent resident may give up to the per-election cap. Out-of-state money isn't illegal; it's disclosed. The number you totaled isn't a violation — it's a measure of how much backing comes from outside the state. That's a story, not a charge. — Reyes",
     unlock: done("l03")
   },
   {
@@ -71,7 +71,7 @@ export const messages = [
     from: "Reyes",
     role: "journalist",
     time: "14:17",
-    body: "Clipping. Here's the honest part: appointees donating to the governor who appointed them isn't illegal in New Hampshire. There's no state pay-to-play statute that catches a gubernatorial commission seat paired with a maxed check. What there is, is RSA 664:6 — every contribution over $50 is public with a name and address, and over $200 in the aggregate with an employer. So a reporter can cross-reference a commission roster against a donor list and find the overlap. That's correlation, not a crime. COGE-style patronage is a lead you'd hand to someone like me — I'd want the appointments, the dates of the checks, and the business ties before I'd write a line.",
+    body: "Clipping. Appointees donating to the official who appointed them isn't illegal in New Hampshire — there's no state pay-to-play statute that catches it. What there is, is disclosure: every contribution over $50 is public with a name and address, larger ones with an employer. So a reporter can set one public list against another. That's correlation, not a crime — a lead you'd hand to someone like me. — Reyes",
     unlock: done("l04")
   },
   {
@@ -87,7 +87,7 @@ export const messages = [
     from: "Reyes",
     role: "journalist",
     time: "15:48",
-    body: "Charges. Same statute as Outlays — RSA 664:5, no personal use — but with a sharper edge. Gas on the trail can be legitimate campaign travel; a year of it with no mileage log is a different question. Fast food, oil changes, a phone bill: each is defensible in isolation, damning in aggregate. The big one — a large payment to a vendor whose business doesn't match the memo — is where I'd start. The AG reads the payee, the purpose, and the pattern together, not the label on the line. When the vendor isn't in the business the memo claims, the question stops being 'was this a campaign expense' and starts being 'what did he actually buy.'",
+    body: "Charges. Same statute as Outlays — RSA 664:5, no personal use. Small expenses can be legitimate in isolation and damning in aggregate. The question is always whether the spend served the campaign. When the payee's business doesn't match a campaign purpose, the memo stops being a label and starts being a question. — Reyes",
     unlock: done("l05")
   },
   {
@@ -95,7 +95,7 @@ export const messages = [
     from: "Reyes",
     role: "journalist",
     time: "16:33",
-    body: "Venues. Same move as Fronts, different costume. A family of LLCs sharing one word in their names, all maxed on one day — that's a conduit cluster under RSA 664:4, same as the Whiby row. The statute doesn't care what the entities are called; it cares whether the money behind them is one donor's. The cap each one is hitting is $15,000 a cycle now (it was $1,000 an election until 2025 — these 2024 filings ran under the old limit). The tell is the shared date and the shared naming convention, both of which 664:6 makes you report. Two Ayotte filings, same signature. That's why I'd pull every LLC in her cycle before I called her office.",
+    body: "Venues. Same law as Fronts — RSA 664:4. The statute doesn't care what the entities are called; it cares whether the money behind them is one donor's. Each entity is a separate donor for the limit. The crime is one person's cash routed through several names. Disclosure is what lets you see it. — Reyes",
     unlock: done("l06")
   },
   {
@@ -119,7 +119,7 @@ export const messages = [
     from: "Reyes",
     role: "journalist",
     time: "17:52",
-    body: "Affiliations. Pappas is federal again, so FEC rules. A multi-candidate political committee — a PAC — may give up to $5,000 per election to a candidate, and it may give to as many candidates as it likes. The pro-Israel committees do exactly that, every cycle, and it's all disclosed in the FEC filings. Repeated giving by the same committee isn't a violation; it's the committee doing what it exists to do. The 'affiliations' question is answered by the filings themselves — which committees chose to back him, and how often. That's the whole point of the itemization over $200.\n\nAnd free advice: be careful with Mercer. He points you at the filings and lets you take the risk.",
+    body: "Affiliations. Pappas is federal, so FEC rules. A multi-candidate political committee — a PAC — may give up to $5,000 per election to a candidate, and may give to as many candidates as it likes. Repeated giving by the same committee isn't a violation; it's the committee doing what it exists to do. The filings tell you who chose to back him. That's the whole point of the itemization. — Reyes",
     unlock: done("l07")
   },
   {
@@ -135,7 +135,7 @@ export const messages = [
     from: "Reyes",
     role: "journalist",
     time: "19:04",
-    body: "Forgiven. RSA 664:4 says it outright: no contribution may be made 'in the guise of a loan.' A candidate may lend their own campaign money — that's allowed, and the loan has to be reported with its terms. But the moment that loan is forgiven, the forgiven amount becomes a contribution: it counts toward the limit and gets reported as one. A run of forgiveness entries days apart, in different sizes, with no single accounting — that's a loan being melted into a gift on the installment plan. Each forgiven slice is a contribution in the guise of a loan, which is exactly what 664:4 forbids. The dates and the codes are the whole case.",
+    body: "Forgiven. RSA 664:4 says it outright: no contribution may be made in the guise of a loan. A candidate may lend their own campaign money — that's allowed, and the loan has to be reported with its terms. The moment that loan is forgiven, the forgiven amount becomes a contribution: it counts toward the limit and gets reported as one. — Reyes",
     unlock: done("l08")
   },
   {
@@ -143,7 +143,7 @@ export const messages = [
     from: "Reyes",
     role: "journalist",
     time: "20:30",
-    body: "Backers. Federal again, so FECA. A corporation can't give from its treasury to a federal candidate — that's been banned since the Tillman Act's descendants. But its executives can give as individuals up to the per-election cap, and its corporate PAC — a separate segregated fund — can give $5,000 an election. Both get reported with employer and occupation. So 'corporate backing' in a federal race is really executive personal checks plus PAC checks, all disclosed, all countable. The number you just totaled is the share of the filing that wears a tie — executives and PACs versus small individual donors. That's not a violation either. It's the most honest question you can ask of a filing: who's actually paying?",
+    body: "Backers. Federal again, so FECA. A corporation can't give from its treasury to a federal candidate. But its executives can give as individuals up to the per-election cap, and its corporate PAC — a separate fund — can give $5,000 an election. Both get reported with employer and occupation. So 'corporate backing' is really executive personal checks plus PAC checks, all disclosed. The honest question a filing can answer: who's actually paying? — Reyes",
     unlock: done("l09")
   },
   {
@@ -151,7 +151,7 @@ export const messages = [
     from: "Reyes",
     role: "journalist",
     time: "22:11",
-    body: "Namesakes. The textbook straw-donor bundle: a row of maxed checks from different names at one employer and one address on one day. RSA 664:4 bans giving 'under a name not that of the donor,' and reimbursing someone to make a contribution is the same violation — you're using their name to hide your own. The split across names is the dodge; the shared address and employer, disclosed under 664:6, is the tell. Same statute as Fronts, same mechanism as Venues — a single donor wearing many names to stay under the cap. Three Ayotte filings, three faces of the same trick. That's your case.",
+    body: "Namesakes. RSA 664:4 bans giving under a name that isn't the donor's, and reimbursing someone to make a contribution is the same violation — using their name to hide your own. The disclosure rules make the donor's name and address public. The rest is reading. — Reyes",
     unlock: done("l10")
   },
   {
@@ -159,7 +159,7 @@ export const messages = [
     from: "WITHHELD",
     role: "politician",
     time: "23:48",
-    body: "You've read three of mine now. Three. I don't know who you think you are, but I promise you this — I've buried bigger problems than you. Walk away. — K",
+    body: "Enough. Walk away. — K",
     unlock: done("l10")
   }
 ];
