@@ -37,13 +37,14 @@ export default function Home() {
   useEffect(() => localStorage.setItem("casebook-progress", JSON.stringify(progress)), [progress]);
 
   useEffect(() => {
-    if (new URLSearchParams(window.location.search).get("unlock") === "all") {
+    const u = new URLSearchParams(window.location.search).get("unlock");
+    if (u === "all" || u === "training") {
       setProgress({
         completed: [...tutorials.map(t => t.id), ...levels.filter(l => !l.secret).map(l => l.id)],
         scores: {},
         readMessages: []
       });
-      setScreen("menu");
+      setScreen(u === "training" ? "training-complete" : "menu");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
