@@ -40,7 +40,7 @@ export default function Home() {
     const u = new URLSearchParams(window.location.search).get("unlock");
     if (u === "all" || u === "training") {
       setProgress({
-        completed: [...tutorials.map(t => t.id), ...levels.filter(l => !l.secret).map(l => l.id)],
+        completed: [...tutorials.map(t => t.id), ...levels.map(l => l.id)],
         scores: {},
         readMessages: []
       });
