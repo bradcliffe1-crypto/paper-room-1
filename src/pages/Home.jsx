@@ -54,17 +54,6 @@ export default function Home() {
   const unreadCount = messages.filter(m => m.unlock(progress) && !read.includes(m.id)).length
     + replies.filter(m => !read.includes(m.id)).length;
 
-  const baseCaseIds = levels.filter(l => !l.secret).map(l => l.id);
-  const allBaseComplete = baseCaseIds.every(id => progress.completed.includes(id));
-  const allMailRead =
-    messages.filter(m => m.unlock(progress)).every(m => read.includes(m.id)) &&
-    replies.every(m => read.includes(m.id));
-  const l11l12Complete = ["l11", "l12"].every(id => progress.completed.includes(id));
-  const sentCounts = progress.sent || {};
-  const emailedAllFour = ["mercer", "anon", "withheld", "reyes"].every(k => (sentCounts[k] || 0) > 0);
-  const completedL10 = progress.completed.includes("l10");
-  const ctx = { allBaseComplete, allMailRead, l11l12Complete, emailedAllFour, completedL10 };
-
   const list = activeList === "tutorials" ? tutorials : levels;
 
   const choose = (listName, i) => {
@@ -166,7 +155,6 @@ export default function Home() {
         onOpenInbox={() => setScreen("inbox")}
         onOpenManual={openManual}
         unreadCount={unreadCount}
-        ctx={ctx}
       />
     );
 

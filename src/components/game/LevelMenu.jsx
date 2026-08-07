@@ -14,7 +14,7 @@ function FolderIcon({ completed }) {
   );
 }
 
-export default function LevelMenu({ tutorials, levels, completed, onSelect, onOpenInbox, onOpenManual, unreadCount, ctx }) {
+export default function LevelMenu({ tutorials, levels, completed, onSelect, onOpenInbox, onOpenManual, unreadCount }) {
   const tutUnlocked = i => i === 0 || completed.includes(tutorials[i - 1].id);
   const allTrainingComplete = tutorials.every(t => completed.includes(t.id));
   const headerText = allTrainingComplete ? "_desktop" : "_training";
@@ -59,9 +59,7 @@ export default function LevelMenu({ tutorials, levels, completed, onSelect, onOp
           <section>
             <div className="grid grid-cols-3 gap-10 sm:grid-cols-4 lg:grid-cols-5">
               {levels.map((level, i) => {
-                const isSecret = !!level.secret;
-                if (isSecret && !(level.unlocksWith && level.unlocksWith(ctx))) return null;
-                const unlocked = isSecret || (level.lines.length > 0 && (i === 0 || completed.includes(levels[i - 1].id)));
+                const unlocked = level.lines.length > 0 && (i === 0 || completed.includes(levels[i - 1].id));
                 const done = completed.includes(level.id);
                 return (
                   <button
