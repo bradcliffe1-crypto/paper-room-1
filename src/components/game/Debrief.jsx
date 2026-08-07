@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, Check, X } from "lucide-react";
+import { ArrowLeft, Check, X } from "lucide-react";
 
 export default function Debrief({ level, selected, onNext, onRetry }) {
   const correct = level.lines.filter(x => x.flag && selected.includes(x.id));
@@ -36,14 +36,9 @@ export default function Debrief({ level, selected, onNext, onRetry }) {
         </div>
 
         <div className="mt-12 flex items-center justify-between">
-          <button onClick={onRetry} aria-label="Review filing" className="flex h-10 w-10 items-center justify-center rounded-full border border-[#3a3a3e] text-[#d8d5cd] transition hover:border-[#9a8f6a] hover:text-[#9a8f6a]">
+          <button onClick={ok ? onNext : onRetry} aria-label={ok ? "Return to desktop" : "Review filing"} className="flex h-10 w-10 items-center justify-center rounded-full border border-[#3a3a3e] text-[#d8d5cd] transition hover:border-[#9a8f6a] hover:text-[#9a8f6a]">
             <ArrowLeft size={20} />
           </button>
-          {ok && (
-            <button onClick={onNext} aria-label="Continue" className="flex h-10 w-10 items-center justify-center rounded-full border border-[#9a8f6a] text-[#9a8f6a] transition hover:bg-[#9a8f6a] hover:text-[#0a0a0b]">
-              <ArrowRight size={20} />
-            </button>
-          )}
         </div>
       </div>
     </main>
