@@ -36,6 +36,11 @@ export default function TrainingComplete({ onContinue }) {
           {text}
           {!done && <span className="ml-0.5 inline-block h-5 w-2 animate-pulse bg-[#6a7a8a] align-middle" />}
         </p>
+        {done && (
+          <p className="mt-8 font-mono text-[11px] leading-6 text-[#5d5b56]">
+            This is not a work of fiction. The names, committees, transactions, and events depicted are drawn from real campaign-finance records. Any resemblance to real persons or political activity is entirely intentional.
+          </p>
+        )}
         {done && <p className="mt-10 font-mono text-xs uppercase tracking-[.2em] text-[#5d5b56]">click to continue</p>}
       </div>
     </main>
