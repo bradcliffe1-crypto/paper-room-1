@@ -4,8 +4,8 @@
 // (Friends of John Stephen, 814 Elm Street, Suite 309, Manchester, NH 03101).
 // A forgiven loan is a contribution; sixteen same-day forgiveness entries, each
 // carrying a $0.00 aggregate, convert debt into unreported contributions.
-// Decoys are simulated benign 2024 receipts, expenditures, and ordinary loan
-// activity (loan received, loan repayment) interspersed between the flags.
+// Decoys are simulated benign 2024–2025 receipts, expenditures, and ordinary
+// loan activity (loan received, loan repayment) interleaved between the flags.
 
 export const level08Lines = [
   { id: "l08-01", section: "Receipts", code: "R-IND", date: "04/15/2024", name: "Stephen P. Kniaz", location: "35 Jenkins Rd, Lee, NH 03861", detail: "Construction Engineering · Black Birch Development", amount: 250 },
@@ -16,6 +16,7 @@ export const level08Lines = [
   { id: "l08-06", section: "Receipts", code: "R-ORG", date: "06/07/2024", name: "Anagnost Investment, Inc.", location: "1662 Elm St, Manchester, NH 03101", detail: "Itemized monetary contribution", amount: 5000 },
   { id: "l08-07", section: "Expenditures", code: "E-OPS", date: "06/15/2024", name: "Comcast", location: "Manchester, NH", detail: "Office internet", amount: 129.99 },
   { id: "l08-08", section: "Receipts", code: "R-IND", date: "07/01/2024", name: "Kenneth Weyler", location: "23 Scotland Rd, Kingston, NH 03848", detail: "Retired · Retired", amount: 250 },
+  { id: "l08-39", section: "Receipts", code: "R-IND", date: "04/15/2025", name: "Carol Ashton", location: "12 Pinecrest Dr, Bedford, NH 03110", detail: "Retired · Retired", amount: 200 },
   { id: "l08-09", section: "Receipts", code: "R-IND", date: "07/09/2024", name: "Michael Kettenback", location: "925 Central Rd, Rye, NH 03870", detail: "Real Estate Professional · Demoulas", amount: 1000 },
   { id: "l08-10", section: "Expenditures", code: "E-ADV", date: "07/20/2024", name: "WMUR", location: "Manchester, NH", detail: "Television advertising", amount: 12500 },
   { id: "l08-11", section: "Receipts", code: "R-ORG", date: "09/14/2024", name: "Paradigm Plumbing Heating and AC Inc", location: "8 Industrial Park Drive, Unit 12, Hooksett, NH 03106", detail: "Itemized monetary contribution", amount: 1000 },
@@ -26,11 +27,16 @@ export const level08Lines = [
   { id: "l08-16", section: "Loans", code: "L-REP", date: "11/04/2024", name: "John Stephen", location: "814 Elm Street, Suite 309, Manchester, NH 03101", detail: "Partial candidate-loan repayment", amount: 5000 },
   { id: "l08-17", section: "Expenditures", code: "E-OPS", date: "11/04/2024", name: "Verizon", location: "Manchester, NH", detail: "Phone service", amount: 89.50 },
   { id: "l08-18", section: "Receipts", code: "R-IND", date: "11/04/2024", name: "Deborah Boudreau", location: "21 Roger Rd, Goffstown, NH 03045", detail: "Attorney / Legal · Douglas, Leonard & Garvey PC", amount: 100 },
-
+  { id: "l08-40", section: "Expenditures", code: "E-ADV", date: "03/20/2025", name: "Signwave Co", location: "Manchester, NH", detail: "Yard signs · 1,000 units", amount: 1300 },
+  { id: "l08-34", section: "Receipts", code: "R-IND", date: "05/05/2025", name: "Thomas Peabody", location: "14 River Rd, Exeter, NH 03833", detail: "Retired · Retired", amount: 250 },
   { id: "l08-19", section: "Loans", code: "L-FOR", date: "05/30/2025", name: "Friends of John Stephen", location: "814 Elm Street, Suite 309, Manchester, NH 03101", detail: "Loan forgiven · aggregate $0.00", amount: 250, flag: true, why: "A forgiven loan is a contribution. Same-day forgiveness posted by the candidate's own committee, with a $0.00 aggregate that hides the true total. Flag for review." },
+  { id: "l08-35", section: "Expenditures", code: "E-OPS", date: "05/12/2025", name: "Staples", location: "Manchester, NH", detail: "Office supplies", amount: 178.40 },
   { id: "l08-20", section: "Loans", code: "L-FOR", date: "05/30/2025", name: "Friends of John Stephen", location: "814 Elm Street, Suite 309, Manchester, NH 03101", detail: "Loan forgiven · aggregate $0.00", amount: 1500, flag: true, why: "A forgiven loan is a contribution. Same-day forgiveness posted by the candidate's own committee, with a $0.00 aggregate that hides the true total. Flag for review." },
+  { id: "l08-36", section: "Receipts", code: "R-IND", date: "05/20/2025", name: "Eric Chinburg", location: "184 High Street, Exeter, NH 03833", detail: "Construction Engineering · Chinburg", amount: 1000 },
   { id: "l08-21", section: "Loans", code: "L-FOR", date: "05/30/2025", name: "Friends of John Stephen", location: "814 Elm Street, Suite 309, Manchester, NH 03101", detail: "Loan forgiven · aggregate $0.00", amount: 1000, flag: true, why: "A forgiven loan is a contribution. Same-day forgiveness posted by the candidate's own committee, with a $0.00 aggregate that hides the true total. Flag for review." },
+  { id: "l08-37", section: "Loans", code: "L-REP", date: "05/28/2025", name: "John Stephen", location: "814 Elm Street, Suite 309, Manchester, NH 03101", detail: "Interest payment on candidate loan", amount: 320 },
   { id: "l08-22", section: "Loans", code: "L-FOR", date: "05/30/2025", name: "Friends of John Stephen", location: "814 Elm Street, Suite 309, Manchester, NH 03101", detail: "Loan forgiven · aggregate $0.00", amount: 1000, flag: true, why: "A forgiven loan is a contribution. Same-day forgiveness posted by the candidate's own committee, with a $0.00 aggregate that hides the true total. Flag for review." },
+  { id: "l08-38", section: "Expenditures", code: "E-ADV", date: "06/05/2025", name: "WMUR", location: "Manchester, NH", detail: "Television advertising", amount: 8200 },
   { id: "l08-23", section: "Loans", code: "L-FOR", date: "05/30/2025", name: "Friends of John Stephen", location: "814 Elm Street, Suite 309, Manchester, NH 03101", detail: "Loan forgiven · aggregate $0.00", amount: 2000, flag: true, why: "A forgiven loan is a contribution. Same-day forgiveness posted by the candidate's own committee, with a $0.00 aggregate that hides the true total. Flag for review." },
   { id: "l08-24", section: "Loans", code: "L-FOR", date: "05/30/2025", name: "Friends of John Stephen", location: "814 Elm Street, Suite 309, Manchester, NH 03101", detail: "Loan forgiven · aggregate $0.00", amount: 2500, flag: true, why: "A forgiven loan is a contribution. Same-day forgiveness posted by the candidate's own committee, with a $0.00 aggregate that hides the true total. Flag for review." },
   { id: "l08-25", section: "Loans", code: "L-FOR", date: "05/30/2025", name: "Friends of John Stephen", location: "814 Elm Street, Suite 309, Manchester, NH 03101", detail: "Loan forgiven · aggregate $0.00", amount: 2500, flag: true, why: "A forgiven loan is a contribution. Same-day forgiveness posted by the candidate's own committee, with a $0.00 aggregate that hides the true total. Flag for review." },

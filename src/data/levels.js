@@ -84,6 +84,7 @@ export const levels = [
       {id:"l02-02",section:"Expenditures",code:"E-OTH",date:"01/22/2024",name:"New Hampshire Liquor & Wine",location:"12 Centerra Parkway, Lebanon, NH 03766",detail:"Beverages for Fundraiser",amount:198.28},
       {id:"l02-03",section:"Expenditures",code:"E-OTH",date:"02/14/2024",name:"Salt Hill Pub",location:"2 W Park St, Lebanon, NH 03766",detail:"Food for Fundraiser",amount:509.48},
       {id:"l02-04",section:"Expenditures",code:"E-OPS",date:"02/20/2024",name:"Irving",location:"85 NH-9, West Chesterfield, NH 03466",detail:"Gas",amount:48.25},
+      {id:"l02-f1",section:"Expenditures",code:"E-OTH",date:"02/22/2024",name:"Vermont Fuel Co",location:"White River Junction, VT",detail:"Furnace tuneup",amount:250,flag:true,why:"A $250 payment to a Vermont heating-oil company for an annual furnace tuneup — home heating maintenance, not a campaign cost. Flag."},
       {id:"l02-05",section:"Expenditures",code:"E-OTH",date:"02/23/2024",name:"Rum Brook Market",location:"249 Rt 10 N, Grantham, NH 03753",detail:"Gas",amount:48.47,flag:true,why:"The payee is a grocery market, not a gas station. A 'Gas' charge at a market is a thin label over what may be a personal grocery purchase. Flag for review."},
       {id:"l02-06",section:"Expenditures",code:"E-OPS",date:"03/01/2024",name:"Cheers Restaurant",location:"17 Depot St, Concord, NH 03301",detail:"Meals",amount:13.95},
       {id:"l02-07",section:"Expenditures",code:"E-OPS",date:"03/20/2024",name:"McDonalds",location:"4 Nichols Mill Lane, Warner, NH 03278",detail:"Meals",amount:11.69},
@@ -91,10 +92,13 @@ export const levels = [
       {id:"l02-09",section:"Expenditures",code:"E-OTH",date:"03/27/2024",name:"Ariston Floral",location:"Lexington Ave, New York, NY",detail:"Flowers",amount:190.53},
       {id:"l02-10",section:"Expenditures",code:"E-OPS",date:"03/28/2024",name:"Common Man Roadside",location:"25 Springer Rd, Hooksett, NH 03106",detail:"Meals",amount:70.55},
       {id:"l02-11",section:"Expenditures",code:"E-OTH",date:"04/04/2024",name:"River Valley Club",location:"Lebanon, NH 03766",detail:"Salon Services",amount:148,flag:true,why:"A social club charging the campaign for 'Salon Services' — personal grooming billed to campaign funds. Flag as a non-campaign expenditure."},
+      {id:"l02-f2",section:"Expenditures",code:"E-OTH",date:"04/05/2024",name:"NH Dept of Motor Vehicles",location:"Concord, NH",detail:"Car registration",amount:181,flag:true,why:"Personal car registration paid with campaign funds — a personal vehicle cost. Flag."},
       {id:"l02-12",section:"Expenditures",code:"E-OPS",date:"04/08/2024",name:"American Airlines",location:"PO Box 619616, DFW Airport, TX",detail:"Travel",amount:346.76},
       {id:"l02-13",section:"Expenditures",code:"E-OTH",date:"04/12/2024",name:"Aldi",location:"Alexandria, VA",detail:"Meal",amount:57.76,flag:true,why:"Aldi is a grocery store, not a restaurant. A 'Meal' charge at a grocery store looks like personal shopping billed to the campaign. Flag."},
+      {id:"l02-f3",section:"Expenditures",code:"E-OTH",date:"04/13/2024",name:"Cross Sound Ferry",location:"Orient Point, NY",detail:"Ferry to Orient Point",amount:190,flag:true,why:"A ferry ride to the Hamptons — personal travel to a vacation area, not a campaign cost. Flag."},
       {id:"l02-14",section:"Expenditures",code:"E-OPS",date:"04/13/2024",name:"Jiffy Mart",location:"96 Hanover St, Lebanon, NH 03766",detail:"Gas",amount:36.97},
       {id:"l02-14a",section:"Expenditures",code:"E-OTH",date:"04/25/2024",name:"HomeGoods",location:"1248 N Plainfield Rd, West Lebanon, NH",detail:"Hostess Gifts",amount:34.95,flag:true,why:"HomeGoods is a home-décor store, and 'Hostess Gifts' is a personal courtesy — gifts for a social host, not a campaign activity. Flag as a non-campaign expenditure."},
+      {id:"l02-f4",section:"Expenditures",code:"E-OTH",date:"04/26/2024",name:"TJ Maxx",location:"West Lebanon, NH",detail:"Clothing",amount:412.50,flag:true,why:"Clothing purchased at a discount retailer — personal subsistence, not a campaign expense. Flag."},
       {id:"l02-15",section:"Expenditures",code:"E-OPS",date:"05/03/2024",name:"Circle K",location:"89 Main Street, West Lebanon, NH 03784",detail:"Gas",amount:54.59},
       {id:"l02-16",section:"Expenditures",code:"E-ADV",date:"06/20/2024",name:"Staples",location:"254 N Plainfield Rd, West Lebanon, NH",detail:"Photocopies",amount:11.51},
       {id:"l02-17",section:"Expenditures",code:"E-OPS",date:"06/20/2024",name:"Citgo",location:"89 Main Street, West Lebanon, NH",detail:"Gas",amount:54.02},
@@ -103,10 +107,12 @@ export const levels = [
       {id:"l02-20",section:"Expenditures",code:"E-OPS",date:"07/15/2024",name:"Sunoco",location:"260 Mechanic Street, Lebanon, NH",detail:"Gas",amount:73.25},
       {id:"l02-21",section:"Expenditures",code:"E-OPS",date:"07/26/2024",name:"Dunkin Donuts",location:"96 Hanover St, Lebanon, NH 03766",detail:"Meals",amount:7.14},
       {id:"l02-22",section:"Expenditures",code:"E-ADV",date:"07/29/2024",name:"Staples",location:"254 N Plainfield Rd, West Lebanon, NH",detail:"Postcards",amount:179.18},
+      {id:"l02-f5",section:"Expenditures",code:"E-OTH",date:"07/30/2024",name:"Granite Home Cleaning",location:"Lebanon, NH",detail:"House cleaning",amount:135,flag:true,why:"House cleaning service billed to the campaign — personal home maintenance. Flag."},
       {id:"l02-23",section:"Expenditures",code:"E-OPS",date:"08/08/2024",name:"Cumberland Farms",location:"196 N Main St, Concord, NH 03301",detail:"Gas",amount:54.88},
       {id:"l02-24",section:"Expenditures",code:"E-OPS",date:"08/19/2024",name:"Panera Bread",location:"267 N Plainfield Rd, West Lebanon, NH",detail:"Meals",amount:34.11},
       {id:"l02-26",section:"Expenditures",code:"E-ADV",date:"09/11/2024",name:"e stone Press",location:"520 E Industrial Park Dr, Manchester, NH",detail:"Mailing",amount:3713.93},
       {id:"l02-27",section:"Expenditures",code:"E-OTH",date:"09/16/2024",name:"Luxury Nails",location:"410 Miracle Mile, Lebanon, NH 03766",detail:"Salon Services",amount:117,flag:true,why:"A nail salon charging the campaign for 'Salon Services' — personal grooming, not a campaign expense. Flag."},
+      {id:"l02-f6",section:"Expenditures",code:"E-OTH",date:"09/17/2024",name:"Concord Urgent Care",location:"Concord, NH",detail:"Urgent care visit",amount:89,flag:true,why:"An urgent-care clinic visit charged to the campaign — a personal medical expense. Flag."},
       {id:"l02-28",section:"Expenditures",code:"E-OPS",date:"10/18/2024",name:"Double Tree Radisson",location:"700 Elm St, Manchester, NH",detail:"Travel",amount:276.25}
     ]
   },
@@ -139,7 +145,7 @@ export const levels = [
     id: "l06", number: "06", title: "Venues", candidate: "Kelly Ayotte",
     filer: "Kelly for New Hampshire", office: "Governor — New Hampshire", period: "06/01/2024 – 08/21/2024",
     report: "Statement of Receipts and Expenditures (RSA 664)", type: "flag",
-    task: "Ayotte again. One day, a stack of maxed-out receipts — all from companies with the same word in their name. Same family of LLCs, same date. Follow it.",
+    task: "Ayotte again. A stack of maxed-out receipts, all on one day. Read the organizations — and ask who's really behind them.",
     briefing: FLAG_BRIEF, legend: LEGEND, lines: level06Lines
   },
   {
