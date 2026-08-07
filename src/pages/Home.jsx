@@ -180,7 +180,7 @@ export default function Home() {
       : <AnalysisDebrief level={level} selected={selected} onNext={next} onRetry={() => setScreen("level")} />;
 
   if (type === "manual")
-    return <ManualScreen level={level} onBack={() => setScreen("menu")} onComplete={() => setScreen("menu")} />;
+    return <ManualScreen level={level} onBack={() => setScreen("menu")} />;
 
   const hasData = level.lines.length > 0;
   return (

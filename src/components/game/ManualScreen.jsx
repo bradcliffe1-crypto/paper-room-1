@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 const CODES = [
   { code: "R-IND", label: "Receipt · individual" },
@@ -25,16 +25,13 @@ function Section({ n, title, children }) {
   );
 }
 
-export default function ManualScreen({ onBack, onComplete }) {
+export default function ManualScreen({ onBack }) {
   return (
     <main className="min-h-screen bg-[#0a0a0b] text-[#d8d5cd]">
       <header className="sticky top-0 z-20 border-b border-[#1c1c1f] bg-[#0a0a0b]/95 backdrop-blur">
-        <div className="mx-auto flex max-w-2xl items-center justify-between px-5 py-4 sm:px-8">
+        <div className="mx-auto flex max-w-2xl items-center px-5 py-4 sm:px-8">
           <button onClick={onBack} aria-label="Back" className="flex h-10 w-10 items-center justify-center rounded-full border border-[#3a3a3e] text-[#d8d5cd] transition hover:border-[#9a8f6a] hover:text-[#9a8f6a]">
             <ArrowLeft size={20} />
-          </button>
-          <button onClick={onComplete} aria-label="Continue" className="flex h-10 w-10 items-center justify-center rounded-full border border-[#9a8f6a] text-[#9a8f6a] transition hover:bg-[#9a8f6a] hover:text-[#0a0a0b]">
-            <ArrowRight size={20} />
           </button>
         </div>
       </header>
