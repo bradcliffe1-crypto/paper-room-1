@@ -38,13 +38,20 @@ export default function Home() {
 
   useEffect(() => {
     const u = new URLSearchParams(window.location.search).get("unlock");
-    if (u === "all" || u === "training") {
+    if (u === "all") {
       setProgress({
         completed: [...tutorials.map(t => t.id), ...levels.map(l => l.id)],
         scores: {},
         readMessages: []
       });
-      setScreen(u === "training" ? "training-complete" : "menu");
+      setScreen("menu");
+    } else if (u === "training") {
+      setProgress({
+        completed: tutorials.slice(0, -1).map(t => t.id),
+        scores: {},
+        readMessages: []
+      });
+      setScreen("menu");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
