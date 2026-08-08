@@ -1,17 +1,17 @@
 // Level 10 — "Namesakes" · Kelly Ayotte
 // Source: Kelly for New Hampshire (RSA 664) — itemized filings, 2024 cycle.
-// Answer set = the "Nucar Family of Dealerships" network: the parent "NuCar"
-// entity, its real-estate affiliates at 489 Main Street, Gorham, a selection of
-// "Nucar"-named dealership LLCs, and the executives (President, Chairman) whose
-// employer is "Nucar Family of Dealerships." All maxed out, often same-day.
-// Decoys include the unrelated "Boch" dealer cluster, other automotive groups,
-// and ordinary individual donors. Nucar entries are reduced from the full
-// filing and dispersed across four dates so the network isn't obvious at a
-// glance — the player must search and cross-reference to find the pattern.
+// Answer set = 7 lines tying back to the "Nucar Family of Dealerships" network:
+// the parent "NuCar" entity, one real-estate affiliate at 489 Main Street,
+// Gorham, two executives (Chairman, President) whose employer is "Nucar Family
+// of Dealerships," and three "Nucar"-named dealership LLCs — dispersed across
+// four dates (01/22, 02/07, 10/15, 10/16) so the network isn't obvious at a
+// glance. Decoys include the unrelated "Boch" dealer cluster, other automotive
+// groups, and ordinary individual donors. The player must search and
+// cross-reference names, addresses, and employers to find all seven.
 
 const WHY = {
   ORG: "A 'Nucar'-named dealership giving the maximum on the same day as affiliated Nucar dealerships — coordinated giving through a network of commonly owned entities. Flag for conduit review.",
-  IND: "Maximum contribution from an executive of the 'Nucar Family of Dealerships' — the same ownership behind dozens of dealership LLCs that also maxed out. Flag for coordination.",
+  IND: "Maximum contribution from an executive of the 'Nucar Family of Dealerships' — the same ownership behind the dealership LLCs that also maxed out. Flag for coordination.",
   ADDR: "Real-estate LLC registered at 489 Main Street, Gorham — the headquarters address of 'NuCar.' An affiliated entity sharing the dealership's address. Flag for source review."
 };
 
@@ -22,19 +22,13 @@ export const level10Lines = [
   ["l10-06","R-ORG","01/22/2024","Nucar Automall of St Albans","118 Franklin Park West, Saint Albans City, VT 05478-5478","Exploratory/Primary 2024 · Itemized Monetary Contribution",5000,true,"ORG"],
   ["l10-02","R-ORG","01/22/2024","Boch Hyundai","391 Boston-Providence Turnpike, Norwood, MA 02062-2062","Exploratory/Primary 2024 · Itemized Monetary Contribution",2900,false,""],
   ["l10-30","R-IND","01/22/2024","Petter Skantze","2640 Greenway Drive, Jupiter, FL 33458-3458","Exploratory/Primary 2024 · Itemized Monetary Contribution",1000,false,""],
-  ["l10-12","R-ORG","01/22/2024","Nucar Chevrolet of Norwood","381 Providence Highway #1, Norwood, MA 02062-2062","Exploratory/Primary 2024 · Itemized Monetary Contribution",2900,true,"ORG"],
   ["l10-03","R-ORG","01/22/2024","Boch South","1076 Pleasant Street, Attleboro, MA 02703-2703","Exploratory/Primary 2024 · Itemized Monetary Contribution",5000,false,""],
-  ["l10-13","R-ORG","01/22/2024","Nucar Chevrolet of Norwood","381 Providence Highway #1, Norwood, MA 02062-2062","Exploratory/Primary 2024 · Itemized Monetary Contribution",5000,true,"ORG"],
   ["l10-31","R-IND","01/22/2024","South Automotive Warranty","128 Carnegie Row, Suite 200, Norwood, MA 02062-2062","Exploratory/Primary 2024 · Itemized Monetary Contribution",5000,false,""],
   ["l10-81","R-IND","01/22/2024","Robert Chen","55 Pine St, Manchester, NH 03102","Exploratory/Primary 2024 · Itemized Monetary Contribution",250,false,""],
-  ["l10-16","R-ORG","01/22/2024","Nucar Honda of Westford","299 Littleton Road, Westford, MA 01886-1886","Exploratory/Primary 2024 · Itemized Monetary Contribution",2900,true,"ORG"],
   ["l10-04","R-ORG","01/22/2024","Boch Toyota North","128 Carnegie Row, Suite 200, Norwood, MA 02062-2062","Exploratory/Primary 2024 · Itemized Monetary Contribution",5000,false,""],
   ["l10-32","R-IND","01/22/2024","Tj Tuscai","570 Lanecrest Ln, Houston, TX 77024-7024","Exploratory/Primary 2024 · Itemized Monetary Contribution",1033.06,false,""],
   ["l10-82","R-ORG","01/22/2024","Granite State PAC","PO Box 456, Concord, NH 03301","Exploratory/Primary 2024 · Itemized Monetary Contribution",1000,false,""],
-  ["l10-19","R-ORG","01/22/2024","Nucar Nissan of Keene","544 Monadnock Highway, Swanzey, NH 03446-3446","Exploratory/Primary 2024 · Itemized Monetary Contribution",5000,true,"ORG"],
-  ["l10-22","R-ORG","01/22/2024","Nucar Preowned Superstore of Concord","13 Manchester Street, Concord, NH 03301-3301","Exploratory/Primary 2024 · Itemized Monetary Contribution",5000,true,"ORG"],
   ["l10-94","R-ORG","01/22/2024","Capital Auto Sales","455 Second St, Manchester, NH 03102","Exploratory/Primary 2024 · Itemized Monetary Contribution",2900,false,""],
-  ["l10-29","R-ORG","01/22/2024","Nucar Volkswagen of Norwood","1280 Providence Highway, Norwood, MA 02062-2062","Exploratory/Primary 2024 · Itemized Monetary Contribution",5000,true,"ORG"],
 
   // ── 02/07/2024 — small Primary batch ───────────────────────────────
   ["l10-33","R-IND","02/07/2024","Jill Mack","91 Brick Mill Rd, Bedford, NH 03110-3110","Exploratory/Primary 2024 · Itemized Monetary Contribution",516.53,false,""],
@@ -60,7 +54,6 @@ export const level10Lines = [
   ["l10-40","R-IND","10/15/2024","Andrea Perry","PO BOX 201, Melvin Village, NH 03850","Retired, Retired · General 2024",2000,false,""],
   ["l10-38","R-ORG","10/15/2024","489 Main Street LLC","489 Main Street, Gorham, NH 03581","General 2024 · Itemized Monetary Contribution",5000,true,"ADDR"],
   ["l10-41","R-IND","10/15/2024","Augusta H. Petrone","PO Box 1037, Dublin, NH 03444","n/a · retired · General 2024",2066.12,false,""],
-  ["l10-39","R-ORG","10/15/2024","595 Main Street LLC","489 Main Street, Gorham, NH 03581","General 2024 · Itemized Monetary Contribution",5000,true,"ADDR"],
   ["l10-42","R-IND","10/15/2024","Christopher Marvin","400 Linden Oaks, Rochester, NY 14625","General 2024 · Itemized Monetary Contribution",100,false,""],
   ["l10-43","R-IND","10/15/2024","Daniel Dagesse","16101 Quiet Vista Circle, Delray Beach, FL 33446","Chairman · Nucar Family of Dealershi · General 2024",5000,true,"IND"],
   ["l10-44","R-IND","10/15/2024","Fund for America's Future","PO Box 1373, Columbia, SC 29202","General 2024 · Itemized Monetary Contribution",5000,false,""],
@@ -71,19 +64,15 @@ export const level10Lines = [
   ["l10-48","R-IND","10/15/2024","Sue Conaty","104 Lake Avenue, Sunapee, NH 03782","Retired, Retired · General 2024",5000,false,""],
   ["l10-49","R-IND","10/15/2024","Vic Denardi","69 Etna Rd #318, Lebanon, NH 03766","Athletics Administrator · Dartmouth College · General 2024",260.25,false,""],
 
-  // ── 10/16/2024 — General batch (reduced Nucar, more decoys) ─────────
+  // ── 10/16/2024 — General batch (one Nucar dealership, many decoys) ───
   ["l10-50","R-IND","10/16/2024","Albert Vettese","35 Beauview Ave, Nashua, NH 03064","General 2024 · Itemized Monetary Contribution",104.1,false,""],
   ["l10-51","R-IND","10/16/2024","Bradford Bailey","40 Main Street, Littleton, NH 03561","Insurance Agent · State Farm · General 2024",250,false,""],
-  ["l10-57","R-ORG","10/16/2024","Nucar Chevrolet of Norwood","381 Providence Highway #1, Norwood, MA 02062","General 2024 · Itemized Monetary Contribution",5000,true,"ORG"],
   ["l10-91","R-IND","10/16/2024","Donna Kowalski","15 School St, Hampton, NH 03842","Teacher · Hampton School District · General 2024",250,false,""],
   ["l10-52","R-IND","10/16/2024","Christopher Christie","46 Corey Lane, Mendham Township, NJ 07945","Owner · Christie Solutions LLC · General 2024",5000,false,""],
-  ["l10-60","R-ORG","10/16/2024","Nucar Honda of Norwood","128 Carnegie Row, Suite 200, Norwood, MA 02062","General 2024 · Itemized Monetary Contribution",5000,true,"ORG"],
   ["l10-53","R-IND","10/16/2024","Kevin Hallenbeck","12 Magazine St, Bedford, NH 03110","Sales Consultant · BestSalesPeople · General 2024",516.53,false,""],
   ["l10-92","R-ORG","10/16/2024","Northeast Dealers Association","100 Congress St, Portland, ME 04101","General 2024 · Itemized Monetary Contribution",2900,false,""],
-  ["l10-65","R-ORG","10/16/2024","Nucar Nissan of Keene","544 Monadnock Highway, Swanzey, NH 03446","General 2024 · Itemized Monetary Contribution",5000,true,"ORG"],
   ["l10-54","R-IND","10/16/2024","Michael Lucy","10 Wallis Drive, Wenham, NH 01984-1984","Retired, Retired · General 2024",104.1,false,""],
   ["l10-55","R-ORG","10/16/2024","New England Gaming and Consulting LLC","2 Amberwood Lane, Boxford, MA 01921","General 2024 · Itemized Monetary Contribution",5000,false,""],
-  ["l10-70","R-ORG","10/16/2024","Nucar Toyota of North Attleboro","620 South Washington Street, North Attleborough, MA 02760","General 2024 · Itemized Monetary Contribution",5000,true,"ORG"],
   ["l10-93","R-IND","10/16/2024","William Tanaka","67 High St, Exeter, NH 03833","Retired · General 2024",1000,false,""],
   ["l10-74","R-IND","10/16/2024","Richard & Christie Morse Trust","2 Mulherrin Farm Road, Hanover, NH 03755","General 2024 · Itemized Monetary Contribution",2500,false,""],
   ["l10-73","R-ORG","10/16/2024","Nucar Volkswagen of Norwood","1280 Providence Highway, Norwood, MA 02062","General 2024 · Itemized Monetary Contribution",5000,true,"ORG"],
