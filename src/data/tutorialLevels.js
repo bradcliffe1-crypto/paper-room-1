@@ -1,3 +1,5 @@
+import { tutorialCase05Lines } from "@/data/tutorialCase05Data";
+
 // Tutorial casebook — six fictional training filings. Each one mirrors a
 // desktop objective without reusing the real data: employer-bundled maxed
 // checks (Chorus), a shell-LLC giving cluster (Veneer), home-repair
@@ -148,30 +150,10 @@ export const tutorials = [
     id: "loan-loop", number: "05", title: "Revolving", skill: "Loan forgiveness bursts", difficulty: "Advanced",
     filer: "Torres for Mayor", office: "Mayor · Training City", period: "04/01/2026 – 06/30/2026",
     report: "Quarterly R&E Report", type: "flag",
-    task: "She lent herself money. Then in May she started forgiving it — a piece at a time. Read the loan lines.",
+    task: "She backed herself with loans. Read the whole filing — every line. The loan lines are where to look. Find what she did with her own debt.",
     lesson: "A loan the candidate forgives becomes a contribution and must be reported as such. When a candidate forgives their own loan in several pieces — different sizes, close together — it's debt quietly converted to a gift. Read the loan lines and the amounts.",
-    legend: [{ code: "L-REC", label: "Loan received" }, { code: "L-REP", label: "Loan repayment" }, { code: "L-FOR", label: "Loan forgiven" }, { code: "R-IND", label: "Receipt · individual" }, { code: "E-ADV", label: "Expenditure · advertising" }],
-    lines: [
-      { id: "e15", section: "Receipts", code: "R-IND", date: "04/12/2026", name: "Dale Hutchins", location: "Manchester, NH", detail: "Retired", amount: 200 },
-      { id: "e01", section: "Loans", code: "L-REC", date: "04/18/2026", name: "Rosa Torres", location: "Concord, NH", detail: "Candidate loan", amount: 15000 },
-      { id: "e16", section: "Expenditures", code: "E-ADV", date: "04/22/2026", name: "Signwave Co", location: "Manchester, NH", detail: "Yard signs · 400 units", amount: 600 },
-      { id: "e17", section: "Receipts", code: "R-IND", date: "04/28/2026", name: "Sara Ng", location: "Dover, NH", detail: "Pharmacist · CVS", amount: 150 },
-      { id: "e03", section: "Loans", code: "L-REP", date: "05/02/2026", name: "Rosa Torres", location: "Concord, NH", detail: "Loan repayment", amount: 500 },
-      { id: "e18", section: "Loans", code: "L-REP", date: "05/04/2026", name: "Rosa Torres", location: "Concord, NH", detail: "Loan repayment", amount: 180 },
-      { id: "e04", section: "Expenditures", code: "E-ADV", date: "05/06/2026", name: "Capital Media", location: "Manchester, NH", detail: "Broadcast advertising", amount: 3000 },
-      { id: "e19", section: "Receipts", code: "R-IND", date: "05/09/2026", name: "Greg Hollis", location: "Salem, NH", detail: "Retired", amount: 175 },
-      { id: "e05", section: "Loans", code: "L-FOR", date: "05/12/2026", name: "Rosa Torres", location: "Concord, NH", detail: "Loan forgiveness", amount: -3250, flag: true, why: "First of four loan-forgiveness entries by Torres on her own candidate loan. A forgiven loan is a contribution. Flag." },
-      { id: "e20", section: "Expenditures", code: "E-OTH", date: "05/11/2026", name: "Holiday Inn", location: "Concord, NH", detail: "Fundraiser venue rental", amount: 800 },
-      { id: "e06", section: "Loans", code: "L-FOR", date: "05/13/2026", name: "Rosa Torres", location: "Concord, NH", detail: "Loan forgiveness", amount: -2175, flag: true, why: "Second forgiveness — different size, next day. Flag." },
-      { id: "e21", section: "Receipts", code: "R-IND", date: "05/18/2026", name: "Priya Shah", location: "Nashua, NH", detail: "Software · Oracle", amount: 250 },
-      { id: "e07", section: "Loans", code: "L-FOR", date: "05/14/2026", name: "Rosa Torres", location: "Concord, NH", detail: "Loan forgiveness", amount: -4400, flag: true, why: "Third forgiveness — the largest of the four. Flag." },
-      { id: "e22", section: "Receipts", code: "R-IND", date: "05/17/2026", name: "Mira Stoltz", location: "Laconia, NH", detail: "Nurse · Lakes Region Hospital", amount: 150 },
-      { id: "e08", section: "Loans", code: "L-FOR", date: "05/15/2026", name: "Rosa Torres", location: "Concord, NH", detail: "Loan forgiveness", amount: -1875, flag: true, why: "Fourth forgiveness — $11,700 of debt dissolved in pieces. Flag." },
-      { id: "e12", section: "Receipts", code: "R-IND", date: "05/22/2026", name: "Noah Beck", location: "Salem, NH", detail: "Retired", amount: 250 },
-      { id: "e13", section: "Loans", code: "L-REP", date: "05/27/2026", name: "Rosa Torres", location: "Concord, NH", detail: "Loan repayment", amount: 200 },
-      { id: "e23", section: "Expenditures", code: "E-ADV", date: "06/05/2026", name: "Valley Voice", location: "Littleton, NH", detail: "Newspaper ads", amount: 350 },
-      { id: "e14", section: "Expenditures", code: "E-ADV", date: "06/10/2026", name: "Meta Platforms", location: "Online", detail: "Citywide digital ads", amount: 800 }
-    ]
+    legend: [{ code: "L-REC", label: "Loan received" }, { code: "L-FOR", label: "Loan forgiven" }, { code: "R-IND", label: "Receipt · individual" }, { code: "R-ORG", label: "Receipt · organization" }, { code: "E-ADV", label: "Expenditure · advertising" }, { code: "E-OPS", label: "Expenditure · operations" }, { code: "E-OTH", label: "Expenditure · other" }],
+    lines: tutorialCase05Lines
   },
   {
     id: "out-of-state", number: "06", title: "Sums", skill: "Out-of-state money", difficulty: "Advanced",
