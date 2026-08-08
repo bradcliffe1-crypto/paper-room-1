@@ -23,7 +23,7 @@ function Row({ m, isRead, onOpen }) {
         </div>
         <p className="mt-2 truncate font-mono text-sm text-[#8c8a84]">{m.body}</p>
       </div>
-      {!isRead && <span className="h-2 w-2 shrink-0 rounded-full" style={{ background: ROLE_COLOR[m.role] }} />}
+      {!isRead && <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-[#b0523e] inbox-glow" />}
     </button>
   );
 }
