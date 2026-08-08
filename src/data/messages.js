@@ -55,7 +55,7 @@ export const messages = [
     from: "Reyes",
     role: "journalist",
     time: "11:40",
-    body: "Outlays. RSA 664:5 bars campaign funds from being spent on personal purposes. The test isn't the memo line — it's the payee and the purpose together. When what was bought doesn't serve the campaign, the label on the line doesn't matter. The Attorney General has pursued committees for exactly this. — Reyes",
+    body: "New Hampshire posts every campaign finance report in the open at the secretary of state's campaign finance system. For your members of congress and every federal race, the FEC has every donor, every disbursement, every cycle. Pull up a name you trust. See where the money moves. — Reyes",
     unlock: done("l02")
   },
   {
