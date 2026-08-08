@@ -72,6 +72,7 @@ export default function Home() {
   };
 
   const openManual = () => {
+    setProgress(p => ({ ...p, manualRead: true }));
     setActiveLevel(fieldManual);
     setSelected([]);
     setScreen("level");
@@ -149,7 +150,7 @@ export default function Home() {
   };
 
   if (screen === "opening") return <OpeningScreen onEnter={() => setScreen("intro")} />;
-  if (screen === "intro") return <IntroScreen onContinue={() => setScreen("menu")} />;
+  if (screen === "intro") return <IntroScreen progress={progress} onContinue={() => setScreen("menu")} />;
   if (screen === "training-complete") return <TrainingComplete onContinue={() => setScreen("menu")} />;
   if (screen === "inbox") return <Inbox progress={progress} onBack={() => setScreen("menu")} onRead={markRead} onReply={sendReply} />;
   if (screen === "menu")
