@@ -25,10 +25,12 @@ export default function AnalysisDebrief({ level, selected, onNext, onRetry }) {
             <span className="text-[#7a7a72]">{label}</span>
             <span className="text-[#d8d5cd]">{money(userTotal)}</span>
           </div>
-          <div className="flex items-baseline justify-between border-b border-[#191919] py-3">
-            <span className="text-[#7a7a72]">expected</span>
-            <span className="text-[#9a8f6a]">{money(expectedTotal)}</span>
-          </div>
+          {level.id !== "l03" && (
+            <div className="flex items-baseline justify-between border-b border-[#191919] py-3">
+              <span className="text-[#7a7a72]">expected</span>
+              <span className="text-[#9a8f6a]">{money(expectedTotal)}</span>
+            </div>
+          )}
           <div className="mt-4 flex items-center gap-6 text-xs">
             <span className="flex items-center gap-2 text-[#7a8a6a]"><Check size={13} /> {correctSel.length}</span>
             <span className="flex items-center gap-2 text-[#b0523e]"><X size={13} /> {wrongSel.length}</span>
