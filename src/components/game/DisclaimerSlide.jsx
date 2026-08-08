@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 // A brief disclaimer slide shown for a few seconds after the player enters
 // the game — like the legal/title cards that flash at the start of a real
 // game. Click anywhere to skip early.
-export default function DisclaimerSlide({ onDone, duration = 4200 }) {
+export default function DisclaimerSlide({ onDone, duration = 7000 }) {
   const [leaving, setLeaving] = useState(false);
 
   useEffect(() => {
