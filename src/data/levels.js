@@ -128,7 +128,7 @@ export const levels = [
     id: "l04", number: "04", title: "Clipping", candidate: "Kelly Ayotte",
     filer: "Kelly for New Hampshire", office: "Governor — New Hampshire", period: "01/01/2024 – 11/05/2024",
     report: "Statement of Receipts and Expenditures (RSA 664)", type: "flag",
-    task: "Ayotte's first move was a commission — COGE, government efficiency. The roster isn't in this filing; it's out there. Go look up who she put on it. Then come back and use Find on page to pull each name out of her donors. Whose names — or companies — show up in both? Read carefully. Not every match is the match.",
+    task: "Ayotte's first move was a commission — COGE, government efficiency. Who was appointed? Something doesn't sit right.",
     briefing: "A flag is a lead, not a conclusion.",
     legend: LEGEND,
     findOnPage: true,
