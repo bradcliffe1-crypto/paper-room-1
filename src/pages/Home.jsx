@@ -164,7 +164,7 @@ export default function Home() {
         setSelected([]);
         setActiveList("tutorials");
         setActiveIndex(0);
-        setScreen("menu");
+        setScreen("opening");
       }} />
     );
   if (screen === "inbox") return <Inbox progress={progress} onBack={() => setScreen("menu")} onRead={markRead} onReply={sendReply} onKillScreen={() => setScreen("kill-screen")} />;
