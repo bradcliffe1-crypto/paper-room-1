@@ -29,7 +29,18 @@ export default function FilingTable({ lines, selected, onToggle, findOnPage }) {
       {shown.map(line => {
         const active = selected.includes(line.id);
         return (
-          <div key={line.id} className={`grid border-b border-[#181819] px-4 py-4 transition last:border-0 md:grid-cols-[100px_82px_1fr_140px] ${active ? "bg-[#1a1411]" : "hover:bg-[#131316]"}`}>
+          <div
+            key={line.id}
+            onClick={() => onToggle(line.id)}
+            role="button"
+            tabIndex={0}
+            aria-label={`${active ? "Remove" : "Add"} flag`}
+            className={`group grid cursor-pointer border-b px-4 py-4 transition last:border-0 md:grid-cols-[100px_82px_1fr_140px] ${
+              active
+                ? "relative z-10 border-[#b0523e] bg-[#1a1411] inbox-glow"
+                : "border-[#181819] hover:bg-[#131316]"
+            }`}
+          >
             <div className="font-mono text-xs text-[#75736d]">{line.date}</div>
             <div className="mt-2 font-mono text-xs text-[#9a8f6a] md:mt-0">{line.code}</div>
             <div className="mt-3 md:mt-0">
@@ -38,13 +49,11 @@ export default function FilingTable({ lines, selected, onToggle, findOnPage }) {
             </div>
             <div className="mt-4 flex items-center justify-between gap-4 md:mt-0 md:justify-end">
               <b className="font-mono text-sm text-[#d8d5cd]">{money(line.amount)}</b>
-              <button
-                onClick={() => onToggle(line.id)}
-                aria-label={`${active ? "Remove" : "Add"} flag`}
-                className={`rounded-full border p-2 transition ${active ? "border-[#b0523e] bg-[#b0523e] text-white" : "border-[#3a3a3e] text-[#75736d] hover:border-[#b0523e] hover:text-[#b0523e]"}`}
+              <span
+                className={`rounded-full border p-2 transition ${active ? "border-[#b0523e] bg-[#b0523e] text-white" : "border-[#3a3a3e] text-[#75736d] group-hover:border-[#b0523e] group-hover:text-[#b0523e]"}`}
               >
                 <Flag size={14} fill={active ? "currentColor" : "none"} />
-              </button>
+              </span>
             </div>
           </div>
         );

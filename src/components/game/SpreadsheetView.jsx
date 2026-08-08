@@ -78,7 +78,7 @@ export default function SpreadsheetView({ lines, selected, onToggle, onToggleMan
             const active = selected.includes(line.id);
             const isNH = stateOf(line) === home;
             return (
-              <div key={line.id} onClick={() => onToggle(line.id)} className={`grid cursor-pointer border-b border-[#181819] px-3 py-3 md:grid-cols-[44px_90px_82px_1fr_130px] ${active ? "bg-[#1a1411]" : "hover:bg-[#131316]"}`}>
+              <div key={line.id} onClick={() => onToggle(line.id)} className={`grid cursor-pointer border-b px-3 py-3 md:grid-cols-[44px_90px_82px_1fr_130px] ${active ? "relative z-10 border-[#b0523e] bg-[#1a1411] inbox-glow" : "border-[#181819] hover:bg-[#131316]"}`}>
                 <div className="flex items-center">{active ? <CheckSquare size={15} className="text-[#b0523e]" /> : <Square size={15} className="text-[#45433f]" />}</div>
                 <div className="font-mono text-xs text-[#75736d]">{line.date}</div>
                 <div className="font-mono text-xs text-[#9a8f6a]">{line.code}</div>
@@ -133,7 +133,7 @@ export default function SpreadsheetView({ lines, selected, onToggle, onToggleMan
           : filtered.map(line => {
               const active = selected.includes(line.id);
               return (
-                <div key={line.id} onClick={() => onToggle(line.id)} className={`grid cursor-pointer border-b border-[#181819] px-3 py-3 md:grid-cols-[44px_90px_82px_1fr_130px] ${active ? "bg-[#1a1411]" : "hover:bg-[#131316]"}`}>
+                <div key={line.id} onClick={() => onToggle(line.id)} className={`grid cursor-pointer border-b px-3 py-3 md:grid-cols-[44px_90px_82px_1fr_130px] ${active ? "relative z-10 border-[#b0523e] bg-[#1a1411] inbox-glow" : "border-[#181819] hover:bg-[#131316]"}`}>
                   <div className="flex items-center">{active ? <CheckSquare size={15} className="text-[#b0523e]" /> : <Square size={15} className="text-[#45433f]" />}</div>
                   <div className="font-mono text-xs text-[#75736d]">{line.date}</div>
                   <div className="font-mono text-xs text-[#9a8f6a]">{line.code}</div>
