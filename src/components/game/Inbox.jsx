@@ -121,8 +121,6 @@ export default function Inbox({ progress, onBack, onRead, onReply, onKillScreen 
         <p className="text-sm text-[#75736d]">{count} message{count !== 1 ? "s" : ""}.</p>
 
         <div className="mt-8 space-y-2">
-          {count === 0 && pending.length === 0 && <p className="text-sm text-[#5d5b56]">No messages yet. Keep working cases.</p>}
-
           {staticShown.map(m => {
             const isRead = read.includes(m.id);
             return <Row key={m.id} m={m} isRead={isRead} onOpen={() => handleOpen(m)} />;
