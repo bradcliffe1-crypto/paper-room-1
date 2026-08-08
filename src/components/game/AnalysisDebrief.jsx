@@ -25,7 +25,7 @@ export default function AnalysisDebrief({ level, selected, onNext, onRetry }) {
             <span className="text-[#7a7a72]">{label}</span>
             <span className="text-[#d8d5cd]">{money(userTotal)}</span>
           </div>
-          {level.id !== "l03" && level.id !== "l07" && (
+          {level.id !== "l03" && level.id !== "l07" && level.id !== "l09" && (
             <div className="flex items-baseline justify-between border-b border-[#191919] py-3">
               <span className="text-[#7a7a72]">expected</span>
               <span className="text-[#9a8f6a]">{money(expectedTotal)}</span>
