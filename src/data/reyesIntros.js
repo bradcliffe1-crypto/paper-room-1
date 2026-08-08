@@ -36,7 +36,7 @@ export const reyesIntros = {
     { type: "link", content: "Follow the Money", url: "https://www.followthemoney.org/" },
     { type: "text", content: " maps state-level contributions nationwide. Bookmark them. Use them." }
   ],
-  l08: [
+  l09: [
     { type: "text", content: "You caught the loans. That's the hardest thing in these filings — the money that quietly disappears. If you ever find something like this in the real records — something that looks like fraud, not just sloppiness — you don't have to let it sit. New Hampshire's Attorney General, John Formella, runs the Consumer Protection and Antitrust Bureau. You can reach them at " },
     { type: "link", content: "DOJ-CPB@doj.nh.gov", url: "mailto:DOJ-CPB@doj.nh.gov" },
     { type: "text", content: " or (603) 271-3641. A clear, documented request gets looked at. You've built the skills. Use them." }
