@@ -18,6 +18,7 @@ import Inbox from "@/components/game/Inbox";
 import ManualScreen from "@/components/game/ManualScreen";
 import PinnedDock from "@/components/game/PinnedDock";
 import ReyesIntro from "@/components/game/ReyesIntro";
+import KillScreen from "@/components/game/KillScreen";
 import { reyesIntros } from "@/data/reyesIntros";
 import { BOUNCE_THRESHOLD, MERCER_WARNING, ANON_WARNING, bounceBody, REYES_BOUNCE } from "@/data/correspondence";
 
@@ -155,7 +156,18 @@ export default function Home() {
   if (screen === "opening") return <OpeningScreen onEnter={() => setScreen("intro")} />;
   if (screen === "intro") return <IntroScreen progress={progress} onContinue={() => setScreen("menu")} />;
   if (screen === "training-complete") return <TrainingComplete onContinue={() => setScreen("menu")} />;
-  if (screen === "inbox") return <Inbox progress={progress} onBack={() => setScreen("menu")} onRead={markRead} onReply={sendReply} />;
+  if (screen === "kill-screen")
+    return (
+      <KillScreen onContinue={() => {
+        setProgress({ completed: [], scores: {}, readMessages: [], replies: [], sent: {}, warnings: {}, replySeq: 0 });
+        setActiveLevel(null);
+        setSelected([]);
+        setActiveList("tutorials");
+        setActiveIndex(0);
+        setScreen("menu");
+      }} />
+    );
+  if (screen === "inbox") return <Inbox progress={progress} onBack={() => setScreen("menu")} onRead={markRead} onReply={sendReply} onKillScreen={() => setScreen("kill-screen")} />;
   if (screen === "menu")
     return (
       <LevelMenu

@@ -28,7 +28,7 @@ function Row({ m, isRead, onOpen }) {
   );
 }
 
-export default function Inbox({ progress, onBack, onRead, onReply }) {
+export default function Inbox({ progress, onBack, onRead, onReply, onKillScreen }) {
   const [openId, setOpenId] = useState(null);
   const [draft, setDraft] = useState("");
   const [sending, setSending] = useState(false);
@@ -47,6 +47,12 @@ export default function Inbox({ progress, onBack, onRead, onReply }) {
 
   const open = openId ? [...staticShown, ...replies].find(m => m.id === openId) : null;
   const canReply = open && CORRESPONDENTS.includes(open.from);
+
+  const handleOpen = (m) => {
+    onRead(m.id);
+    if (m.id === "m-withheld-2" && onKillScreen) { onKillScreen(); return; }
+    setOpenId(m.id);
+  };
 
   const send = async () => {
     if (!draft.trim() || sending) return;
@@ -119,7 +125,7 @@ export default function Inbox({ progress, onBack, onRead, onReply }) {
 
           {staticShown.map(m => {
             const isRead = read.includes(m.id);
-            return <Row key={m.id} m={m} isRead={isRead} onOpen={() => { setOpenId(m.id); onRead(m.id); }} />;
+            return <Row key={m.id} m={m} isRead={isRead} onOpen={() => handleOpen(m)} />;
           })}
 
           {pending.length > 0 && (
@@ -145,7 +151,7 @@ export default function Inbox({ progress, onBack, onRead, onReply }) {
               <p className="mb-2 font-mono text-[10px] uppercase tracking-[.2em] text-[#5d5b56]">Replies</p>
               {replies.map(m => {
                 const isRead = read.includes(m.id);
-                return <Row key={m.id} m={m} isRead={isRead} onOpen={() => { setOpenId(m.id); onRead(m.id); }} />;
+                return <Row key={m.id} m={m} isRead={isRead} onOpen={() => handleOpen(m)} />;
               })}
             </div>
           )}
