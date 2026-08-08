@@ -148,7 +148,7 @@ export const tutorials = [
   },
   {
     id: "loan-loop", number: "05", title: "Revolving", skill: "Loan forgiveness bursts", difficulty: "Advanced",
-    filer: "Torres for Mayor", office: "Mayor · Training City", period: "04/01/2026 – 06/30/2026",
+    filer: "Torres for State Senate", office: "State Senate, District 7", period: "04/01/2026 – 06/30/2026",
     report: "Quarterly R&E Report", type: "flag",
     task: "She backed herself with loans. Read the whole filing — every line. The loan lines are where to look. Find what she did with her own debt.",
     lesson: "A candidate may lend her own campaign money — that's allowed, and the loan is reported with its terms. The moment she forgives it, the forgiven amount becomes a contribution: it counts toward the per-cycle contribution limit and must be reported as one. One large forgiveness can blow straight past the cap. The loans themselves are not the story — the forgiveness is.",

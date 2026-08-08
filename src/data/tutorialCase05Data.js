@@ -9,7 +9,7 @@
 // the loan lines and away from the one forgiveness at the bottom.
 // The rest are fictionalized benign receipts, expenditures, and PAC gifts.
 
-const FORGIVEN_WHY = "A loan the candidate forgives becomes a contribution and must be reported as such. A $15,000 forgiveness converts the debt into a $15,000 contribution — over the per-cycle contribution limit. The many small candidate loans above are legitimate loans; this one forgiveness is the violation. Flag.";
+const FORGIVEN_WHY = "A loan the candidate forgives becomes a contribution and must be reported as such. A $15,000 forgiveness converts the debt into a $15,000 contribution — over the $5,000 per-cycle individual contribution limit. The many small candidate loans above are legitimate loans; this one forgiveness is the violation. Flag.";
 
 export const tutorialCase05Lines = [
   { id: "tc5-01", section: "Receipts", code: "R-IND", date: "04/01/2026", name: "Dale Hutchins", location: "Manchester, NH", detail: "Retired", amount: 200 },
