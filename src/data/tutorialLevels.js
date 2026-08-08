@@ -125,7 +125,7 @@ export const tutorials = [
       { id: "d15", section: "Receipts", code: "R-IND", date: "01/20/2026", name: "Sara Ng", location: "Dover, NH", detail: "Pharmacist · CVS", amount: 150 },
       { id: "d02", section: "Receipts", code: "R-IND", date: "01/28/2026", name: "Peter Ames", location: "Laconia, NH", detail: "Retired", amount: 200 },
       { id: "d16", section: "Receipts", code: "R-ORG", date: "02/05/2026", name: "NH Nurses Association PAC", location: "Concord, NH", detail: "Registered political committee", amount: 500 },
-      { id: "d01", section: "Receipts", code: "R-IND", date: "02/11/2026", name: "Maren Voss", location: "Hanover, NH", detail: "Engineer · Self-employed", amount: 2000, flag: true, why: "First of three gifts from Maren Voss. Alone it's under the limit — but the cycle total has to be added up. Flag." },
+      { id: "d01", section: "Receipts", code: "R-IND", date: "02/11/2026", name: "Maren Voss", location: "Hanover, NH", detail: "Engineer · Self-employed", amount: 1850, flag: true, why: "First of three gifts from Maren Voss. Alone it's under the limit — but the cycle total has to be added up. Flag." },
       { id: "d04", section: "Receipts", code: "R-IND", date: "02/25/2026", name: "Noah Beck", location: "Salem, NH", detail: "Retired", amount: 250 },
       { id: "d17", section: "Receipts", code: "R-IND", date: "02/18/2026", name: "Greg Hollis", location: "Salem, NH", detail: "Retired", amount: 175 },
       { id: "d18", section: "Receipts", code: "R-IN-K", date: "03/05/2026", name: "Print House", location: "Manchester, NH", detail: "In-kind: campaign flyers", amount: 400 },
@@ -134,14 +134,14 @@ export const tutorials = [
       { id: "d20", section: "Receipts", code: "R-IND", date: "04/15/2026", name: "Priya Shah", location: "Nashua, NH", detail: "Software · Oracle", amount: 250 },
       { id: "d08", section: "Receipts", code: "R-IND", date: "04/21/2026", name: "Iris Calder", location: "Lebanon, NH", detail: "Designer · Self-employed", amount: 175 },
       { id: "d21", section: "Receipts", code: "R-ORG", date: "05/02/2026", name: "Seacoast Restaurant Alliance PAC", location: "Portsmouth, NH", detail: "Registered political committee", amount: 750 },
-      { id: "d03", section: "Receipts", code: "R-IND", date: "05/20/2026", name: "Maren Voss", location: "Hanover, NH", detail: "Engineer · Self-employed", amount: 2000, flag: true, why: "Second gift from Voss — $4,000 cumulative, still under the line but climbing. Flag." },
+      { id: "d03", section: "Receipts", code: "R-IND", date: "05/20/2026", name: "Maren Voss", location: "Hanover, NH", detail: "Engineer · Self-employed", amount: 2475, flag: true, why: "Second gift from Voss — $4,325 cumulative, still under the line but climbing. Flag." },
       { id: "d10", section: "Receipts", code: "R-ORG", date: "05/12/2026", name: "NH Homebuilders PAC", location: "Concord, NH", detail: "Registered political committee", amount: 1000 },
       { id: "d22", section: "Receipts", code: "R-IND", date: "06/10/2026", name: "Tom Barker", location: "Manchester, NH", detail: "Retired", amount: 200 },
       { id: "d12", section: "Receipts", code: "R-CAN", date: "06/03/2026", name: "Casey Adler", location: "Concord, NH", detail: "Candidate contribution", amount: 5000 },
       { id: "d13", section: "Receipts", code: "R-IND", date: "06/18/2026", name: "Cara Linwood", location: "Hanover, NH", detail: "Architect · Linwood Studio", amount: 300 },
       { id: "d14", section: "Receipts", code: "R-IND", date: "07/02/2026", name: "Eli Rowan", location: "Keene, NH", detail: "Electrician · Rowan Electric", amount: 200 },
       { id: "d23", section: "Receipts", code: "R-IND", date: "07/15/2026", name: "Mira Stoltz", location: "Laconia, NH", detail: "Nurse · Lakes Region Hospital", amount: 150 },
-      { id: "d05", section: "Receipts", code: "R-IND", date: "08/14/2026", name: "Maren Voss", location: "Hanover, NH", detail: "Engineer · Self-employed", amount: 2000, flag: true, why: "Third gift from Voss — $6,000 cumulative, over the $5,000 per-cycle individual limit. The split into three pieces doesn't cure the excess. Flag." }
+      { id: "d05", section: "Receipts", code: "R-IND", date: "08/14/2026", name: "Maren Voss", location: "Hanover, NH", detail: "Engineer · Self-employed", amount: 1900, flag: true, why: "Third gift from Voss — $6,225 cumulative, over the $5,000 per-cycle individual limit. The split into three pieces doesn't cure the excess. Flag." }
     ]
   },
   {
