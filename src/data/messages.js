@@ -39,7 +39,7 @@ export const messages = [
     from: "Reyes",
     role: "journalist",
     time: "08:44",
-    body: "m Reyes. I cover money in this state. We haven't spoken — yet. Keep working. When you find something that smells like a story, I'll be around. — Reyes",
+    body: "I cover money in this state. We haven't spoken — yet. Keep working. When you find something that smells like a story, I'll be around. — Reyes",
     unlock: done("personal-use")
   },
   {
