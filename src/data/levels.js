@@ -94,10 +94,10 @@ export const levels = [
       {id:"l02-11",section:"Expenditures",code:"E-OTH",date:"04/04/2024",name:"River Valley Club",location:"Lebanon, NH 03766",detail:"Salon Services",amount:148,flag:true,why:"A social club charging the campaign for 'Salon Services' — personal grooming billed to campaign funds. Flag as a non-campaign expenditure."},
       {id:"l02-f2",section:"Expenditures",code:"E-OTH",date:"04/05/2024",name:"NH Dept of Motor Vehicles",location:"Concord, NH",detail:"Car registration",amount:181,flag:true,why:"Personal car registration paid with campaign funds — a personal vehicle cost. Flag."},
       {id:"l02-12",section:"Expenditures",code:"E-OPS",date:"04/08/2024",name:"American Airlines",location:"PO Box 619616, DFW Airport, TX",detail:"Travel",amount:346.76},
-      {id:"l02-13",section:"Expenditures",code:"E-OTH",date:"04/12/2024",name:"Aldi",location:"Alexandria, VA",detail:"Meal",amount:57.76,flag:true,why:"Aldi is a grocery store, not a restaurant. A 'Meal' charge at a grocery store looks like personal shopping billed to the campaign. Flag."},
+      {id:"l02-13",section:"Expenditures",code:"E-OTH",date:"04/12/2024",name:"Aldi",location:"Alexandria, VA",detail:"Meal",amount:57.76},
       {id:"l02-f3",section:"Expenditures",code:"E-OTH",date:"04/13/2024",name:"Cross Sound Ferry",location:"Orient Point, NY",detail:"Ferry to Orient Point",amount:190,flag:true,why:"A ferry ride to the Hamptons — personal travel to a vacation area, not a campaign cost. Flag."},
       {id:"l02-14",section:"Expenditures",code:"E-OPS",date:"04/13/2024",name:"Jiffy Mart",location:"96 Hanover St, Lebanon, NH 03766",detail:"Gas",amount:36.97},
-      {id:"l02-14a",section:"Expenditures",code:"E-OTH",date:"04/25/2024",name:"HomeGoods",location:"1248 N Plainfield Rd, West Lebanon, NH",detail:"Hostess Gifts",amount:34.95,flag:true,why:"HomeGoods is a home-décor store, and 'Hostess Gifts' is a personal courtesy — gifts for a social host, not a campaign activity. Flag as a non-campaign expenditure."},
+      {id:"l02-14a",section:"Expenditures",code:"E-OTH",date:"04/25/2024",name:"HomeGoods",location:"1248 N Plainfield Rd, West Lebanon, NH",detail:"Hostess Gifts",amount:34.95},
       {id:"l02-f4",section:"Expenditures",code:"E-OTH",date:"04/26/2024",name:"TJ Maxx",location:"West Lebanon, NH",detail:"Clothing",amount:412.50,flag:true,why:"Clothing purchased at a discount retailer — personal subsistence, not a campaign expense. Flag."},
       {id:"l02-15",section:"Expenditures",code:"E-OPS",date:"05/03/2024",name:"Circle K",location:"89 Main Street, West Lebanon, NH 03784",detail:"Gas",amount:54.59},
       {id:"l02-16",section:"Expenditures",code:"E-ADV",date:"06/20/2024",name:"Staples",location:"254 N Plainfield Rd, West Lebanon, NH",detail:"Photocopies",amount:11.51},
@@ -112,7 +112,7 @@ export const levels = [
       {id:"l02-24",section:"Expenditures",code:"E-OPS",date:"08/19/2024",name:"Panera Bread",location:"267 N Plainfield Rd, West Lebanon, NH",detail:"Meals",amount:34.11},
       {id:"l02-26",section:"Expenditures",code:"E-ADV",date:"09/11/2024",name:"e stone Press",location:"520 E Industrial Park Dr, Manchester, NH",detail:"Mailing",amount:3713.93},
       {id:"l02-27",section:"Expenditures",code:"E-OTH",date:"09/16/2024",name:"Luxury Nails",location:"410 Miracle Mile, Lebanon, NH 03766",detail:"Salon Services",amount:117,flag:true,why:"A nail salon charging the campaign for 'Salon Services' — personal grooming, not a campaign expense. Flag."},
-      {id:"l02-f6",section:"Expenditures",code:"E-OTH",date:"09/17/2024",name:"Concord Urgent Care",location:"Concord, NH",detail:"Urgent care visit",amount:89,flag:true,why:"An urgent-care clinic visit charged to the campaign — a personal medical expense. Flag."},
+      {id:"l02-f6",section:"Expenditures",code:"E-OTH",date:"09/17/2024",name:"Concord Urgent Care",location:"Concord, NH",detail:"Urgent care visit",amount:89},
       {id:"l02-28",section:"Expenditures",code:"E-OPS",date:"10/18/2024",name:"Double Tree Radisson",location:"700 Elm St, Manchester, NH",detail:"Travel",amount:276.25}
     ]
   },
