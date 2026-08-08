@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { ArrowLeft, Mail, MailOpen, Send } from "lucide-react";
 import { messages } from "@/data/messages";
 import { CORRESPONDENTS } from "@/data/correspondence";
+import { useTypewriter } from "@/hooks/useTypewriter";
 
 const ROLE_COLOR = { operative: "#9a8f6a", journalist: "#7a8a6a", unknown: "#b0523e", politician: "#6a7a8a" };
 
@@ -46,6 +47,8 @@ export default function Inbox({ progress, onBack, onRead, onReply, onKillScreen 
   const pending = progress.pending || [];
 
   const open = openId ? [...staticShown, ...replies].find(m => m.id === openId) : null;
+  const typedBody = useTypewriter(open ? open.body : "", 18);
+  const typing = open && typedBody.length < open.body.length;
   const canReply = open && CORRESPONDENTS.includes(open.from);
 
   const handleOpen = (m) => {
@@ -81,7 +84,10 @@ export default function Inbox({ progress, onBack, onRead, onReply, onKillScreen 
               <span style={{ color: ROLE_COLOR[open.role] }}>{open.from}</span>
               <span className="text-[#5d5b56]">{open.time}</span>
             </div>
-            <p className="mt-5 whitespace-pre-line font-mono text-[14px] leading-7 text-[#c4c1ba]">{open.body}</p>
+            <p className="mt-5 whitespace-pre-line font-mono text-[14px] leading-7 text-[#c4c1ba]">
+              {typedBody}
+              {typing && <span className="ml-0.5 inline-block h-4 w-1.5 animate-pulse bg-[#9a8f6a] align-middle" />}
+            </p>
           </div>
 
           {canReply && (
