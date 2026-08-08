@@ -22,9 +22,9 @@ export default function LevelMenu({ tutorials, levels, completed, onSelect, onOp
   const typing = typed.length < headerText.length;
 
   return (
-    <main className="min-h-screen bg-[#0a0a0b] text-[#d8d5cd]">
+    <main className="flex min-h-screen flex-col bg-[#0a0a0b] text-[#d8d5cd]">
       <PinnedDock unreadCount={unreadCount} onOpenInbox={onOpenInbox} onOpenManual={onOpenManual} />
-      <div className="mx-auto max-w-5xl px-6 py-12 sm:px-12 lg:px-20">
+      <div className="mx-auto flex w-full max-w-5xl flex-1 flex-col px-6 py-12 sm:px-12 lg:px-20">
         <header className="pb-8">
           <h1 className="font-mono text-2xl lowercase tracking-[.05em] text-[#d8d5cd]">
             {typed}
@@ -33,8 +33,8 @@ export default function LevelMenu({ tutorials, levels, completed, onSelect, onOp
         </header>
 
         {!allTrainingComplete ? (
-          <section>
-            <div className="grid gap-6 sm:grid-cols-3">
+          <section className="flex flex-1 flex-col">
+            <div className="grid flex-1 grid-rows-2 gap-6 sm:grid-cols-3">
               {tutorials.map((level, i) => {
                 const unlocked = tutUnlocked(i);
                 const done = completed.includes(level.id);
