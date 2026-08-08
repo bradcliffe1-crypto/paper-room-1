@@ -22,11 +22,7 @@ export default function DisclaimerSlide({ onDone, duration = 7000 }) {
       <div className={`max-w-md transition-opacity duration-600 ${leaving ? "opacity-0" : "opacity-100"}`}>
         <p className="mb-8 font-mono text-[10px] uppercase tracking-[.3em] text-[#5d5b56]">disclaimer</p>
         <p className="font-mono text-[13px] leading-relaxed text-[#8c8a84]">
-          This casebook is drawn from real New Hampshire campaign finance filings.
-          Names, amounts, and patterns are based on public records.
-        </p>
-        <p className="mt-5 font-mono text-[13px] leading-relaxed text-[#8c8a84]">
-          The investigations are a simulation. Any conclusions are your own.
+          This is not a work of fiction. The names, committees, transactions, and events depicted are drawn from real campaign-finance records. Any resemblance to real persons or political activity is entirely intentional.
         </p>
         <p className="mt-10 font-mono text-[10px] uppercase tracking-[.25em] text-[#3a3a3e]">click to continue</p>
       </div>
