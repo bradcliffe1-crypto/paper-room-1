@@ -151,7 +151,7 @@ export const tutorials = [
     filer: "Torres for Mayor", office: "Mayor · Training City", period: "04/01/2026 – 06/30/2026",
     report: "Quarterly R&E Report", type: "flag",
     task: "She backed herself with loans. Read the whole filing — every line. The loan lines are where to look. Find what she did with her own debt.",
-    lesson: "A loan the candidate forgives becomes a contribution and must be reported as such. When a candidate forgives their own loan in several pieces — different sizes, close together — it's debt quietly converted to a gift. Read the loan lines and the amounts.",
+    lesson: "A candidate may lend her own campaign money — that's allowed, and the loan is reported with its terms. The moment she forgives it, the forgiven amount becomes a contribution: it counts toward the per-cycle contribution limit and must be reported as one. One large forgiveness can blow straight past the cap. The loans themselves are not the story — the forgiveness is.",
     legend: [{ code: "L-REC", label: "Loan received" }, { code: "L-FOR", label: "Loan forgiven" }, { code: "R-IND", label: "Receipt · individual" }, { code: "R-ORG", label: "Receipt · organization" }, { code: "E-ADV", label: "Expenditure · advertising" }, { code: "E-OPS", label: "Expenditure · operations" }, { code: "E-OTH", label: "Expenditure · other" }],
     lines: tutorialCase05Lines
   },
