@@ -9,7 +9,7 @@
 export const level05Lines = [
   {id:"l05-r01",section:"Receipts",code:"R-IND",date:"06/12/2024",name:"John McCabe",location:"47 Pine Hill Rd, Rochester, NH 03867",detail:"Retired · Retired",amount:50},
   {id:"l05-e00",section:"Expenditures",code:"E-ADV",date:"06/14/2024",name:"Liberty Printing Co",location:"88 Storrs St, Concord, NH 03301",detail:"Campaign Mailers",amount:1840},
-  {id:"l05-0619a",section:"Expenditures",code:"E-OTH",date:"06/19/2024",name:"Jiffy Lube",location:"1500 S Willow St, Manchester, NH 03103",detail:"Oil Change",amount:99.99,flag:true,why:"Personal vehicle maintenance billed to the campaign. An oil change is not a campaign expense — flag."},
+  {id:"l05-0619a",section:"Expenditures",code:"E-OTH",date:"06/19/2024",name:"Jiffy Lube",location:"1500 S Willow St, Manchester, NH 03103",detail:"Oil Change",amount:99.99},
   {id:"l05-0619b",section:"Expenditures",code:"E-OTH",date:"06/19/2024",name:"Lower Budget Auto",location:"234 Route 202, Sanbornville, NH 03872",detail:"Auto Repair",amount:855},
   {id:"l05-r02",section:"Receipts",code:"R-IND",date:"06/20/2024",name:"Linda Persson",location:"12 Ridgeway Ln, Wolfeboro, NH 03894",detail:"Teacher · Lakes Region Academy",amount:100},
   {id:"l05-e07",section:"Expenditures",code:"E-ADV",date:"06/25/2024",name:"Signwave Co",location:"Manchester, NH",detail:"Yard signs · 500 units",amount:650},
@@ -18,7 +18,7 @@ export const level05Lines = [
   {id:"l05-0619e",section:"Expenditures",code:"E-OTH",date:"06/19/2024",name:"McDonald's",location:"1700 White Mountain Hwy, Ossipee, NH 03864",detail:"Meals",amount:188.49},
   {id:"l05-r03",section:"Receipts",code:"R-IND",date:"07/04/2024",name:"Robert Foss",location:"88 Province Rd, Milton, NH 03851",detail:"Self-Employed · Foss Construction",amount:250},
   {id:"l05-0619f",section:"Expenditures",code:"E-OTH",date:"06/19/2024",name:"Dunkin' Donuts",location:"14 Wolfeboro Rd, Ossipee, NH 03864",detail:"Meals",amount:32.13},
-  {id:"l05-0619g",section:"Expenditures",code:"E-OTH",date:"06/19/2024",name:"Verizon",location:"P.O. Box 66532, Alpharetta, GA 30305",detail:"Cellular Service",amount:1418.64,flag:true,why:"A $1,418.64 cellphone bill billed to the campaign — personal telecommunications, not campaign expense. Flag."},
+  {id:"l05-0619g",section:"Expenditures",code:"E-OTH",date:"06/19/2024",name:"Verizon",location:"P.O. Box 66532, Alpharetta, GA 30305",detail:"Cellular Service",amount:1418.64},
   {id:"l05-e08",section:"Expenditures",code:"E-OPS",date:"07/08/2024",name:"VoterVault",location:"Online",detail:"Voter file subscription",amount:300},
   {id:"l05-e02",section:"Expenditures",code:"E-ADV",date:"07/12/2024",name:"Facebook",location:"1 Hacker Way, Menlo Park, CA 94025",detail:"Digital Advertising",amount:450},
   {id:"l05-r04",section:"Receipts",code:"R-ORG",date:"07/15/2024",name:"NH Realtors PAC",location:"63 N Main St, Concord, NH 03301",detail:"Itemized monetary contribution",amount:500},
