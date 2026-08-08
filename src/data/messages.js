@@ -35,6 +35,14 @@ export const messages = [
     unlock: trainingDone
   },
   {
+    id: "m-reyes-first",
+    from: "Reyes",
+    role: "journalist",
+    time: "08:44",
+    body: "Saw you closed Tally. You read past the memos. That's more than most. I'm Reyes. I cover money in this state. We haven't spoken — yet. Keep working. When you find something that smells like a story, I'll be around. — Reyes",
+    unlock: done("personal-use")
+  },
+  {
     id: "reyes-l01",
     from: "Reyes",
     role: "journalist",
