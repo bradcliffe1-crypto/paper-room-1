@@ -17,6 +17,8 @@ import NewsHint from "@/components/game/NewsHint";
 import Inbox from "@/components/game/Inbox";
 import ManualScreen from "@/components/game/ManualScreen";
 import PinnedDock from "@/components/game/PinnedDock";
+import ReyesIntro from "@/components/game/ReyesIntro";
+import { reyesIntros } from "@/data/reyesIntros";
 import { BOUNCE_THRESHOLD, MERCER_WARNING, ANON_WARNING, bounceBody, REYES_BOUNCE } from "@/data/correspondence";
 
 const fmtTime = (ms) => {
@@ -64,11 +66,12 @@ export default function Home() {
   const list = activeList === "tutorials" ? tutorials : levels;
 
   const choose = (listName, i) => {
+    const lvl = listName === "tutorials" ? tutorials[i] : levels[i];
     setActiveList(listName);
     setActiveIndex(i);
-    setActiveLevel(listName === "tutorials" ? tutorials[i] : levels[i]);
+    setActiveLevel(lvl);
     setSelected([]);
-    setScreen("level");
+    setScreen(reyesIntros[lvl.id] ? "reyes-intro" : "level");
   };
 
   const openManual = () => {
@@ -165,6 +168,9 @@ export default function Home() {
         unreadCount={unreadCount}
       />
     );
+
+  if (screen === "reyes-intro")
+    return <ReyesIntro segments={reyesIntros[activeLevel.id]} onContinue={() => setScreen("level")} />;
 
   const level = activeLevel;
   if (!level) return null;
