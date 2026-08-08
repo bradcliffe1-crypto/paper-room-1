@@ -138,7 +138,7 @@ export const levels = [
     id: "l05", number: "05", title: "Charges", candidate: "Joe Kenny",
     filer: "Friends of Joe Kenny", office: "State Senate — District 6", period: "06/01/2024 – 11/05/2024",
     report: "Receipt & Expenditure Report", type: "flag",
-    task: "Kenny. Small fish, big spending. Read the expenses. Most of it is what it says it is. But some of it isn't. Watch for the little charges that follow him around — the same ones, again and again. And one payment at the end, bigger than the rest, to a name that isn't a shop. Find what he's actually buying.",
+    task: "Kenny. Read the expenses. You learned in training what a real campaign buys — and what it doesn't. Some of these charges aren't campaign expenditures at all. Flag what shouldn't be there.",
     briefing: FLAG_BRIEF, legend: LEGEND, lines: level05Lines
   },
   {
