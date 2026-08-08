@@ -143,7 +143,7 @@ export const messages = [
     from: "Reyes",
     role: "journalist",
     time: "19:04",
-    body: "Forgiven. RSA 664:4 says it outright: no contribution may be made in the guise of a loan. A candidate may lend their own campaign money — that's allowed, and the loan has to be reported with its terms. The moment that loan is forgiven, the forgiven amount becomes a contribution: it counts toward the limit and gets reported as one. — Reyes",
+    body: "Forgiven. I'll be straight with you: there's no charge here. A candidate may lend his own campaign money, and he may forgive the loan — that's allowed under New Hampshire law. What you found isn't a violation. It's a story. Ten forgiveness entries on one day, each booked at a $0.00 aggregate, quietly erasing tens of thousands of the candidate's own debt through the campaign. Legal — and exactly the kind of thing a voter in Laconia or Keene wouldn't love hearing about. That's oppo. That's a lead you'd hand to someone like me. — Reyes",
     unlock: done("l08")
   },
   {

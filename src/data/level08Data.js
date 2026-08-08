@@ -2,17 +2,21 @@
 // Source: Friends of John Stephen filing. The flagged set is every "Loan
 // Forgiven" receipt posted on 05/30/2025 by the candidate's own committee
 // (Friends of John Stephen, 814 Elm Street, Suite 309, Manchester, NH 03101).
-// A forgiven loan is a contribution; ten same-day forgiveness entries, each
-// carrying a $0.00 aggregate, convert debt into unreported contributions.
-// Decoys are simulated benign 2024–2025 receipts, expenditures, and ordinary
-// loan activity (loan received, loan repayment) interleaved between the flags.
+// Under NH law a candidate may lend and forgive his own campaign money — there
+// is no explicit violation here. The story is the optics: ten same-day
+// forgiveness entries, each carrying a $0.00 aggregate, show a candidate
+// quietly erasing tens of thousands of his own debt through the campaign
+// vehicle. Legal, but the kind of thing regular voters wouldn't love — oppo
+// worth a reporter's time, not a charge. Decoys are simulated benign
+// 2024–2025 receipts, expenditures, and ordinary loan activity (loan received,
+// loan repayment) interleaved between the flags.
 // Several same-day (05/30/2025) decoys — legitimate receipts and expenditures
 // dated 05/30 — force the player to read the line type, not just the date.
 // The ten L-FOR flags are dispersed across the tail of the filing with 2–3
 // benign rows between each, so the cluster can't be caught by scanning one
 // contiguous block.
 
-const FORGIVEN_WHY = "A forgiven loan is a contribution. Same-day forgiveness posted by the candidate's own committee, with a $0.00 aggregate that hides the true total. Flag for review.";
+const FORGIVEN_WHY = "Not a violation — a candidate may forgive his own loans. But ten same-day forgiveness entries, each carrying a $0.00 aggregate, show a candidate quietly erasing his own debt through the campaign. Legal, and exactly the kind of thing voters wouldn't love. Flag for oppo.";
 
 export const level08Lines = [
   { id: "l08-01", section: "Receipts", code: "R-IND", date: "04/15/2024", name: "Stephen P. Kniaz", location: "35 Jenkins Rd, Lee, NH 03861", detail: "Construction Engineering · Black Birch Development", amount: 250 },
