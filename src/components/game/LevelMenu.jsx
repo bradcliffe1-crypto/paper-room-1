@@ -24,8 +24,8 @@ export default function LevelMenu({ tutorials, levels, completed, onSelect, onOp
   return (
     <main className="min-h-screen bg-[#0a0a0b] text-[#d8d5cd]">
       <PinnedDock unreadCount={unreadCount} onOpenInbox={onOpenInbox} onOpenManual={onOpenManual} />
-      <div className="mx-auto max-w-5xl px-6 py-24 sm:px-12 lg:px-20">
-        <header className="pb-20">
+      <div className="mx-auto max-w-5xl px-6 py-12 sm:px-12 lg:px-20">
+        <header className="pb-8">
           <h1 className="font-mono text-2xl lowercase tracking-[.05em] text-[#d8d5cd]">
             {typed}
             {typing && <span className="ml-0.5 inline-block h-5 w-[9px] translate-y-0.5 bg-[#9a8f6a]" />}
@@ -34,7 +34,7 @@ export default function LevelMenu({ tutorials, levels, completed, onSelect, onOp
 
         {!allTrainingComplete ? (
           <section>
-            <div className="grid gap-10 sm:grid-cols-2">
+            <div className="grid gap-6 sm:grid-cols-3">
               {tutorials.map((level, i) => {
                 const unlocked = tutUnlocked(i);
                 const done = completed.includes(level.id);
@@ -43,13 +43,13 @@ export default function LevelMenu({ tutorials, levels, completed, onSelect, onOp
                     key={level.id}
                     disabled={!unlocked}
                     onClick={() => onSelect("tutorials", i)}
-                    className="group flex min-h-44 flex-col justify-between border border-[#151515] bg-[#0b0b0c] p-9 text-left transition hover:border-[#262626] disabled:cursor-not-allowed disabled:opacity-20"
+                    className="group flex min-h-32 flex-col justify-between border border-[#151515] bg-[#0b0b0c] p-6 text-left transition hover:border-[#262626] disabled:cursor-not-allowed disabled:opacity-20"
                   >
                     <div className="flex items-center justify-between font-mono text-[10px] tracking-[.25em] text-[#45433f]">
                       <span className="text-[#9a8f6a]">{level.number}</span>
                       {done ? <Check size={13} className="text-[#7a8a6a]" /> : unlocked ? <span className="text-[#3a3a38]">›</span> : <LockKeyhole size={12} className="text-[#45433f]" />}
                     </div>
-                    <h2 className="mt-12 font-mono text-lg lowercase tracking-[.02em] text-[#6a675f] transition group-hover:text-[#d8d5cd]">{level.title}</h2>
+                    <h2 className="mt-6 font-mono text-lg lowercase tracking-[.02em] text-[#6a675f] transition group-hover:text-[#d8d5cd]">{level.title}</h2>
                   </button>
                 );
               })}
