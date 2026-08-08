@@ -1,4 +1,4 @@
-import { ArrowLeft, Check, X } from "lucide-react";
+import { ArrowRight, Check, X } from "lucide-react";
 
 const money = n => new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(n);
 
@@ -35,9 +35,9 @@ export default function AnalysisDebrief({ level, selected, onNext, onRetry }) {
           </div>
         </div>
 
-        <div className="mt-12 flex items-center justify-between">
+        <div className="mt-12 flex items-center justify-end">
           <button onClick={onNext} aria-label="Return to desktop" className="flex h-10 w-10 items-center justify-center rounded-full border border-[#3a3a3e] text-[#d8d5cd] transition hover:border-[#9a8f6a] hover:text-[#9a8f6a]">
-            <ArrowLeft size={20} />
+            <ArrowRight size={20} />
           </button>
         </div>
       </div>
