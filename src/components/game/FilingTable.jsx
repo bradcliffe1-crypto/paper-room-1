@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { Flag, Search } from "lucide-react";
+import { useGlowSync } from "@/hooks/useGlowSync";
 
 const money = n => new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(n);
 
 export default function FilingTable({ lines, selected, onToggle, findOnPage }) {
+  const glowRef = useGlowSync();
   const [query, setQuery] = useState("");
   const q = query.trim().toLowerCase();
   const shown = findOnPage && q ? lines.filter(l => [l.date, l.code, l.name, l.location, l.detail].join(" ").toLowerCase().includes(q)) : lines;
   return (
-    <div className="border border-[#262629] bg-[#0c0c0d]">
+    <div ref={glowRef} className="border border-[#262629] bg-[#0c0c0d]">
       {findOnPage && (
         <div className="border-b border-[#262629] p-3">
           <div className="relative">
@@ -37,7 +39,7 @@ export default function FilingTable({ lines, selected, onToggle, findOnPage }) {
             aria-label={`${active ? "Remove" : "Add"} flag`}
             className={`group grid cursor-pointer border-b px-4 py-4 transition last:border-0 md:grid-cols-[100px_82px_1fr_140px] ${
               active
-                ? "relative z-10 border-[#b0523e] bg-[#1a1411] inbox-glow"
+                ? "relative z-10 border-[#b0523e] bg-[#1a1411] row-glow"
                 : "border-[#181819] hover:bg-[#131316]"
             }`}
           >

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { CheckSquare, Square, Search } from "lucide-react";
+import { useGlowSync } from "@/hooks/useGlowSync";
 
 const money = n => new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(n);
 const stateOf = l => {
@@ -8,6 +9,7 @@ const stateOf = l => {
 };
 
 export default function SpreadsheetView({ lines, selected, onToggle, onToggleMany, analyzeTask }) {
+  const glowRef = useGlowSync();
   const stateMode = analyzeTask?.groupBy === "state";
   const home = (analyzeTask?.homeState || "").toUpperCase();
   const [query, setQuery] = useState("");
@@ -28,7 +30,7 @@ export default function SpreadsheetView({ lines, selected, onToggle, onToggleMan
     const outCount = lines.length - nhCount;
 
     return (
-      <div>
+      <div ref={glowRef}>
         <div className="flex flex-wrap items-center gap-3 border border-[#262629] bg-[#0c0c0d] p-3">
           <button
             onClick={() => onToggleMany(allIds, true)}
@@ -78,7 +80,7 @@ export default function SpreadsheetView({ lines, selected, onToggle, onToggleMan
             const active = selected.includes(line.id);
             const isNH = stateOf(line) === home;
             return (
-              <div key={line.id} onClick={() => onToggle(line.id)} className={`grid cursor-pointer border-b px-3 py-3 md:grid-cols-[44px_90px_82px_1fr_130px] ${active ? "relative z-10 border-[#b0523e] bg-[#1a1411] inbox-glow" : "border-[#181819] hover:bg-[#131316]"}`}>
+              <div key={line.id} onClick={() => onToggle(line.id)} className={`grid cursor-pointer border-b px-3 py-3 md:grid-cols-[44px_90px_82px_1fr_130px] ${active ? "relative z-10 border-[#b0523e] bg-[#1a1411] row-glow" : "border-[#181819] hover:bg-[#131316]"}`}>
                 <div className="flex items-center">{active ? <CheckSquare size={15} className="text-[#b0523e]" /> : <Square size={15} className="text-[#45433f]" />}</div>
                 <div className="font-mono text-xs text-[#75736d]">{line.date}</div>
                 <div className="font-mono text-xs text-[#9a8f6a]">{line.code}</div>
@@ -102,7 +104,7 @@ export default function SpreadsheetView({ lines, selected, onToggle, onToggleMan
   const toggleVisible = () => onToggleMany(filtered.map(l => l.id), !allVisibleSelected);
 
   return (
-    <div>
+    <div ref={glowRef}>
       <div className="flex flex-wrap items-center gap-3 border border-[#262629] bg-[#0c0c0d] p-3">
         <div className="relative min-w-48 flex-1">
           <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#45433f]" />
@@ -133,7 +135,7 @@ export default function SpreadsheetView({ lines, selected, onToggle, onToggleMan
           : filtered.map(line => {
               const active = selected.includes(line.id);
               return (
-                <div key={line.id} onClick={() => onToggle(line.id)} className={`grid cursor-pointer border-b px-3 py-3 md:grid-cols-[44px_90px_82px_1fr_130px] ${active ? "relative z-10 border-[#b0523e] bg-[#1a1411] inbox-glow" : "border-[#181819] hover:bg-[#131316]"}`}>
+                <div key={line.id} onClick={() => onToggle(line.id)} className={`grid cursor-pointer border-b px-3 py-3 md:grid-cols-[44px_90px_82px_1fr_130px] ${active ? "relative z-10 border-[#b0523e] bg-[#1a1411] row-glow" : "border-[#181819] hover:bg-[#131316]"}`}>
                   <div className="flex items-center">{active ? <CheckSquare size={15} className="text-[#b0523e]" /> : <Square size={15} className="text-[#45433f]" />}</div>
                   <div className="font-mono text-xs text-[#75736d]">{line.date}</div>
                   <div className="font-mono text-xs text-[#9a8f6a]">{line.code}</div>
