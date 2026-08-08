@@ -6,8 +6,11 @@
 // carrying a $0.00 aggregate, convert debt into unreported contributions.
 // Decoys are simulated benign 2024–2025 receipts, expenditures, and ordinary
 // loan activity (loan received, loan repayment) interleaved between the flags.
-// Two same-day (05/30/2025) decoys — a legitimate receipt and a legitimate
-// expenditure — force the player to read the line type, not just the date.
+// Several same-day (05/30/2025) decoys — legitimate receipts and expenditures
+// dated 05/30 — force the player to read the line type, not just the date.
+// The ten L-FOR flags are dispersed across the tail of the filing with 2–3
+// benign rows between each, so the cluster can't be caught by scanning one
+// contiguous block.
 
 const FORGIVEN_WHY = "A forgiven loan is a contribution. Same-day forgiveness posted by the candidate's own committee, with a $0.00 aggregate that hides the true total. Flag for review.";
 
@@ -50,23 +53,32 @@ export const level08Lines = [
   { id: "l08-35", section: "Expenditures", code: "E-OPS", date: "05/12/2025", name: "Staples", location: "Manchester, NH", detail: "Office supplies", amount: 178.40 },
   { id: "l08-19", section: "Loans", code: "L-FOR", date: "05/30/2025", name: "Friends of John Stephen", location: "814 Elm Street, Suite 309, Manchester, NH 03101", detail: "Loan forgiven · aggregate $0.00", amount: 250, flag: true, why: FORGIVEN_WHY },
   { id: "l08-d15", section: "Expenditures", code: "E-OPS", date: "05/15/2025", name: "Cumberland Farms", location: "196 N Main St, Concord, NH 03301", detail: "Gas", amount: 54.88 },
+  { id: "l08-d24", section: "Receipts", code: "R-IND", date: "05/30/2025", name: "Robert King", location: "8 Oakwood Dr, Salem, NH 03079", detail: "Retired · Retired", amount: 100 },
   { id: "l08-36", section: "Receipts", code: "R-IND", date: "05/20/2025", name: "Eric Chinburg", location: "184 High Street, Exeter, NH 03833", detail: "Construction Engineering · Chinburg", amount: 1000 },
   { id: "l08-20", section: "Loans", code: "L-FOR", date: "05/30/2025", name: "Friends of John Stephen", location: "814 Elm Street, Suite 309, Manchester, NH 03101", detail: "Loan forgiven · aggregate $0.00", amount: 1500, flag: true, why: FORGIVEN_WHY },
   { id: "l08-d16", section: "Receipts", code: "R-IND", date: "05/22/2025", name: "Susan Hadley", location: "33 Pleasant St, Concord, NH 03301", detail: "Teacher · Concord School District", amount: 100 },
-  { id: "l08-21", section: "Loans", code: "L-FOR", date: "05/30/2025", name: "Friends of John Stephen", location: "814 Elm Street, Suite 309, Manchester, NH 03101", detail: "Loan forgiven · aggregate $0.00", amount: 1000, flag: true, why: FORGIVEN_WHY },
+  { id: "l08-d25", section: "Expenditures", code: "E-OPS", date: "05/30/2025", name: "Verizon", location: "Manchester, NH", detail: "Phone service", amount: 89.50 },
   { id: "l08-37", section: "Loans", code: "L-REP", date: "05/28/2025", name: "John Stephen", location: "814 Elm Street, Suite 309, Manchester, NH 03101", detail: "Interest payment on candidate loan", amount: 320 },
+  { id: "l08-21", section: "Loans", code: "L-FOR", date: "05/30/2025", name: "Friends of John Stephen", location: "814 Elm Street, Suite 309, Manchester, NH 03101", detail: "Loan forgiven · aggregate $0.00", amount: 1000, flag: true, why: FORGIVEN_WHY },
   { id: "l08-d17", section: "Receipts", code: "R-IND", date: "05/29/2025", name: "Frank DeLuca", location: "47 Main St, Nashua, NH 03060", detail: "Restaurant Owner · Self-employed", amount: 500 },
+  { id: "l08-d26", section: "Receipts", code: "R-IND", date: "05/30/2025", name: "Linda Marsh", location: "224 Pine St, Manchester, NH 03103", detail: "Teacher · Manchester School District", amount: 150 },
   { id: "l08-23", section: "Loans", code: "L-FOR", date: "05/30/2025", name: "Friends of John Stephen", location: "814 Elm Street, Suite 309, Manchester, NH 03101", detail: "Loan forgiven · aggregate $0.00", amount: 2000, flag: true, why: FORGIVEN_WHY },
   { id: "l08-d22", section: "Receipts", code: "R-IND", date: "05/30/2025", name: "James Donnelly", location: "14 Meetinghouse Rd, Bedford, NH 03110", detail: "Retired · Retired", amount: 100 },
+  { id: "l08-d27", section: "Expenditures", code: "E-ADV", date: "05/30/2025", name: "Union Leader", location: "Manchester, NH", detail: "Print advertising", amount: 750 },
   { id: "l08-24", section: "Loans", code: "L-FOR", date: "05/30/2025", name: "Friends of John Stephen", location: "814 Elm Street, Suite 309, Manchester, NH 03101", detail: "Loan forgiven · aggregate $0.00", amount: 2500, flag: true, why: FORGIVEN_WHY },
   { id: "l08-d23", section: "Expenditures", code: "E-OPS", date: "05/30/2025", name: "Staples", location: "Manchester, NH", detail: "Office supplies", amount: 89.99 },
+  { id: "l08-d18", section: "Expenditures", code: "E-OPS", date: "06/01/2025", name: "UPS", location: "Manchester, NH", detail: "Shipping", amount: 67.40 },
   { id: "l08-26", section: "Loans", code: "L-FOR", date: "05/30/2025", name: "Friends of John Stephen", location: "814 Elm Street, Suite 309, Manchester, NH 03101", detail: "Loan forgiven · aggregate $0.00", amount: 3000, flag: true, why: FORGIVEN_WHY },
   { id: "l08-38", section: "Expenditures", code: "E-ADV", date: "06/05/2025", name: "WMUR", location: "Manchester, NH", detail: "Television advertising", amount: 8200 },
+  { id: "l08-d28", section: "Receipts", code: "R-IND", date: "05/30/2025", name: "David Pratt", location: "67 Mill Rd, Derry, NH 03038", detail: "Engineer · Self-employed", amount: 250 },
   { id: "l08-28", section: "Loans", code: "L-FOR", date: "05/30/2025", name: "Friends of John Stephen", location: "814 Elm Street, Suite 309, Manchester, NH 03101", detail: "Loan forgiven · aggregate $0.00", amount: 4000, flag: true, why: FORGIVEN_WHY },
-  { id: "l08-d18", section: "Expenditures", code: "E-OPS", date: "06/01/2025", name: "UPS", location: "Manchester, NH", detail: "Shipping", amount: 67.40 },
+  { id: "l08-d20", section: "Receipts", code: "R-ORG", date: "06/07/2025", name: "NH Realtors PAC", location: "120 N Main St, Concord, NH 03301", detail: "Registered political committee", amount: 2500 },
+  { id: "l08-d29", section: "Expenditures", code: "E-OPS", date: "05/30/2025", name: "Comcast", location: "Manchester, NH", detail: "Office internet", amount: 129.99 },
   { id: "l08-30", section: "Loans", code: "L-FOR", date: "05/30/2025", name: "Friends of John Stephen", location: "814 Elm Street, Suite 309, Manchester, NH 03101", detail: "Loan forgiven · aggregate $0.00", amount: 5000, flag: true, why: FORGIVEN_WHY },
   { id: "l08-d19", section: "Receipts", code: "R-IND", date: "06/03/2025", name: "Patricia Reyes", location: "61 Central Ave, Dover, NH 03820", detail: "Nurse · Wentworth-Douglass", amount: 150 },
+  { id: "l08-d30", section: "Receipts", code: "R-ORG", date: "05/30/2025", name: "NH Homebuilders PAC", location: "Concord, NH", detail: "Registered political committee", amount: 1000 },
   { id: "l08-32", section: "Loans", code: "L-FOR", date: "05/30/2025", name: "Friends of John Stephen", location: "814 Elm Street, Suite 309, Manchester, NH 03101", detail: "Loan forgiven · aggregate $0.00", amount: 10000, flag: true, why: FORGIVEN_WHY },
-  { id: "l08-d20", section: "Receipts", code: "R-ORG", date: "06/07/2025", name: "NH Realtors PAC", location: "120 N Main St, Concord, NH 03301", detail: "Registered political committee", amount: 2500 },
+  { id: "l08-d32", section: "Receipts", code: "R-IND", date: "06/10/2025", name: "Helen Voss", location: "19 Birch Ln, Amherst, NH 03031", detail: "Retired · Retired", amount: 200 },
+  { id: "l08-d31", section: "Expenditures", code: "E-OTH", date: "05/30/2025", name: "City Diner", location: "Concord, NH", detail: "Staff meals · 8 people", amount: 144 },
   { id: "l08-33", section: "Loans", code: "L-FOR", date: "05/30/2025", name: "Friends of John Stephen", location: "814 Elm Street, Suite 309, Manchester, NH 03101", detail: "Loan forgiven · aggregate $0.00", amount: 20000, flag: true, why: FORGIVEN_WHY }
 ];
