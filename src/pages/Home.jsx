@@ -34,7 +34,7 @@ export default function Home() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [selected, setSelected] = useState([]);
   const [progress, setProgress] = useState(() =>
-    JSON.parse(localStorage.getItem("casebook-progress") || '{"completed":[],"scores":{}}')
+    JSON.parse(localStorage.getItem("casebook-progress") || '{"completed":[]}')
   );
 
   useEffect(() => localStorage.setItem("casebook-progress", JSON.stringify(progress)), [progress]);
@@ -44,14 +44,12 @@ export default function Home() {
     if (u === "all") {
       setProgress({
         completed: [...tutorials.map(t => t.id), ...levels.map(l => l.id)],
-        scores: {},
         readMessages: []
       });
       setScreen("menu");
     } else if (u === "training") {
       setProgress({
         completed: tutorials.slice(0, -1).map(t => t.id),
-        scores: {},
         readMessages: []
       });
       setScreen("menu");
@@ -91,27 +89,11 @@ export default function Home() {
       return [...set];
     });
 
-  const computeScore = () => {
-    const type = activeLevel.type || "flag";
-    if (type === "flag") {
-      return activeLevel.lines.filter(x => x.flag && selected.includes(x.id)).length * 100;
-    }
-    const correctLines = activeLevel.lines.filter(l => l.answer);
-    const expected = correctLines.reduce((a, l) => a + l.amount, 0);
-    const userLines = activeLevel.lines.filter(l => selected.includes(l.id));
-    const userTotal = userLines.reduce((a, l) => a + l.amount, 0);
-    const correctSel = userLines.filter(l => l.answer).length;
-    const wrongSel = userLines.filter(l => !l.answer).length;
-    return Math.max(0, correctSel * 100 - wrongSel * 50 + (userTotal === expected ? 200 : 0));
-  };
-
   const submit = () => { if (selected.length) setScreen("debrief"); };
 
   const next = () => {
-    const score = computeScore();
     setProgress(p => ({
       completed: [...new Set([...p.completed, activeLevel.id])],
-      scores: { ...p.scores, [activeLevel.id]: Math.max(p.scores[activeLevel.id] || 0, score) },
       readMessages: p.readMessages || []
     }));
     setScreen("menu");
@@ -159,7 +141,7 @@ export default function Home() {
   if (screen === "kill-screen")
     return (
       <KillScreen onContinue={() => {
-        setProgress({ completed: [], scores: {}, readMessages: [], replies: [], sent: {}, warnings: {}, replySeq: 0 });
+        setProgress({ completed: [], readMessages: [], replies: [], sent: {}, warnings: {}, replySeq: 0 });
         setActiveLevel(null);
         setSelected([]);
         setActiveList("tutorials");

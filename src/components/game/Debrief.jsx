@@ -13,7 +13,7 @@ export default function Debrief({ level, selected, onNext, onRetry }) {
           <h1 className="font-mono text-2xl lowercase tracking-[.02em] text-[#d8d5cd]">{ok ? "lead established." : "keep digging."}</h1>
         </header>
         <p className="mt-5 font-mono text-[13px] lowercase text-[#7a7a72]">
-          {ok ? `${correct.length} of ${total}. +${correct.length * 100}.` : "no flags matched."}
+          {ok ? `${correct.length} of ${total}.` : "no flags matched."}
         </p>
 
         <div className="mt-10 space-y-2">
