@@ -37,9 +37,9 @@ export const reyesIntros = {
     { type: "text", content: " maps state-level contributions nationwide. Bookmark them. Use them." }
   ],
   l09: [
-    { type: "text", content: "You caught the loans. That's the hardest thing in these filings — the money that quietly disappears. If you ever find something like this in the real records — something that looks like fraud, not just sloppiness — you don't have to let it sit. New Hampshire's Attorney General, John Formella, runs the Consumer Protection and Antitrust Bureau. You can reach them at " },
+    { type: "text", content: "New Hampshire's Attorney General, John Formella, runs the Consumer Protection and Antitrust Bureau. You can reach them at " },
     { type: "link", content: "DOJ-CPB@doj.nh.gov", url: "mailto:DOJ-CPB@doj.nh.gov" },
-    { type: "text", content: " or (603) 271-3641. A clear, documented request gets looked at. You've built the skills. Use them." }
+    { type: "text", content: " or (603) 271-3641. A clear, documented request gets looked at. If you see something, say something. You've built the skills. Use them." }
   ],
   l10: [
     { type: "text", content: "You went through all of them. Every filing, every line, every flag. Most people don't make it past the first one. This is the part where I'd tell you to take a break. But I won't. The money never sleeps and neither do the people who move it. You've learned to read these filings — to see the straw donors, the shell LLCs, the personal expenses buried in campaign accounts, the loans that vanish. That's a skill almost nobody has. Don't let it go to waste. Open a real filing. Find a name. Follow the money. Write it down. Tell someone. The only thing that stops big money in politics is someone watching — and now you know how to watch. Keep going." }
