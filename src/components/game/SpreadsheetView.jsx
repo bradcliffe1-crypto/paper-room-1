@@ -137,6 +137,12 @@ export default function SpreadsheetView({ lines, selected, onToggle, onToggleMan
           <span className="text-[#75736d]">sel </span><b className="text-[#d8d5cd]">{selectedLines.length}</b>
           <span className="mx-2 text-[#262629]">|</span>
           <span className="text-[#75736d]">total </span><b className="text-[#b0523e]">{money(sum)}</b>
+          {analyzeTask?.limit && (
+            <>
+              <span className="mx-2 text-[#262629]">|</span>
+              <span className="text-[#75736d]">limit </span><b className={sum > analyzeTask.limit ? "text-[#b0523e]" : "text-[#7a8a6a]"}>{money(analyzeTask.limit)}</b>
+            </>
+          )}
         </div>
       </div>
       <p className="mt-2 font-mono text-[10px] uppercase tracking-[.15em] text-[#45433f]">sort by amount · find a term · select visible · click rows to refine · read the total</p>

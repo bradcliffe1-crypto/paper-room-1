@@ -35,6 +35,13 @@ export default function Debrief({ level, selected, onNext, onRetry }) {
           })}
         </div>
 
+        {ok && level.storyPayoff && (
+          <div className="mt-8 border-l-2 border-[#7a8a6a] pl-4">
+            <p className="font-mono text-[10px] uppercase tracking-[.25em] text-[#7a8a6a]">the angle</p>
+            <p className="mt-2 font-mono text-[13px] lowercase leading-6 text-[#8a9a7a]">{level.storyPayoff}</p>
+          </div>
+        )}
+
         <div className="mt-12 flex items-center justify-end">
           <button onClick={ok ? onNext : onRetry} aria-label={ok ? "Return to desktop" : "Review filing"} className="flex h-10 w-10 items-center justify-center rounded-full border border-[#3a3a3e] text-[#d8d5cd] transition hover:border-[#9a8f6a] hover:text-[#9a8f6a]">
             <ArrowRight size={20} />

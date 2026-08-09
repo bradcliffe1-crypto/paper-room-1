@@ -25,6 +25,12 @@ export default function AnalysisDebrief({ level, selected, onNext, onRetry }) {
             <span className="text-[#7a7a72]">{label}</span>
             <span className="text-[#d8d5cd]">{money(userTotal)}</span>
           </div>
+          {level.analyzeTask?.limit && (
+            <div className="flex items-baseline justify-between border-b border-[#191919] py-3">
+              <span className="text-[#7a7a72]">limit</span>
+              <span className={userTotal > level.analyzeTask.limit ? "text-[#b0523e]" : "text-[#7a8a6a]"}>{money(level.analyzeTask.limit)}</span>
+            </div>
+          )}
           {level.id !== "l03" && level.id !== "l07" && level.id !== "l09" && (
             <div className="flex items-baseline justify-between border-b border-[#191919] py-3">
               <span className="text-[#7a7a72]">expected</span>
@@ -36,6 +42,13 @@ export default function AnalysisDebrief({ level, selected, onNext, onRetry }) {
             <span className="flex items-center gap-2 text-[#b0523e]"><X size={13} /> {wrongSel.length}</span>
           </div>
         </div>
+
+        {exact && level.storyPayoff && (
+          <div className="mt-8 border-l-2 border-[#7a8a6a] pl-4">
+            <p className="font-mono text-[10px] uppercase tracking-[.25em] text-[#7a8a6a]">the angle</p>
+            <p className="mt-2 font-mono text-[13px] lowercase leading-6 text-[#8a9a7a]">{level.storyPayoff}</p>
+          </div>
+        )}
 
         <div className="mt-12 flex items-center justify-end">
           <button onClick={onNext} aria-label="Return to desktop" className="flex h-10 w-10 items-center justify-center rounded-full border border-[#3a3a3e] text-[#d8d5cd] transition hover:border-[#9a8f6a] hover:text-[#9a8f6a]">

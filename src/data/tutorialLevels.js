@@ -20,6 +20,7 @@ export const tutorials = [
     filer: "Friends of Mara Vance", office: "Executive Council, District 3", period: "07/01/2026 – 09/30/2026",
     report: "Quarterly R&E Report", type: "flag",
     task: "She calls it a grassroots surge. Surges come from many places. Read the receipts — and notice how many of the hands come from the same roof.",
+    storyPayoff: "Call Northwind Property Group — a reporter would ask whether employees were reimbursed for their gifts.",
     lesson: "Receipts show money in. A cluster of maximum gifts on one day, from donors who share an employer and an address, is a bundling lead — not proof. Compare dates, amounts, employers, and towns together.",
     legend: [{ code: "R-IND", label: "Receipt · individual" }, { code: "R-ORG", label: "Receipt · organization" }, { code: "R-CAN", label: "Receipt · candidate" }, { code: "R-IN-K", label: "Receipt · in-kind" }],
     lines: [
@@ -48,6 +49,7 @@ export const tutorials = [
     filer: "Pemberton for Executive Council", office: "Executive Council, District 4", period: "07/01/2026 – 09/30/2026",
     report: "Quarterly R&E Report", type: "flag",
     task: "One receipt is a donor. A row of receipts from the same doorstep on the same day is a production. Read the organizations — and ask whose name keeps repeating.",
+    storyPayoff: "Pull the formation dates for each entity — a reporter would trace them to one registered agent.",
     lesson: "For organization receipts, look past the name. Several freshly formed entities at one registered-agent address, all giving the maximum on the same day, is a shell cluster — a front for coordinated money. A named, registered committee is a different animal.",
     legend: [{ code: "R-ORG", label: "Receipt · organization" }, { code: "R-IND", label: "Receipt · individual" }, { code: "R-CAN", label: "Receipt · candidate" }, { code: "E-ADV", label: "Expenditure · advertising" }],
     lines: [
@@ -90,6 +92,7 @@ export const tutorials = [
     filer: "Powell for State Rep", office: "State Representative, Rockingham 1", period: "07/01/2026 – 09/30/2026",
     report: "Quarterly R&E Report", type: "flag",
     task: "Every expense wears a memo. Some memos are costumes. Read what he actually bought — not what the line says he bought.",
+    storyPayoff: "A reporter would ask the campaign to explain why home repairs were billed to campaign funds.",
     lesson: "Expenditures should name the payee, date, amount, and a specific campaign purpose. Vague memos and residential-service vendors deserve scrutiny; context and supporting records decide whether the spend is permissible. A print shop for palm cards is not the same as a furnace service.",
     legend: [{ code: "E-ADV", label: "Expenditure · advertising" }, { code: "E-OPS", label: "Expenditure · operations" }, { code: "E-OTH", label: "Expenditure · other" }],
     lines: [
@@ -119,15 +122,17 @@ export const tutorials = [
   {
     id: "contribution-limit", number: "04", title: "Detours", skill: "Individual cycle-limit violation", difficulty: "Intermediate",
     filer: "Adler for State Senate", office: "State Senate, District 12", period: "01/01/2026 – 11/05/2026",
-    report: "R&E Report", type: "flag",
-    task: "One donor came back three times. Each visit looked small. The season tells a different story — add them up.",
-    lesson: "An individual may give up to $5,000 per election cycle to a candidate committee. The limit runs across the whole cycle, not per line. A large gift broken into pieces that crosses the limit together is still a violation — add up every gift from one donor before you judge.",
+    report: "R&E Report", type: "analyze",
+    task: "One donor came back three times. Each visit looked small. Find her gifts — select them, watch the total climb past the line.",
+    storyPayoff: "A reporter would add up every gift from one donor and ask the campaign about the excess over $5,000.",
+    lesson: "An individual may give up to $5,000 per election cycle to a candidate committee. The limit runs across the whole cycle, not per line. Select one donor's gifts and watch the cumulative total — when it crosses $5,000, the excess is a violation, no matter how many pieces it was broken into.",
+    analyzeTask: { label: "Maren Voss cumulative", unit: "currency", limit: 5000 },
     legend: [{ code: "R-IND", label: "Receipt · individual" }, { code: "R-CAN", label: "Receipt · candidate" }, { code: "R-ORG", label: "Receipt · organization" }, { code: "R-IN-K", label: "Receipt · in-kind" }],
     lines: [
       { id: "d15", section: "Receipts", code: "R-IND", date: "01/20/2026", name: "Sara Ng", location: "Dover, NH", detail: "Pharmacist · CVS", amount: 150 },
       { id: "d02", section: "Receipts", code: "R-IND", date: "01/28/2026", name: "Peter Ames", location: "Laconia, NH", detail: "Retired", amount: 200 },
       { id: "d16", section: "Receipts", code: "R-ORG", date: "02/05/2026", name: "NH Nurses Association PAC", location: "Concord, NH", detail: "Registered political committee", amount: 500 },
-      { id: "d01", section: "Receipts", code: "R-IND", date: "02/11/2026", name: "Maren Voss", location: "Hanover, NH", detail: "Engineer · Self-employed", amount: 1850, flag: true, why: "First of three gifts from Maren Voss. Alone it's under the limit — but the cycle total has to be added up. Flag." },
+      { id: "d01", section: "Receipts", code: "R-IND", date: "02/11/2026", name: "Maren Voss", location: "Hanover, NH", detail: "Engineer · Self-employed", amount: 1850, answer: true },
       { id: "d04", section: "Receipts", code: "R-IND", date: "02/25/2026", name: "Noah Beck", location: "Salem, NH", detail: "Retired", amount: 250 },
       { id: "d17", section: "Receipts", code: "R-IND", date: "02/18/2026", name: "Greg Hollis", location: "Salem, NH", detail: "Retired", amount: 175 },
       { id: "d18", section: "Receipts", code: "R-IN-K", date: "03/05/2026", name: "Print House", location: "Manchester, NH", detail: "In-kind: campaign flyers", amount: 400 },
@@ -136,14 +141,14 @@ export const tutorials = [
       { id: "d20", section: "Receipts", code: "R-IND", date: "04/15/2026", name: "Priya Shah", location: "Nashua, NH", detail: "Software · Oracle", amount: 250 },
       { id: "d08", section: "Receipts", code: "R-IND", date: "04/21/2026", name: "Iris Calder", location: "Lebanon, NH", detail: "Designer · Self-employed", amount: 175 },
       { id: "d21", section: "Receipts", code: "R-ORG", date: "05/02/2026", name: "Seacoast Restaurant Alliance PAC", location: "Portsmouth, NH", detail: "Registered political committee", amount: 750 },
-      { id: "d03", section: "Receipts", code: "R-IND", date: "05/20/2026", name: "Maren Voss", location: "Hanover, NH", detail: "Engineer · Self-employed", amount: 2475, flag: true, why: "Second gift from Voss — $4,325 cumulative, still under the line but climbing. Flag." },
+      { id: "d03", section: "Receipts", code: "R-IND", date: "05/20/2026", name: "Maren Voss", location: "Hanover, NH", detail: "Engineer · Self-employed", amount: 2475, answer: true },
       { id: "d10", section: "Receipts", code: "R-ORG", date: "05/12/2026", name: "NH Homebuilders PAC", location: "Concord, NH", detail: "Registered political committee", amount: 1000 },
       { id: "d22", section: "Receipts", code: "R-IND", date: "06/10/2026", name: "Tom Barker", location: "Manchester, NH", detail: "Retired", amount: 200 },
       { id: "d12", section: "Receipts", code: "R-CAN", date: "06/03/2026", name: "Casey Adler", location: "Concord, NH", detail: "Candidate contribution", amount: 5000 },
       { id: "d13", section: "Receipts", code: "R-IND", date: "06/18/2026", name: "Cara Linwood", location: "Hanover, NH", detail: "Architect · Linwood Studio", amount: 300 },
       { id: "d14", section: "Receipts", code: "R-IND", date: "07/02/2026", name: "Eli Rowan", location: "Keene, NH", detail: "Electrician · Rowan Electric", amount: 200 },
       { id: "d23", section: "Receipts", code: "R-IND", date: "07/15/2026", name: "Mira Stoltz", location: "Laconia, NH", detail: "Nurse · Lakes Region Hospital", amount: 150 },
-      { id: "d05", section: "Receipts", code: "R-IND", date: "08/14/2026", name: "Maren Voss", location: "Hanover, NH", detail: "Engineer · Self-employed", amount: 1900, flag: true, why: "Third gift from Voss — $6,225 cumulative, over the $5,000 per-cycle individual limit. The split into three pieces doesn't cure the excess. Flag." }
+      { id: "d05", section: "Receipts", code: "R-IND", date: "08/14/2026", name: "Maren Voss", location: "Hanover, NH", detail: "Engineer · Self-employed", amount: 1900, answer: true }
     ]
   },
   {
@@ -151,6 +156,7 @@ export const tutorials = [
     filer: "Torres for State Senate", office: "State Senate, District 7", period: "04/01/2026 – 06/30/2026",
     report: "Quarterly R&E Report", type: "flag",
     task: "She backed herself with loans. Read the whole filing — every line. The loan lines are where to look. Find what she did with her own debt.",
+    storyPayoff: "A reporter would ask why the candidate forgave her own loan — and whether the forgiveness was reported as a contribution.",
     lesson: "A candidate may lend her own campaign money — that's allowed, and the loan is reported with its terms. The moment she forgives it, the forgiven amount becomes a contribution: it counts toward the per-cycle contribution limit and must be reported as one. One large forgiveness can blow straight past the cap. The loans themselves are not the story — the forgiveness is.",
     legend: [{ code: "L-REC", label: "Loan received" }, { code: "L-FOR", label: "Loan forgiven" }, { code: "R-IND", label: "Receipt · individual" }, { code: "R-ORG", label: "Receipt · organization" }, { code: "E-ADV", label: "Expenditure · advertising" }, { code: "E-OPS", label: "Expenditure · operations" }, { code: "E-OTH", label: "Expenditure · other" }],
     lines: tutorialCase05Lines
@@ -160,6 +166,7 @@ export const tutorials = [
     filer: "Whitfield for Governor", office: "Governor", period: "01/01/2026 – 03/31/2026",
     report: "Quarterly R&E Report", type: "analyze",
     task: "Not everyone who gives lives here. Select all, then peel away New Hampshire by its state code — what's left is the number that bought the airwaves.",
+    storyPayoff: "A reporter would frame this as how much of Whitfield's money came from outside New Hampshire.",
     lesson: "Some filings are too big to flag line by line. Select rows, watch the running total, and subtract what doesn't belong to your question. Here the question is geography: how much of the money came from outside New Hampshire?",
     legend: [{ code: "R-IND", label: "Receipt · individual" }, { code: "R-ORG", label: "Receipt · organization" }],
     analyzeTask: { label: "Out-of-state total", unit: "currency", groupBy: "state", homeState: "NH" },

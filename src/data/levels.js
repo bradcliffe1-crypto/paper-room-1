@@ -37,6 +37,7 @@ export const levels = [
     filer: "Friends of John Stephen", office: "Exploratory — 2024", period: "04/15/2024 – 11/04/2024",
     report: "Receipt & Expenditure Report", type: "flag",
     task: "Stephen's filings look tidy. Too tidy. Read the receipts — watch for a cluster of maxed-out gifts from different companies at one address, all on the same day. That's where the money really comes from.",
+    storyPayoff: "Cross-reference the donor addresses against the secretary of state's business registry — each entity is a separate name to pull.",
     briefing: FLAG_BRIEF, legend: LEGEND,
     lines: level01Lines
   },
@@ -45,6 +46,7 @@ export const levels = [
     filer: "Karen Liot Hill for Executive Council District 2", office: "Executive Council, District 2", period: "12/06/2023 – 11/13/2024",
     report: "Receipt & Expenditure Report", type: "flag",
     task: "Hill burns through cash. Read every expense. Some payees don't match the memo — a salon, a grocery run, a gift. Tell me what she's actually buying, not what it says she bought.",
+    storyPayoff: "Match each payee to its business type — a reporter would ask the campaign why a salon and a ferry ride served the election.",
     briefing: FLAG_BRIEF, legend: LEGEND,
     lines: [
       {id:"l02-01",section:"Expenditures",code:"E-OPS",date:"12/04/2023",name:"ActBlue",location:"366 Summer St, Somerville, MA 02144",detail:"Credit Card Processing",amount:139.74},
@@ -88,6 +90,7 @@ export const levels = [
     filer: "Sununu Senator", office: "U.S. Senate — New Hampshire", period: "01/01/2026 – 03/31/2026",
     report: "April Quarterly Report (FEC Form 3N)", type: "analyze",
     task: "Sununu says he's one of us. Count the out-of-state money. Select everything, then peel away New Hampshire — I want the number that's left.",
+    storyPayoff: "This is a story about geography, not a charge — frame it as how much of Sununu's backing comes from outside New Hampshire.",
     briefing: ANALYZE_BRIEF, analyzeTask: { label: "Out-of-state total", unit: "currency", groupBy: "state", homeState: "NH" },
     legend: LEGEND, lines: level03Lines
   },
@@ -96,6 +99,7 @@ export const levels = [
     filer: "Kelly for New Hampshire", office: "Governor — New Hampshire", period: "01/01/2024 – 11/05/2024",
     report: "Statement of Receipts and Expenditures (RSA 664)", type: "flag",
     task: "Ayotte's first move was a commission — COGE, government efficiency. Who was appointed? Something doesn't sit right.",
+    storyPayoff: "Set the donor list against the COGE appointee list — correlation, not a crime, but a lead worth asking the governor's office about.",
     briefing: "A flag is a lead, not a conclusion.",
     legend: LEGEND,
     findOnPage: true,
@@ -106,6 +110,7 @@ export const levels = [
     filer: "Friends of Joe Kenny", office: "State Senate — District 6", period: "06/01/2024 – 11/05/2024",
     report: "Receipt & Expenditure Report", type: "flag",
     task: "Kenny. Read the expenses. You learned in training what a real campaign buys — and what it doesn't. Some of these charges aren't campaign expenditures at all. Flag what shouldn't be there.",
+    storyPayoff: "Match each payee to its business type — a reporter would ask the campaign to explain the mismatches.",
     briefing: FLAG_BRIEF, legend: LEGEND, lines: level05Lines
   },
   {
@@ -113,6 +118,7 @@ export const levels = [
     filer: "Kelly for New Hampshire", office: "Governor — New Hampshire", period: "06/01/2024 – 08/21/2024",
     report: "Statement of Receipts and Expenditures (RSA 664)", type: "flag",
     task: "Ayotte again. A stack of maxed-out receipts, all on one day. Read the organizations — and ask who's really behind them.",
+    storyPayoff: "Pull the formation filings for each entity — a reporter would trace them back to one source of funds.",
     briefing: FLAG_BRIEF, legend: LEGEND, lines: level06Lines
   },
   {
@@ -120,6 +126,7 @@ export const levels = [
     filer: "Chris Pappas for Senate", office: "U.S. Senate — New Hampshire", period: "01/01/2025 – 03/31/2026",
     report: "Quarterly & Year-End Reports (FEC Form 3)", type: "analyze",
     task: "Pappas has friends. Certain committees give again and again — the pro-Israel ones. Find them by name, total what they gave.",
+    storyPayoff: "This is a story about who chose to back Pappas — profile the committees and their giving patterns.",
     briefing: ANALYZE_BRIEF, analyzeTask: { label: "Pro-Israel committee total", unit: "currency" },
     legend: LEGEND, lines: level07Lines
   },
@@ -128,6 +135,7 @@ export const levels = [
     filer: "Friends of John Stephen", office: "Exploratory — 2024", period: "04/15/2024 – 05/30/2025",
     report: "Receipt & Expenditure Report", type: "flag",
     task: "Stephen borrowed a lot. Then the borrowing stopped making sense. Read the loans — who forgave what, and when. Same day is the tell.",
+    storyPayoff: "Legal but newsworthy — ten same-day forgiveness entries is the candidate quietly erasing his own debt through the campaign.",
     briefing: FLAG_BRIEF, legend: LEGEND, lines: level08Lines
   },
   {
@@ -135,6 +143,7 @@ export const levels = [
     filer: "Sununu Senator", office: "U.S. Senate — New Hampshire", period: "10/22/2025 – 03/31/2026",
     report: "Year-End 2025 & April Quarterly 2026 (FEC Form 3)", type: "analyze",
     task: "Same candidate. How much is corporate — executives and PACs — versus real grassroots? Select the suits, total them.",
+    storyPayoff: "Separate executive personal checks from PAC checks — a reporter would ask who's actually paying.",
     briefing: ANALYZE_BRIEF, analyzeTask: { label: "Executive & PAC total", unit: "currency" },
     legend: LEGEND, lines: level09Lines
   },
@@ -143,6 +152,7 @@ export const levels = [
     filer: "Kelly for New Hampshire", office: "Governor — New Hampshire", period: "01/22/2024 – 10/16/2024",
     report: "Statement of Receipts and Expenditures (RSA 664)", type: "flag",
     task: "Ayotte's donors. Read the names. Some shouldn't be giving that much. Watch for one employer, one address, one day — and a lot of maxed-out checks.",
+    storyPayoff: "Cross-reference the donor names and address against one employer — a reporter would ask whether reimbursements were involved.",
     briefing: FLAG_BRIEF, legend: LEGEND, lines: level10Lines
   }
 ];
