@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CheckSquare, Square, Search } from "lucide-react";
+import { ArrowUpDown, CheckSquare, Square, Search } from "lucide-react";
 import { useGlowSync } from "@/hooks/useGlowSync";
 
 const money = n => new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(n);
@@ -13,11 +13,15 @@ export default function SpreadsheetView({ lines, selected, onToggle, onToggleMan
   const stateMode = analyzeTask?.groupBy === "state";
   const home = (analyzeTask?.homeState || "").toUpperCase();
   const [query, setQuery] = useState("");
+  const [sortByAmount, setSortByAmount] = useState(false);
 
   const q = query.toLowerCase();
-  const filtered = !stateMode && q
+  const baseFiltered = !stateMode && q
     ? lines.filter(l => [l.date, l.code, l.name, l.location, l.detail, String(l.amount)].join(" ").toLowerCase().includes(q))
     : lines;
+  const filtered = sortByAmount && !stateMode
+    ? [...baseFiltered].sort((a, b) => b.amount - a.amount)
+    : baseFiltered;
   const selectedLines = lines.filter(l => selected.includes(l.id));
   const sum = selectedLines.reduce((a, l) => a + (l.amount || 0), 0);
 
@@ -119,13 +123,23 @@ export default function SpreadsheetView({ lines, selected, onToggle, onToggleMan
           {allVisibleSelected ? <Square size={13} /> : <CheckSquare size={13} />}
           {allVisibleSelected ? "clear visible" : query ? "select visible" : "select all"}
         </button>
+        <button
+          onClick={() => setSortByAmount(s => !s)}
+          className={`flex items-center gap-2 border px-3 py-2 font-mono text-xs uppercase tracking-[.15em] transition ${
+            sortByAmount
+              ? "border-[#5a3a2a] bg-[#1a1411] text-[#b0523e]"
+              : "border-[#262629] bg-[#131316] text-[#75736d] hover:text-[#d8d5cd]"
+          }`}
+        >
+          <ArrowUpDown size={13} /> {sortByAmount ? "amount ↓" : "sort"}
+        </button>
         <div className="ml-auto border-l border-[#262629] pl-4 font-mono text-xs">
           <span className="text-[#75736d]">sel </span><b className="text-[#d8d5cd]">{selectedLines.length}</b>
           <span className="mx-2 text-[#262629]">|</span>
           <span className="text-[#75736d]">total </span><b className="text-[#b0523e]">{money(sum)}</b>
         </div>
       </div>
-      <p className="mt-2 font-mono text-[10px] uppercase tracking-[.15em] text-[#45433f]">select all · find a term · click rows to refine · read the total</p>
+      <p className="mt-2 font-mono text-[10px] uppercase tracking-[.15em] text-[#45433f]">sort by amount · find a term · select visible · click rows to refine · read the total</p>
       <div className="border border-t-0 border-[#262629] bg-[#0c0c0d]">
         <div className="sticky top-0 z-10 hidden grid-cols-[44px_90px_82px_1fr_130px] border-b border-[#262629] bg-[#0c0c0d] px-3 py-2 font-mono text-[10px] uppercase tracking-[.15em] text-[#45433f] md:grid">
           <span></span><span>date</span><span>code</span><span>name / purpose</span><span className="text-right">amount</span>
