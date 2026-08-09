@@ -6,7 +6,7 @@
 
 export const reyesIntros = {
   l02: [
-    { type: "text", content: "You're reading these filings like you've been doing it for years. The receipts, the shell addresses, the funny memos — you see them now. When you step away from this screen, the real records are waiting. New Hampshire posts every state-level filing in the open at " },
+    { type: "text", content: "When you step away from this screen, the real records are waiting. New Hampshire posts every state-level filing in the open at " },
     { type: "link", content: "the Secretary of State's campaign finance system", url: "https://cfs.sos.nh.gov/" },
     { type: "text", content: ". For your members of Congress and every federal race, the " },
     { type: "link", content: "FEC", url: "https://www.fec.gov/" },
