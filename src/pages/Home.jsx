@@ -40,7 +40,8 @@ export default function Home() {
   useEffect(() => localStorage.setItem("casebook-progress", JSON.stringify(progress)), [progress]);
 
   useEffect(() => {
-    const u = new URLSearchParams(window.location.search).get("unlock");
+    const q = window.location.search.replace(/^\?/, "") + "&" + window.location.hash.replace(/^#/, "");
+    const u = new URLSearchParams(q).get("unlock");
     if (u === "all") {
       setProgress({
         completed: [...tutorials.map(t => t.id), ...levels.map(l => l.id)],
